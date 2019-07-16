@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "670502096879",
+    "firebase_url": "https://class-royale.firebaseio.com",
+    "project_id": "class-royale",
+    "storage_bucket": "class-royale.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670502096879:android:fc4fa0c1b977c956",
+        "android_client_info": {
+          "package_name": "com.alientech.classroyale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670502096879-51up08urufotefkbm3lfj57c6bc9pdeg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVvVhBZyoI74xU_CtZKd4tQXX-Vta9EmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670502096879-51up08urufotefkbm3lfj57c6bc9pdeg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
