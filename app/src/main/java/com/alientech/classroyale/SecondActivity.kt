@@ -17,13 +17,19 @@ class SecondActivity : AppCompatActivity() {
     object Main {
         @JvmStatic
         fun main(name: String) {
-
-            val rasmit = Card("Rasmit", 600, 80, "Polymath Chairman and CEO of AlienTech Industries", Card.MYTHICAL, true, false, 1, 0, 1000)
-            val chittebbayi = Card("Chittebbayi", 600, 80, "Mr. Chittebbayi Java Microsoft-Certified Penugonda", Card.MYTHICAL, true, false, 1, 0, 1000)
-            val shinde = Card("Shinde", 600, 80, "Shinde Airlines", Card.LEGENDARY, true, false, 1, 0, 1000)
-            val monish = Card("Monish", 600, 80, "Central Pleb", Card.MYTHICAL, true, false, 1, 0, 1000)
+            if (name == "Rasmit") {
+                val rasmit = Card("Rasmit", 600, 80, "Polymath Chairman and CEO of AlienTech Industries", Card.MYTHICAL, true, false, 1, 0, 1000)
+            } else if (name == "Chittebbayi") {
+                val chittebbayi = Card("Chittebbayi", 600, 80, "Mr. Chittebbayi Java Microsoft-Certified Penugonda", Card.MYTHICAL, true, false, 1, 0, 1000)
+            } else if (name == "Shinde") {
+                val shinde = Card("Shinde", 600, 80, "Shinde Airlines", Card.LEGENDARY, true, false, 1, 0, 1000)
+            } else if (name == "Monish") {
+                val monish = Card("Monish", 600, 80, "Central Pleb", Card.MYTHICAL, true, false, 1, 0, 1000)
+            } else if (name == "Royce") {
             val royce = Card("Royce", 600, 80, "Installing malware into your device", Card.MYTHICAL, true, false, 1, 0, 1000)
-            val anshi = Card("Anshi", 600, 80, "Artist", Card.MYTHICAL, true, false, 1, 0, 1000)
+            } else if (name == "Anshi") {
+                val anshi = Card("Anshi", 600, 80, "Artist", Card.MYTHICAL, true, false, 1, 0, 1000)
+            }
         }
     }
 
