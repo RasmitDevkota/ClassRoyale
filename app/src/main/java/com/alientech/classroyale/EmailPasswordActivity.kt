@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.activity_emailpassword.fieldEmail
 import kotlinx.android.synthetic.main.activity_emailpassword.fieldPassword
 import kotlinx.android.synthetic.main.activity_emailpassword.signOutButton
 import kotlinx.android.synthetic.main.activity_emailpassword.signedInButtons
-import kotlinx.android.synthetic.main.activity_emailpassword.status
 
 class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
