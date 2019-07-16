@@ -37,7 +37,6 @@ class SecondActivity : AppCompatActivity() {
                     val card = Card("Anshi", 600, 80, "Artist", Card.MYTHICAL, true, false, 1, 0, 1000)
                 }
             }
-
         }
     }
 
