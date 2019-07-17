@@ -6,7 +6,10 @@ import android.content.Intent
 import android.os.Bundle
 import kotlin.io.println as println
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 
 // Activity for the Deck Screen
@@ -16,6 +19,11 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
     }
+
+    val user = FirebaseAuth.getInstance().currentUser
+    val db = FirebaseFirestore.getInstance()
+    var userDeck = db.collection(user!!.uid)
+    var userCardCollection = db.collection(user!!.uid)
 
     object Main {
         @JvmStatic
@@ -41,6 +49,16 @@ class SecondActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    fun cardUnlock (name: String) {
+        userCardCollection.document(name).set(
+            
+        )
+    }
+
+    fun editDeck (deck: Array<Card>, add: Object, remove: Objects) {
+
     }
 
     class Card(

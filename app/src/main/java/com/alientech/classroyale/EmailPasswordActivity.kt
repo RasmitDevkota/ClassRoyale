@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_emailpassword.fieldEmail
 import kotlinx.android.synthetic.main.activity_emailpassword.fieldPassword
 import kotlinx.android.synthetic.main.activity_emailpassword.signOutButton
 import kotlinx.android.synthetic.main.activity_emailpassword.signedInButtons
+import kotlinx.android.synthetic.main.activity_google.*
 
 class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -85,6 +86,7 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun signIn(email: String, password: String) {
         Log.d(TAG, "signIn:$email")
+
         if (!validateForm()) {
             return
         }
@@ -103,7 +105,7 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 if (!task.isSuccessful) {
-
+                    status.setText(R.string.auth_failed)
                 }
             }
     }
@@ -148,8 +150,7 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        val i = v.id
-        when (i) {
+        when (v.id) {
             R.id.emailCreateAccountButton -> createAccount(fieldEmail.text.toString(), fieldPassword.text.toString())
             R.id.emailSignInButton -> signIn(fieldEmail.text.toString(), fieldPassword.text.toString())
             R.id.signOutButton -> signOut()

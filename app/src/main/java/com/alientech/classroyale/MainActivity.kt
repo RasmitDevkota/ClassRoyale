@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         val adapter = MyArrayAdapter(this, android.R.layout.simple_list_item_2, CLASSES as Array<Class<*>>)
         adapter.setDescriptionIds(DESCRIPTION_IDS)
 
-        listView.adapter = adapter
-        listView.onItemClickListener = this
+        this.listView.adapter = adapter
+        this.listView.onItemClickListener = this
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
