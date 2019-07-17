@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val adapter = MyArrayAdapter(this, android.R.layout.simple_list_item_2, CLASSES)
+        val adapter = MyArrayAdapter(this, android.R.layout.simple_list_item_2, CLASSES as Array<Class<*>>)
         adapter.setDescriptionIds(DESCRIPTION_IDS)
 
         listView.adapter = adapter
@@ -73,7 +73,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         )
     }
 
-    // PUT THIS INTO ITS OWN ACTIVITY
     fun getUserDetails() {
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {

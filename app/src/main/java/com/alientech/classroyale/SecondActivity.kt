@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import kotlin.io.println as println
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 // Activity for the Deck Screen

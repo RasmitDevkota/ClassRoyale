@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_emailpassword.emailCreateAccountButton
 import kotlinx.android.synthetic.main.activity_emailpassword.emailPasswordButtons
 import kotlinx.android.synthetic.main.activity_emailpassword.emailPasswordFields
@@ -39,6 +40,11 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun createAccount(email: String, password: String) {
+
+        val user = FirebaseAuth.getInstance().currentUser
+
+        val db = FirebaseFirestore.getInstance()
+
         Log.d(TAG, "createAccount:$email")
 
         if (!validateForm()) {
@@ -58,6 +64,19 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
                     updateUI(null)
                 }
             }
+
+        var emailsUser = hashMapOf(
+            "email" to email,
+            "uid" to user.uid
+        )
+        db.collection("emails").document(user.displayName).set(emailsUser)
+
+        var usersUser = hashMapOf(
+            "displayName" to displayName,
+            "email" to email
+        )
+        db.collection("users").document().set(usersUser)
+
     }
 
     private fun signIn(email: String, password: String) {

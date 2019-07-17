@@ -1,33 +1,33 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Class Royale</string>
 
-    <string name="activity_1">Activity 1</string>
+    <string name="activity_1" tools:ignore="UnusedResources">Activity 1</string>
 
-    <string name="label_emailpassword">Email/Password Authentication</string>
-    <string name="desc_emailpassword">Use an email and password to authenticate with Firebase.</string>
+    <string name="label_emailpassword" tools:ignore="UnusedResources">Email and Password Sign In</string>
+    <string name="desc_emailpassword">Use an email and password to sign in.</string>
 
-    <string name="label_google_sign_in">Firebase + Google Sign In</string>
-    <string name="desc_google_sign_in">Use a Google Sign In credential to authenticate with Firebase.</string>
+    <string name="label_google_sign_in" tools:ignore="UnusedResources">Google Sign In</string>
+    <string name="desc_google_sign_in">Use a Google Account to sign in.</string>
 
-    <string name="hint_user_id">User ID</string>
+    <string name="hint_user_id" tools:ignore="UnusedResources">User ID</string>
     <string name="sign_in">Sign In</string>
     <string name="create_account">Create Account</string>
     <string name="sign_out">Sign Out</string>
     <string name="disconnect">Disconnect</string>
-    <string name="loading">Loading…</string>
-    <string name="signed_in">Signed In</string>
+    <string name="loading" tools:ignore="UnusedResources">Loading…</string>
+    <string name="signed_in" tools:ignore="UnusedResources">Signed In</string>
     <string name="signed_out">Signed Out</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
-    <string name="desc_firebase_lockup">Firebase logo and name</string>
-    <string name="auth_failed">Authentication failed</string>
-    <string name="status_sign_in_failed">Sign-in failed</string>
-    <string name="instant_validation">(instant validation)</string>
+    <string name="desc_firebase_lockup" tools:ignore="UnusedResources">Firebase logo and name</string>
+    <string name="auth_failed" tools:ignore="UnusedResources">Authentication failed</string>
+    <string name="status_sign_in_failed" tools:ignore="UnusedResources">Sign-in failed</string>
+    <string name="instant_validation" tools:ignore="UnusedResources">(instant validation)</string>
 
     <string name="emailpassword_title_text">Email and Password</string>
 
     <string name="google_title_text">Google Sign In</string>
 
-    <string name="id_fmt">User ID: %s</string>
-    <string name="email_fmt">Email: %s</string>
+    <string name="id_fmt" tools:ignore="UnusedResources">User ID: %s</string>
+    <string name="email_fmt" tools:ignore="UnusedResources">Email: %s</string>
 </resources>
