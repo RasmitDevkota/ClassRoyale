@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_VARIABLE", "UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
+
 package com.alientech.classroyale
 
 import android.os.Bundle
@@ -41,8 +43,6 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun createAccount(email: String, password: String) {
 
-        val user = FirebaseAuth.getInstance().currentUser
-
         val db = FirebaseFirestore.getInstance()
 
         Log.d(TAG, "createAccount:$email")
@@ -65,6 +65,8 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
 
+        /*
+
         var emailsUser = hashMapOf(
             "email" to email,
             "uid" to user.uid
@@ -76,6 +78,8 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
             "email" to email
         )
         db.collection("users").document().set(usersUser)
+
+        */
 
     }
 

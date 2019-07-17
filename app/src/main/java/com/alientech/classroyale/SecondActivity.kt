@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_VARIABLE", "UNUSED_ANONYMOUS_PARAMETER")
+
 package com.alientech.classroyale
 
 import android.content.Intent
