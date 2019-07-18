@@ -4,11 +4,13 @@ package com.alientech.classroyale
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import kotlin.io.println as println
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import java.lang.Integer.valueOf
 import java.util.*
 
 
@@ -22,18 +24,24 @@ class SecondActivity : AppCompatActivity() {
 
     val user = FirebaseAuth.getInstance().currentUser
     val db = FirebaseFirestore.getInstance()
-    var userDeck = db.collection("userDecks")
-    var userCardCollection = db.collection("userCollections")
-    var normalCards = db.collection("normalCards")
-    var personCards = db.collection("personCards")
+
+    var displayName = user!!.displayName.toString()
+
+    // Game cards
+    var cardCollection = db.collection("cards").document("cards")
+    var normalCards = cardCollection.collection("normal")
+    var personCards = cardCollection.collection("person")
+
+    // User Cards
+    var userDecks = db.collection("userDecks").document(displayName)
+    var userCardCollection = db.collection("userCollections").document(displayName)
+    var userNormalCards = userCardCollection.collection("normal")
+    var userPersonCards = userCardCollection.collection("person")
 
     object Main {
         @JvmStatic
         fun main(name: String) {
             when (name){
-                "Admin" -> {
-                    val card = Card()
-                }
                 "Rasmit" -> {
                     val card = Card("Rasmit", 600, 80, "Polymath Chairman and CEO of AlienTech Industries", Card.MYTHICAL, true, false, 1, 0, 1000)
                 }
@@ -41,16 +49,16 @@ class SecondActivity : AppCompatActivity() {
                     val card = Card("Chittebbayi", 600, 80, "Mr. Chittebbayi Java Microsoft-Certified Penugonda", Card.MYTHICAL, true, false, 1, 0, 1000)
                 }
                 "Shinde" -> {
-                    val card = Card("Shinde", 600, 80, "Shinde Airlines", Card.LEGENDARY, true, false, 1, 0, 1000)
+                    val card = Card("Shinde", 600, 80, "Fly Shinde Airlines", Card.LEGENDARY, true, false, 1, 0, 1000)
                 }
                 "Monish" -> {
                     val card = Card("Monish", 600, 80, "Central Pleb", Card.MYTHICAL, true, false, 1, 0, 1000)
                 }
                 "Royce" -> {
-                    val card = Card("Royce", 600, 80, "Installing malware into your device", Card.MYTHICAL, true, false, 1, 0, 1000)
+                    val card = Card("Royce", 600, 80, "Installing malware into your device... [87%]", Card.MYTHICAL, true, false, 1, 0, 1000)
                 }
                 "Anshi" -> {
-                    val card = Card("Anshi", 600, 80, "Artist", Card.MYTHICAL, true, false, 1, 0, 1000)
+                    val card = Card("Anshi", 600, 80, "Aneesh's sister", Card.MYTHICAL, true, false, 1, 0, 1000)
                 }
             }
         }
@@ -60,65 +68,30 @@ class SecondActivity : AppCompatActivity() {
         cardData: Array<Any>
     ) {
 
-        var card0 = cardData[0]
+        var name: String = cardData[0].toString()
 
-        var name: String
-            get() {return this.name}
-            set(value) {this.name = name}
+        var HP = (cardData[1].toString()).toInt()
 
-        var HP: Int
-            get() {return this.HP}
-            set(value) {
-                this.HP = HP
-                for (i in 0 until this.level - 1) {
-                    upgradeHP()
-                }
-            }
+        var attackDamage = cardData[2].toString().toInt()
 
-        var attackDamage: Int
-            get() {return this.attackDamage}
-            set(value) {
-                this.attackDamage = attackDamage
-                for (i in 0 until this.level - 1) {
-                    upgradeAttackDamage()
-                }
-            }
+        var description = cardData[3].toString()
 
-        var description: String
-            get() {return this.description}
-            set(value) {this.description = description}
+        var rarity = cardData[4].toString()
 
-        var rarity: String
-            get() {return this.rarity}
-            set(value) {this.rarity = rarity}
+        var isPersonCard = cardData[5].toString().toBoolean()
 
-        var isPersonCard: Boolean
-            get() {return this.isPersonCard}
-            set(value) {this.isPersonCard = isPersonCard}
+        var isDisplayingProperties = cardData[6].toString().toBoolean()
 
-        var isDisplayingProperties: Boolean
-            get() {return this.isDisplayingProperties}
-            set(value) {this.isDisplayingProperties = isDisplayingProperties}
+        var level = cardData[7].toString().toInt()
 
-        var level: Int
-            get() {return this.level}
-            set(value) {this.level = level}
+        var xp = cardData[8].toString().toInt()
 
-        var xp: Int
-            get() {return xp}
-            set(value) {this.xp = xp}
-
-        var xpToLevelUp: Int
-            get() {return xpToLevelUp}
-            set(value) {
-                this.xpToLevelUp = xpToLevelUp
-                for (i in 0 until level - 1) {
-                    upgradeXPToLevelUp()
-                }
-            }
+        var xpToLevelUp = cardData[9].toString().toInt()
 
         fun upgradeXPToLevelUp() {
-            this.xpToLevelUp += (0.3 * this.xpToLevelUp).toInt()
+            for (i in 0 until level - 1) {
+                this.xpToLevelUp += (0.3 * this.xpToLevelUp).toInt()
+            }
         }
 
         fun upgradeHP() {
@@ -147,7 +120,7 @@ class SecondActivity : AppCompatActivity() {
         }
 
         fun evaluatePerformance(): Int {
-            return 34433434;
+            return 34433434
         }
 
         companion object {
@@ -160,17 +133,23 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-    fun cardUnlock (name: String) {
-        userCardCollection.document(name).set(
+    fun cardUnlock (cardType: String, cardName: String) {
+        var newCard = cardCollection.collection(cardType).document(cardName)
+        var newCardData = newCard.get()
+        var newCardDestination = userCardCollection.collection(cardType)
 
-        )
+        newCardDestination.document(cardName).set(newCardData)
     }
 
-    fun editDeck (deck: Array<Card>, add: Object, remove: Objects) {
+    fun editDeck (deckNumber: String, addCardName: String, addCardType: String,  removeCardName: String, removeCardType: String) {
+        var addCard = userCardCollection.collection(addCardType).document(addCardName)
+        var addCardData = addCard.get()
+        var addCardDeck = userDecks.collection(deckNumber)
 
+        userDecks.collection(deckNumber).document(removeCardName).delete()
+
+        addCardDeck.document(addCardName).set(addCardData)
     }
-
-
 
     class Card(
         name: String,
