@@ -45,7 +45,6 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-
     class Card(
         name: String,
         HP: Int,
