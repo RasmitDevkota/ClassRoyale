@@ -7,9 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import kotlin.io.println as println
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.Integer.valueOf
 import java.util.*
 
