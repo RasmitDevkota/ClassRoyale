@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
-import com.google.firebase.auth.FirebaseAuth
 import android.content.Context
 import android.view.LayoutInflater
 import kotlinx.android.synthetic.main.activity_main.listView
