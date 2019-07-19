@@ -19,22 +19,6 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
     }
 
-    val user = FirebaseAuth.getInstance().currentUser
-    val db = FirebaseFirestore.getInstance()
-
-    var displayName = user!!.displayName.toString()
-
-    // Game cards
-    var cardCollection = db.collection("cards").document("cards")
-    var normalCards = cardCollection.collection("normal")
-    var personCards = cardCollection.collection("person")
-
-    // User Cards
-    var userDecks = db.collection("userDecks").document(displayName)
-    var userCardCollection = db.collection("userCollections").document(displayName)
-    var userNormalCards = userCardCollection.collection("normal")
-    var userPersonCards = userCardCollection.collection("person")
-
     object Main {
         @JvmStatic
         fun main(name: String) {
