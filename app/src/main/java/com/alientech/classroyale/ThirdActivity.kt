@@ -11,9 +11,4 @@ class ThirdActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
     }
-
-    //fun placeCard(view: View) {
-    //    SecondActivity.Main.main("Rasmit")
-    //}
-
 }

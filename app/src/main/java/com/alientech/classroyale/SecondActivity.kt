@@ -2,13 +2,8 @@
 
 package com.alientech.classroyale
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import kotlin.io.println as println
 import androidx.appcompat.app.AppCompatActivity
-import java.lang.Integer.valueOf
-import java.util.*
 
 
 // Activity for the Deck Screen
