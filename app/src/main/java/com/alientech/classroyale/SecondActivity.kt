@@ -150,7 +150,7 @@ class SecondActivity : AppCompatActivity() {
 
         addCardDeck.document(addCardName).set(addCardData)
     }
-    
+
     class Card(
         name: String,
         HP: Int,

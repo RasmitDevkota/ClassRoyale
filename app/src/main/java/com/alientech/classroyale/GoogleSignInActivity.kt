@@ -22,9 +22,7 @@ import kotlinx.android.synthetic.main.activity_google.signOutAndDisconnect
 import kotlinx.android.synthetic.main.activity_google.signOutButton
 import kotlinx.android.synthetic.main.activity_google.status
 
-/**
- * Demonstrate Firebase Authentication using a Google ID Token.
- */
+
 class GoogleSignInActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var auth: FirebaseAuth
