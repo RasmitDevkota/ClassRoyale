@@ -64,8 +64,6 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-<<<<<<< HEAD
-=======
     class TestCard(
         cardData: Array<Any>
     ) {
@@ -152,8 +150,7 @@ class SecondActivity : AppCompatActivity() {
 
         addCardDeck.document(addCardName).set(addCardData)
     }
-
->>>>>>> parent of 6035f02... Gitacora saved 3 changed files
+    
     class Card(
         name: String,
         HP: Int,
