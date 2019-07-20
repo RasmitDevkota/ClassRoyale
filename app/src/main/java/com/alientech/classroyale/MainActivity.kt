@@ -71,4 +71,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
             R.string.desc_emailpassword
         )
     }
+
+    fun getUserDetails() {
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            val name = user.displayName
+            val email = user.email
+            val uid = user.uid
+        }
+    }
 }
