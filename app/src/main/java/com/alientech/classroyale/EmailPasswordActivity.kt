@@ -55,6 +55,18 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    var emailsUser = hashMapOf(
+                        "email" to email,
+                        "uid" to user.uid
+                    )
+                    db.collection("emails").document(user.displayName).set(emailsUser)
+
+                    var usersUser = hashMapOf(
+                        "displayName" to displayName,
+                        "email" to email
+                    )
+                    db.collection("users").document().set(usersUser)
+
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
                     updateUI(user)
@@ -65,22 +77,6 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
                     updateUI(null)
                 }
             }
-
-        /*
-
-        var emailsUser = hashMapOf(
-            "email" to email,
-            "uid" to user.uid
-        )
-        db.collection("emails").document(user.displayName).set(emailsUser)
-
-        var usersUser = hashMapOf(
-            "displayName" to displayName,
-            "email" to email
-        )
-        db.collection("users").document().set(usersUser)
-
-        */
 
     }
 
@@ -102,10 +98,6 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
                     updateUI(null)
-                }
-
-                if (!task.isSuccessful) {
-                    status.setText(R.string.auth_failed)
                 }
             }
     }
