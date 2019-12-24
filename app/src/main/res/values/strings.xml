@@ -17,6 +17,7 @@
     <string name="loading" tools:ignore="UnusedResources">Loading…</string>
     <string name="signed_in" tools:ignore="UnusedResources">Signed In</string>
     <string name="signed_out">Signed Out</string>
+    <string name="hint_username">Username</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="desc_firebase_lockup" tools:ignore="UnusedResources">Firebase logo and name</string>

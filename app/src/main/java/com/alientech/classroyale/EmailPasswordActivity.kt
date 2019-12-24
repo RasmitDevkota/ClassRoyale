@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_emailpassword.emailCreateAccountB
 import kotlinx.android.synthetic.main.activity_emailpassword.emailPasswordButtons
 import kotlinx.android.synthetic.main.activity_emailpassword.emailPasswordFields
 import kotlinx.android.synthetic.main.activity_emailpassword.emailSignInButton
+import kotlinx.android.synthetic.main.activity_emailpassword.fieldUsername
 import kotlinx.android.synthetic.main.activity_emailpassword.fieldEmail
 import kotlinx.android.synthetic.main.activity_emailpassword.fieldPassword
 import kotlinx.android.synthetic.main.activity_emailpassword.signOutButton
@@ -24,6 +25,7 @@ import kotlinx.android.synthetic.main.activity_google.*
 class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,8 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
         emailSignInButton.setOnClickListener(this)
         emailCreateAccountButton.setOnClickListener(this)
         signOutButton.setOnClickListener(this)
+
+        fieldEmail.visibility = View.GONE
 
         auth = FirebaseAuth.getInstance()
     }
@@ -42,7 +46,9 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
         updateUI(currentUser)
     }
 
-    private fun createAccount(email: String, password: String) {
+    private fun createAccount(email: String, password: String, displayName: String) {
+
+        fieldEmail.visibility = View.VISIBLE
 
         val db = FirebaseFirestore.getInstance()
 
@@ -55,11 +61,13 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    val currentUser = auth.currentUser
+
                     var emailsUser = hashMapOf(
                         "email" to email,
-                        "uid" to user.uid
+                        "uid" to currentUser!!.uid
                     )
-                    db.collection("emails").document(user.displayName).set(emailsUser)
+                    db.collection("emails").document(currentUser!!.displayName.toString()).set(emailsUser)
 
                     var usersUser = hashMapOf(
                         "displayName" to displayName,
@@ -72,33 +80,45 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
                     updateUI(user)
                 } else {
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                     updateUI(null)
                 }
             }
 
     }
 
-    private fun signIn(email: String, password: String) {
-        Log.d(TAG, "signIn:$email")
+    private fun signIn(password: String, displayName: String) {
+        Log.d(TAG, "signIn:$displayName")
 
         if (!validateForm()) {
             return
         }
 
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    Log.d(TAG, "signInWithEmail:success")
-                    val user = auth.currentUser
-                    updateUI(user)
+        db.collection("users").document(displayName).get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                    val email = document.get("email").toString()
+
+                    auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                Log.d(TAG, "signInWithEmail:success")
+                                val user = auth.currentUser
+                                updateUI(user)
+                            } else {
+                                Log.w(TAG, "signInWithEmail:failure", task.exception)
+                                Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                                updateUI(null)
+                            }
+                        }
                 } else {
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    updateUI(null)
+                    Log.d(TAG, "No such document")
+                    Toast.makeText(baseContext, "User does not exist in our database.", Toast.LENGTH_SHORT).show()
                 }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
             }
     }
 
@@ -110,12 +130,12 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
     private fun validateForm(): Boolean {
         var valid = true
 
-        val email = fieldEmail.text.toString()
-        if (TextUtils.isEmpty(email)) {
-            fieldEmail.error = "Required."
+        val displayName = fieldUsername.text.toString()
+        if (TextUtils.isEmpty(displayName)) {
+            fieldUsername.error = "Required."
             valid = false
         } else {
-            fieldEmail.error = null
+            fieldUsername.error = null
         }
 
         val password = fieldPassword.text.toString()
@@ -141,10 +161,11 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.emailCreateAccountButton -> createAccount(fieldEmail.text.toString(), fieldPassword.text.toString())
-            R.id.emailSignInButton -> signIn(fieldEmail.text.toString(), fieldPassword.text.toString())
+            R.id.emailCreateAccountButton -> createAccount(fieldEmail.text.toString(), fieldPassword.text.toString(), fieldUsername.text.toString())
+            R.id.emailSignInButton -> signIn(fieldPassword.text.toString(), fieldUsername.text.toString())
             R.id.signOutButton -> signOut()
         }
     }
