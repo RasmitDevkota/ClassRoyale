@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,6 +27,7 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private var mFirebaseAnalytics: FirebaseAnalytics? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,8 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
         fieldEmail.visibility = View.GONE
 
         auth = FirebaseAuth.getInstance()
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
     }
 
     public override fun onStart() {
@@ -84,7 +88,6 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
                     updateUI(null)
                 }
             }
-
     }
 
     private fun signIn(password: String, displayName: String) {

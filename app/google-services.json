@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "670502096879-l603nku1lsaudvburqctbc3r6a8stauq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alientech.classroyale",
+            "certificate_hash": "fcc6b9a7b70e2643756e8cd99a629e8ae860aea6"
+          }
+        },
+        {
           "client_id": "670502096879-51up08urufotefkbm3lfj57c6bc9pdeg.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,23 +1,24 @@
 package com.alientech.classroyale
 
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.IdpResponse
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
-import android.content.Context
-import android.view.LayoutInflater
-import kotlinx.android.synthetic.main.activity_main.listView
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 // Activity for the Login Screen
 class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
+
+    var mFirebaseAnalytics: FirebaseAnalytics? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
         this.listView.adapter = adapter
         this.listView.onItemClickListener = this
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
