@@ -9,6 +9,9 @@
     <string name="label_google_sign_in" tools:ignore="UnusedResources">Google Sign In</string>
     <string name="desc_google_sign_in">Use a Google Account to sign in.</string>
 
+    <string name="label_view_deck" tools:ignore="UnusedResources">Deck</string>
+    <string name="desc_view_deck">View your deck.</string>
+
     <string name="hint_user_id" tools:ignore="UnusedResources">User ID</string>
     <string name="sign_in">Sign In</string>
     <string name="create_account">Create Account</string>

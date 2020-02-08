@@ -18,6 +18,6 @@ class ThirdActivity : AppCompatActivity() {
     }
 
     fun placeCard(view: View, position: Array<Any>) {
-        SecondActivity.Main.main("Rasmit")
+//        SecondActivity.cardData("Rasmit", "person")
     }
 }

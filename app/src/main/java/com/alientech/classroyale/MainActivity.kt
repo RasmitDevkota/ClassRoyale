@@ -68,11 +68,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     companion object {
         private val CLASSES = arrayOf(
             GoogleSignInActivity::class.java,
-            EmailPasswordActivity::class.java
+            EmailPasswordActivity::class.java,
+            SecondActivity::class.java
         )
         private val DESCRIPTION_IDS = intArrayOf(
             R.string.desc_google_sign_in,
-            R.string.desc_emailpassword
+            R.string.desc_emailpassword,
+            R.string.desc_view_deck
         )
     }
 

@@ -30,7 +30,7 @@ class SecondActivity : AppCompatActivity() {
     var displayName = user!!.displayName.toString()
 
     // Game cards
-    public var cardCollection = db.collection("cards").document("cards")
+    var cardCollection = db.collection("cards").document("cards")
     var normalCards = cardCollection.collection("normal")
     var personCards = cardCollection.collection("person")
 
