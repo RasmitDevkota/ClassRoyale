@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_VARIABLE", "UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
+
 package com.alientech.classroyale
 
 import android.content.Context
@@ -68,13 +70,11 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     companion object {
         private val CLASSES = arrayOf(
             GoogleSignInActivity::class.java,
-            EmailPasswordActivity::class.java,
-            SecondActivity::class.java
+            EmailPasswordActivity::class.java
         )
         private val DESCRIPTION_IDS = intArrayOf(
             R.string.desc_google_sign_in,
-            R.string.desc_emailpassword,
-            R.string.desc_view_deck
+            R.string.desc_emailpassword
         )
     }
 

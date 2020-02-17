@@ -46,9 +46,7 @@ class GoogleSignInActivity : AppCompatActivity(), View.OnClickListener {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-
         auth = FirebaseAuth.getInstance()
-
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
     }
 
@@ -116,15 +114,19 @@ class GoogleSignInActivity : AppCompatActivity(), View.OnClickListener {
         if (user != null) {
             signInButton.visibility = View.GONE
             signOutAndDisconnect.visibility = View.VISIBLE
+            detail.visibility = View.VISIBLE
+            status.text = "Signed in"
+            detail.text = user.displayName
         } else {
             signInButton.visibility = View.VISIBLE
             signOutAndDisconnect.visibility = View.GONE
+            detail.visibility = View.GONE
+            status.text = "Signed out"
         }
     }
 
     override fun onClick(v: View) {
-        val i = v.id
-        when (i) {
+        when (v.id) {
             R.id.signInButton -> signIn()
             R.id.signOutButton -> signOut()
             R.id.disconnectButton -> revokeAccess()

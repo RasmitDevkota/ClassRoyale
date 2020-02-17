@@ -2,15 +2,13 @@
     <string name="app_name">Class Royale</string>
 
     <string name="activity_1" tools:ignore="UnusedResources">Activity 1</string>
+    <string name="activity_2" tools:ignore="UnusedResources">Main Page</string>
 
     <string name="label_emailpassword" tools:ignore="UnusedResources">Email and Password Sign In</string>
     <string name="desc_emailpassword">Use an email and password to sign in.</string>
 
     <string name="label_google_sign_in" tools:ignore="UnusedResources">Google Sign In</string>
     <string name="desc_google_sign_in">Use a Google Account to sign in.</string>
-
-    <string name="label_view_deck" tools:ignore="UnusedResources">Deck</string>
-    <string name="desc_view_deck">View your deck.</string>
 
     <string name="hint_user_id" tools:ignore="UnusedResources">User ID</string>
     <string name="sign_in">Sign In</string>
