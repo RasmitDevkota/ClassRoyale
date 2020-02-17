@@ -6,3 +6,4 @@ evaluate(new File(
 ))
 
 include ':websocket'
+

@@ -18,8 +18,13 @@ buildscript {
     }
 }
 
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.61'
+}
 
-
+task cleanbd(type: Delete) {
+    delete rootProject.buildDir
+}
 allprojects {
     repositories {
         jcenter()
@@ -27,7 +32,19 @@ allprojects {
 
     }
 }
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
