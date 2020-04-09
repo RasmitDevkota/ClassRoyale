@@ -44,7 +44,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.0'
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
     implementation 'com.google.android.material:material:1.1.0'
-    implementation project(path: ':flutter')
+    implementation files('./libs/js.jar')
 }
 
 apply plugin: 'com.google.gms.google-services'

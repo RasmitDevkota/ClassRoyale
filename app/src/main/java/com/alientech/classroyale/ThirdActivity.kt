@@ -3,12 +3,16 @@ package com.alientech.classroyale
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.functions.HttpsCallableResult
+
 
 // Activity for when the user is in-game
 class ThirdActivity : AppCompatActivity() {
@@ -40,12 +44,13 @@ class ThirdActivity : AppCompatActivity() {
     var userNormalCards = userCardCollection.collection("normal")
     var userPersonCards = userCardCollection.collection("person")
 
+    private val mInputMessageView: EditText? = null
+
     fun startGame() {
         var event = events.document("event$i")
         event.set(
             "startTime" to FieldValue.serverTimestamp()
         )
-
         i++
     }
 
@@ -57,9 +62,6 @@ class ThirdActivity : AppCompatActivity() {
     }
 
     fun endGame() {
-        val resultIntent = Intent()
-        resultIntent.putExtra("docRef", gameLogs.id)
-        setResult(Activity.RESULT_OK, resultIntent)
         finish()
     }
 }

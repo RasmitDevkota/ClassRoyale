@@ -11,10 +11,8 @@ import androidx.fragment.app.FragmentManager
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import io.flutter.app.FlutterActivity
 import kotlinx.android.synthetic.main.activity_second.*
 import com.alientech.classroyale.R
-import io.flutter.embedding.android.FlutterFragment
 
 // Activity for the Home Screen
 class SecondActivity : AppCompatActivity() {
@@ -104,20 +102,20 @@ class SecondActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "HomeScreenActivity"
     }
-
-    class MyActivity : FragmentActivity() {
-        companion object {
-            private const val TAG_FLUTTER_FRAGMENT = "flutter_fragment"
-        }
-
-        private var flutterFragment: FlutterFragment? = null
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_second)
-
-            val fragmentManager: FragmentManager = supportFragmentManager
-            flutterFragment = fragmentManager.findFragmentByTag(TAG_FLUTTER_FRAGMENT) as FlutterFragment?
-        }
-    }
+//
+//    class MyActivity : FragmentActivity() {
+//        companion object {
+//            private const val TAG_FLUTTER_FRAGMENT = "flutter_fragment"
+//        }
+//
+//        private var flutterFragment: FlutterFragment? = null
+//
+//        override fun onCreate(savedInstanceState: Bundle?) {
+//            super.onCreate(savedInstanceState)
+//            setContentView(R.layout.activity_second)
+//
+//            val fragmentManager: FragmentManager = supportFragmentManager
+//            flutterFragment = fragmentManager.findFragmentByTag(TAG_FLUTTER_FRAGMENT) as FlutterFragment?
+//        }
+//    }
 }
