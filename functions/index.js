@@ -13,5 +13,5 @@ firebase.initializeApp({
 });
 
 exports.startGame = functions.https.onRequest((req, res) => {
-    .
+    
 });
