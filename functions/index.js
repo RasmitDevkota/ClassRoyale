@@ -12,6 +12,14 @@ firebase.initializeApp({
     measurementId: "G-4TKZD7504L"
 });
 
-exports.startGame = functions.https.onRequest((req, res) => {
-    
+var db = firebase.firestore();
+
+exports.startGame = functions.https.onCall((data, context) => {
+    var originUser = data.originUser;
+
+    db.collection('games')
+
+    return {
+        responseUser: responseUser
+    }
 });

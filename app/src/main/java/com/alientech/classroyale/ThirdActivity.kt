@@ -11,6 +11,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.HttpsCallableResult
 
 
@@ -44,24 +45,48 @@ class ThirdActivity : AppCompatActivity() {
     var userNormalCards = userCardCollection.collection("normal")
     var userPersonCards = userCardCollection.collection("person")
 
+    private lateinit var functions: FirebaseFunctions
+
     private val mInputMessageView: EditText? = null
 
-    fun startGame() {
-        var event = events.document("event$i")
-        event.set(
-            "startTime" to FieldValue.serverTimestamp()
+    private fun startGame(gamemode: String): Task<Any> {
+        val data = hashMapOf(
+            "uid" to user!!.uid,
+            "gamemode" to gamemode
         )
-        i++
+
+        return functions.getHttpsCallable("startGame").call(data).continueWith { task ->
+            var event = events.document(user!!.uid + i)
+            event.set(
+                "startTime" to FieldValue.serverTimestamp()
+            )
+
+            val result = task.result?.data as String
+            i++
+        }
     }
 
     fun placeCard(position: Array<Int>,name: String, HP: Int, attackDamage: Int, description: String, rarity: String, isPersonCard: Boolean, isDisplayingProperties: Boolean, level: Int, XP: Int, XPToLevelUp: Int) {
         Card(name, HP, attackDamage, description, rarity, isPersonCard, isDisplayingProperties, level, XP, XPToLevelUp)
-        var event = events.document("event$i")
+        var event = events.document(user!!.uid + i)
 
         i++
     }
 
-    fun endGame() {
-        finish()
+    fun endGame(): Task<Any> {
+        val data = hashMapOf(
+            "uid" to user!!.uid
+        )
+
+        return functions.getHttpsCallable("endGame").call(data).continueWith { task ->
+            var event = events.document(user!!.uid + i)
+            event.set(
+                "endTime" to FieldValue.serverTimestamp()
+            )
+
+            val result = task.result?.data as String
+            // Do final UI stuff
+            // Set content layout back to the main menu
+        }
     }
 }
