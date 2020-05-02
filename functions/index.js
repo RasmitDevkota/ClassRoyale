@@ -23,7 +23,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
 
     var newData = change.after.data();
     var d = new Date();
-    var chosenUser = uid;
+    var acceptedUser = uid;
 
     newData.queue.forEach(function (uid, timestamp) {
         if (timestamp.seconds * 1000 < d) {
