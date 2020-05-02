@@ -30,7 +30,6 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
             d = timestamp.seconds * 1000;
             acceptedUser = uid;
         }
-
     });
 });
 
