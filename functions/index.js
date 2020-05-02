@@ -13,13 +13,42 @@ firebase.initializeApp({
 });
 
 var db = firebase.firestore();
+var games = db.collection('games');
 
-exports.startGame = functions.https.onCall((data, context) => {
-    var originUser = data.originUser;
+exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((change, context) => {
+    var gameId = context.params.gameid;
+    games.doc(gameId).update({
+        queue: firebase.firestore.FieldValue.delete()
+    });
 
-    db.collection('games')
+    var newData = change.after.data();
+    var d = new Date();
+    var chosenOne = 
 
-    return {
-        responseUser: responseUser
-    }
+    newData.queue.forEach(function (uid, timestamp) {
+        if (timestamp.seconds * 1000 < d) {
+            d = timestamp.seconds * 1000;
+        }
+
+    });
+});
+
+exports.eventLogger = functions.database.ref('/games/{gameid}/{player}/{eventid}').onCreate((snapshot, context) => {
+  var gameId = context.params.gameid;
+  var uid = context.params.player;
+
+  var eventData = snapshot.val();
+  var eventFunction = eventData.eventFunction;
+
+  switch (eventData) {
+      case "placeCard":
+        
+      break;
+  }
+
+  var gameDoc = games.doc(gameId).collection(`$`).update({
+
+  }).then(function () {
+
+  });
 });

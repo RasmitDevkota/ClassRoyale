@@ -1,0 +1,56 @@
+[debug] [2020-04-30T00:42:51.259Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T00:42:51.260Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\md_sh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only functions
+[debug] [2020-04-30T00:42:51.261Z] CLI Version:   8.1.1
+[debug] [2020-04-30T00:42:51.261Z] Platform:      win32
+[debug] [2020-04-30T00:42:51.261Z] Node Version:  v13.12.0
+[debug] [2020-04-30T00:42:51.265Z] Time:          Wed Apr 29 2020 20:42:51 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-04-30T00:42:51.266Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T00:42:51.266Z] 
+[debug] [2020-04-30T00:42:51.275Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-30T00:42:51.276Z] > authorizing via signed-in user
+[debug] [2020-04-30T00:42:51.276Z] [iam] checking project class-royale for permissions ["firebase.projects.get"]
+[debug] [2020-04-30T00:42:51.277Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-04-30T00:42:51.278Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-04-30T00:42:51.501Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:42:50 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T00:42:51.507Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/class-royale:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-04-30T00:42:51.821Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:42:51 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=86","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T00:42:51.822Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/class-royale  
+ 
+[debug] [2020-04-30T00:42:52.167Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 00:42:51 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  Your requested "node" version "8" doesn't match your global version "13"
+[info] +  functions: functions emulator started at http://localhost:5000
+[info] i  functions: Watching "C:\Users\md_sh\Desktop\ClassRoyale\functions" for Cloud Functions...
+[debug] [2020-04-30T00:42:54.186Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-30T00:42:54.186Z] [worker-pool] Adding worker with key ~diagnostic~, total=1 
+[debug] [2020-04-30T00:42:54.186Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-30T00:42:54.187Z] [worker-~diagnostic~-99917856-0bcb-4e36-895a-0f8c4d0147c1]: Assigning socketPath: \\?\pipe\C:\Users\md_sh\Desktop\ClassRoyale\functions\29080 
+[debug] [2020-04-30T00:42:54.187Z] [worker-~diagnostic~-99917856-0bcb-4e36-895a-0f8c4d0147c1]: BUSY 
+[debug] [2020-04-30T00:42:54.478Z] [runtime-status] [29080] Functions runtime initialized. {"cwd":"C:\\Users\\md_sh\\Desktop\\ClassRoyale\\functions","node_version":"13.12.0"} 
+[debug] [2020-04-30T00:42:54.479Z] [runtime-status] [29080] Disabled runtime features: undefined 
+[debug] [2020-04-30T00:42:54.484Z] [runtime-status] [29080] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"C:\\Users\\md_sh\\Desktop\\ClassRoyale\\functions\\node_modules\\firebase-admin\\lib\\index.js"} 
+[debug] [2020-04-30T00:42:54.486Z] [runtime-status] [29080] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"C:\\Users\\md_sh\\Desktop\\ClassRoyale\\functions\\node_modules\\firebase-functions\\lib\\index.js"} 
+[debug] [2020-04-30T00:42:54.487Z] [runtime-status] [29080] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-30T00:42:54.544Z] [runtime-status] [29080] Checked functions.config() {"config":{}} 
+[debug] [2020-04-30T00:42:54.544Z] [runtime-status] [29080] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"C:\\Users\\md_sh\\Desktop\\ClassRoyale\\functions\\node_modules\\firebase-functions\\lib\\index.js"} 
+[debug] [2020-04-30T00:42:54.545Z] [runtime-status] [29080] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"C:\\Users\\md_sh\\Desktop\\ClassRoyale\\functions\\node_modules\\firebase-admin\\lib\\index.js"} 
+[debug] [2020-04-30T00:42:54.545Z] [runtime-status] [29080] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"C:\\Users\\md_sh\\Desktop\\ClassRoyale\\functions\\node_modules\\firebase-functions\\lib\\index.js"} 
+[debug] [2020-04-30T00:42:54.545Z] [runtime-status] [29080] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"C:\\Users\\md_sh\\Desktop\\ClassRoyale\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} 
+[warn] !  Error: Cannot find module 'firebase'
+Require stack:
+- C:\Users\md_sh\Desktop\ClassRoyale\functions\index.js
+- C:\Users\md_sh\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:976:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:859:27)
+    at Module.require (internal/modules/cjs/loader.js:1036:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (C:\Users\md_sh\Desktop\ClassRoyale\functions\index.js:1:18)
+    at Module._compile (internal/modules/cjs/loader.js:1147:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1167:10)
+    at Module.load (internal/modules/cjs/loader.js:996:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:896:14)
+    at Module.require (internal/modules/cjs/loader.js:1036:19)
+[warn] !  We were unable to load your functions code. (see above)
+[debug] [2020-04-30T00:42:54.565Z] [worker-~diagnostic~-99917856-0bcb-4e36-895a-0f8c4d0147c1]: exited 
+[debug] [2020-04-30T00:42:54.565Z] [worker-~diagnostic~-99917856-0bcb-4e36-895a-0f8c4d0147c1]: FINISHED 
