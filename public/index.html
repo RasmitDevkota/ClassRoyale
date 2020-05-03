@@ -52,7 +52,7 @@
 
       function startGame(name) {
         console.log(uid(name));
-        var uid = uid(name);
+        var uid = gtuid(name);
 
         var gameDoc = games.doc();
         gameDoc.set({
