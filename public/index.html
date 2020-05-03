@@ -56,7 +56,7 @@
           for (uid in queue) {
             var seconds = queue[uid].seconds * 1000;
             if (seconds < d) {
-              acceptedUser = uid;
+              var acceptedUser = uid;
               console.log(acceptedUser + " " + seconds)
             }
           }
