@@ -1,0 +1,26 @@
+[debug] [2020-05-03T19:54:33.316Z] ----------------------------------------------------------------------
+[debug] [2020-05-03T19:54:33.318Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\md_sh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only hosting
+[debug] [2020-05-03T19:54:33.318Z] CLI Version:   8.2.0
+[debug] [2020-05-03T19:54:33.318Z] Platform:      win32
+[debug] [2020-05-03T19:54:33.318Z] Node Version:  v13.12.0
+[debug] [2020-05-03T19:54:33.319Z] Time:          Sun May 03 2020 15:54:33 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-05-03T19:54:33.319Z] ----------------------------------------------------------------------
+[debug] [2020-05-03T19:54:33.319Z] 
+[debug] [2020-05-03T19:54:33.376Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-05-03T19:54:33.376Z] > authorizing via signed-in user
+[debug] [2020-05-03T19:54:33.377Z] [iam] checking project class-royale for permissions ["firebase.projects.get"]
+[debug] [2020-05-03T19:54:33.379Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-05-03T19:54:33.380Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-05-03T19:54:33.648Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 03 May 2020 19:54:32 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-03T19:54:33.706Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/class-royale:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-05-03T19:54:33.993Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 03 May 2020 19:54:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=112","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-03T19:54:33.994Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/class-royale  
+ 
+[debug] [2020-05-03T19:54:34.208Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 03 May 2020 19:54:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-03T19:54:34.209Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/class-royale/webApps/-/config  
+ 
+[debug] [2020-05-03T19:54:34.552Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 03 May 2020 19:54:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[classroyale]: Serving hosting files from: public
+[info] +  hosting[classroyale]: Local server: http://localhost:5000
