@@ -49,6 +49,7 @@
           return doc.data().uid;
         });
 
+        var gameDoc = games.doc()
         games.doc().set({
           status: "PENDING",
           user1: {
