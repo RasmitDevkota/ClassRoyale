@@ -15,7 +15,13 @@ firebase.initializeApp({
 var db = firebase.firestore();
 var games = db.collection('games');
 
-function getDisplayName()
+function getDisplayName(uid) {
+
+
+    users.doc(acceptedUser).get().then(function (doc) {
+        var name = doc.data().displayName;
+    });
+}
 
 exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((change, context) => {
     var gameId = context.params.gameid;
