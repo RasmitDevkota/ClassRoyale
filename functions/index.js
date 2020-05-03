@@ -60,3 +60,4 @@ exports.eventLogger = functions.database.ref('/games/{gameid}/{player}/{eventid}
 
   });
 });
+
