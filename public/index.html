@@ -44,11 +44,9 @@
       var users = db.collection("users");
       var emails = db.collection("emails");
 
-      function uid(name
-
       function startGame(name) {
         emails.doc(name).get().then(function (doc) {
-          var uid = doc.data().uid;
+          return doc.data().uid;
         });
 
         console.log(uid);
