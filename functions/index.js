@@ -30,7 +30,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
                 var acceptedUser = uid;
             }
         }
-
+            
         var name = getDisplayName(acceptedUser);
 
         games.doc(gameDocId).update({
