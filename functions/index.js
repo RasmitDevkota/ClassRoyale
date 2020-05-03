@@ -13,6 +13,8 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
         var d = new Date();
         var queue = doc.data().queue;
 
+        console.log()
+
         if (!queue) {
             return;
         }
