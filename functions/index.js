@@ -15,6 +15,8 @@ firebase.initializeApp({
 var db = firebase.firestore();
 var games = db.collection('games');
 
+function get
+
 exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((change, context) => {
     var gameId = context.params.gameid;
     games.doc(gameDocId).get().then(function (doc) {
