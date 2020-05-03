@@ -1,5 +1,5 @@
 const functions = require('firebase-functions');
-const firebase = require("")
+const firebase = require('firebase-admin')
 
 firebase.initializeApp({
     apiKey: "AIzaSyDz4E7cWDIMedScuc4TvGdEawhWGOLn4SQ",
