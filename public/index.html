@@ -59,14 +59,14 @@
 
           users.doc(acceptedUser).get().then(function(doc) {
             var name = doc.data().displayName;
-          })
+          });
 
           games.doc(gameDocId).update({
             queue: firebase.firestore.FieldValue.delete(),
             user2: {
               uid: acceptedUser,
               name: name,
-              
+
             }
           });
         });
