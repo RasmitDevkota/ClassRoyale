@@ -45,30 +45,7 @@
       var emails = db.collection("emails");
 
       function userJoin(gameDocId) {
-        games.doc(gameDocId).get().then(function (doc) {
-          var d = new Date();
-          var queue = doc.data().queue;
-
-          for (uid in queue) {
-            var seconds = queue[uid].seconds * 1000;
-            if (seconds < d) {
-              var acceptedUser = uid;
-              console.log(acceptedUser + " " + seconds);
-            }
-          }
-
-          users.doc(acceptedUser).get().then(function(doc) {
-            var name = doc.data().displayName;
-          });
-
-          games.doc(gameDocId).update({
-            queue: firebase.firestore.FieldValue.delete(),
-            user2: {
-              uid: acceptedUser,
-              name: name
-            }
-          });
-        });
+        
       };
     </script>
 
