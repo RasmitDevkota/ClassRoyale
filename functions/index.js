@@ -16,7 +16,7 @@ var db = firebase.firestore();
 var games = db.collection('games');
 
 function getDisplayName(uid) {
-    users.doc(acceptedUser).get().then(function (doc) {
+    users.doc(uid).get().then(function (doc) {
         var name = doc.data().displayName;
     });
 }
