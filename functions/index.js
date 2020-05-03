@@ -26,7 +26,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
         
         return users.doc(uid).get().then(function (doc) {
             var name = doc.data().displayName;
-            return name;
+            
         });
 
         games.doc(gameDocId).update({
