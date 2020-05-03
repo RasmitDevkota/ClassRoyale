@@ -58,7 +58,7 @@
           }
 
           users.doc(acceptedUser).get().then(function(doc) {
-            var name = doc.data().displayName
+            var name = doc.data().displayName;
           })
 
           games.doc(gameDocId).update({
