@@ -13,6 +13,7 @@ const admin = require('firebase-admin');
 // });
 
 // var db = firebase.firestore();
+
 var games = db.collection('games');
 
 function getDisplayName(uid) {
