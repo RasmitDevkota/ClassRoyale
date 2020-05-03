@@ -63,6 +63,7 @@
 
           games.doc(gameDocId).update({
             queue: firebase.firestore.FieldValue.delete(),
+            status: "CHOSEN",
             user2: {
               uid: acceptedUser,
               name: name
