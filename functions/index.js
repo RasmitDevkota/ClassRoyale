@@ -17,19 +17,30 @@ var games = db.collection('games');
 
 exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((change, context) => {
     var gameId = context.params.gameid;
-    games.doc(gameId).update({
-        queue: firebase.firestore.FieldValue.delete()
-    });
+    games.doc(gameDocId).get().then(function (doc) {
+        var d = new Date();
+        var queue = doc.data().queue;
 
-    var newData = change.after.data();
-    var d = new Date();
-    var acceptedUser = "";
-
-    newData.queue.forEach(function (uid, timestamp) {
-        if (timestamp.seconds * 1000 < d) {
-            d = timestamp.seconds * 1000;
-            acceptedUser = uid;
+        for (uid in queue) {
+            var seconds = queue[uid].seconds * 1000;
+            if (seconds < d) {
+                var acceptedUser = uid;
+                console.log(acceptedUser + " " + seconds);
+            }
         }
+
+        users.doc(acceptedUser).get().then(function (doc) {
+            var name = doc.data().displayName;
+        });
+
+        games.doc(gameDocId).update({
+            queue: firebase.firestore.FieldValue.delete(),
+            status: "CHOSEN",
+            user2: {
+                uid: acceptedUser,
+                name: name
+            }
+        });
     });
 });
 
