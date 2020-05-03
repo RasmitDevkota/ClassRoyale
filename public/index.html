@@ -65,7 +65,7 @@
       }
 
       function joinGame(gameId, name) {
-        console.log(uid(name));
+        console.log(getuid(name));
         var uid = uid(name);
 
         games.doc(gameId).update({
