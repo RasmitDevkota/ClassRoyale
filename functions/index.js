@@ -19,6 +19,7 @@ function getDisplayName(uid) {
     users.doc(uid).get().then(function (doc) {
         var name = doc.data().displayName;
     });
+    return name;
 }
 
 exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((change, context) => {
