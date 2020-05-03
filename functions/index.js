@@ -26,11 +26,6 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
             if (seconds < d) {
                 var acceptedUser = uid;
             }
-
-
-            users.doc(acceptedUser).get().then(function (doc) {
-                var name = doc.data().displayName;
-            });
         }
 
         games.doc(gameDocId).update({
