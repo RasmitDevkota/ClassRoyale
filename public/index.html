@@ -45,7 +45,7 @@
       var emails = db.collection("emails");
 
       function testGame(name1, name2) {
-        emails.doc(name).get().then(function (doc) {
+        emails.doc(name1).get().then(function (doc) {
           var uid = doc.data().uid;
 
           var gameDoc = games.doc();
