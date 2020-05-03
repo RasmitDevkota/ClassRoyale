@@ -56,6 +56,11 @@
 
           for (uid in queue) {
             var seconds = queue[uid].seconds * 1000;
+            if (timestamp.seconds * 1000 < d) {
+              d = timestamp.seconds * 1000;
+              acceptedUser = uid;
+              console.log(acceptedUser + " " + d)
+            }
           }
 
           queue.forEach(function (timestamp, uid) {
