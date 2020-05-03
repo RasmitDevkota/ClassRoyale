@@ -51,7 +51,9 @@
 
         games.doc(uid).update({
           ["queue." + uid]: firebase.firestore.FieldValue.serverTimestamp()
-        }).then();
+        }).then(function() {
+          console.log()
+        });
       }
     </script>
 
