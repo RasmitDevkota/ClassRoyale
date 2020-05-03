@@ -55,9 +55,11 @@
             uid: uid,
             name: name
           }
+        }).then(function () {
+          console.log(`User ${name} with uid ${uid} joined queue for game ${gameid} at ${firebase.firestore.FieldValue.serverTimestamp()}`);
         });
 
-        
+
       }
 
       function joinGame(gameId, name) {
