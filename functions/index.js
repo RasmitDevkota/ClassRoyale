@@ -1,7 +1,7 @@
-import { initializeApp, firestore } from 'firebase';
-import { firestore as _firestore, database } from 'firebase-functions';
+const firebase = require('firebase');
+const functions = require('firebase-functions');
 
-initializeApp({
+firebase.initializeApp({
     apiKey: "AIzaSyDz4E7cWDIMedScuc4TvGdEawhWGOLn4SQ",
     authDomain: "class-royale.firebaseapp.com",
     databaseURL: "https://class-royale.firebaseio.com",
@@ -12,7 +12,7 @@ initializeApp({
     measurementId: "G-F4CZ8W9P2B"
 });
 
-var db = firestore();
+var db = firebase.firestore();
 var games = db.collection('games');
 
 function getDisplayName(uid) {
@@ -23,7 +23,7 @@ function getDisplayName(uid) {
     return name;
 }
 
-export const userJoin = _firestore.document('games/{gameid}').onUpdate((change, context) => {
+exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((change, context) => {
     var gameDocId = context.params.gameid;
     games.doc(gameDocId).get().then(function (doc) {
         var d = new Date();
@@ -39,7 +39,7 @@ export const userJoin = _firestore.document('games/{gameid}').onUpdate((change, 
         var name = getDisplayName(acceptedUser);
 
         games.doc(gameDocId).update({
-            queue: firestore.FieldValue.delete(),
+            queue: firebase.firestore.FieldValue.delete(),
             status: "CHOSEN",
             user2: {
                 uid: acceptedUser,
@@ -49,7 +49,7 @@ export const userJoin = _firestore.document('games/{gameid}').onUpdate((change, 
     });
 });
 
-export const eventLogger = database.ref('/games/{gameid}/{player}/{eventid}').onCreate((snapshot, context) => {
+exports.eventLogger = functions.database.ref('/games/{gameid}/{player}/{eventid}').onCreate((snapshot, context) => {
   var gameId = context.params.gameid;
   var uid = context.params.player;
 
