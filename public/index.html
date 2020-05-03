@@ -46,7 +46,7 @@
 
       function startGame(gameId, name) {
         var uid = emails.doc(name).get().then(function(doc) {
-          return doc.data().
+          return doc.data().uid
         });
 
         games.doc(gameId).update({
