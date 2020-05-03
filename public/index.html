@@ -55,7 +55,7 @@
           var queue = doc.data().queue;
 
           for (uid in queue) {
-            var seconds = queue[uid].seconds);
+            var seconds = queue[uid].seconds * 1000;
           }
 
           queue.forEach(function (timestamp, uid) {
