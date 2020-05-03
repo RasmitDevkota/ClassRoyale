@@ -55,7 +55,7 @@
               var acceptedUser = uid;
               console.log(acceptedUser + " " + seconds);
             }
-          }`
+          }
 
           users.doc(acceptedUser).get().then(function(doc) {
             var name = doc.data().displayName;
