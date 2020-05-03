@@ -8,10 +8,7 @@ var games = db.collection('games');
 var users = db.collection('users');
 
 function getDisplayName(uid) {
-    return users.doc(uid).get().then(function (doc) {
-        var name = doc.data().displayName;
-        return name;
-    });
+    
 };
 
 exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((change, context) => {
