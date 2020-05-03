@@ -60,7 +60,9 @@
           users.doc(acceptedUser).get().then(function(doc) {
             var name = doc.data().displayName;
 
-            if (name == undefined)
+            if (name == undefined) {
+              
+            }
           });
 
           games.doc(gameDocId).update({
