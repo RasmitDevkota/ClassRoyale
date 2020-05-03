@@ -49,7 +49,7 @@
           var uid = doc.data().uid;
 
           var gameDoc = games.doc();
-          gameDoc.update({
+          gameDoc.set({
             status: "PENDING",
             ["user1.uid"]: uid,
             ["user1.name"]: name1
