@@ -49,7 +49,7 @@
 
         });
 
-        games.doc(uid).update({
+        games.doc(gameId).update({
           ["queue." + uid]: firebase.firestore.FieldValue.serverTimestamp()
         }).then(function() {
           console.log("Joined queue for game ")
