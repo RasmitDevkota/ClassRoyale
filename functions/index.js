@@ -20,7 +20,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
         var d = new Date();
         var queue = doc.data().queue;
 
-        if (queue)
+        if (!queue)
 
         for (uid in queue) {
             var seconds = queue[uid].seconds * 1000;
