@@ -4,19 +4,6 @@ admin.initializeApp();
 
 var db = admin.firestore();
 
-// firebase.initializeApp({
-//     apiKey: "AIzaSyDz4E7cWDIMedScuc4TvGdEawhWGOLn4SQ",
-//     authDomain: "class-royale.firebaseapp.com",
-//     databaseURL: "https://class-royale.firebaseio.com",
-//     projectId: "class-royale",
-//     storageBucket: "class-royale.appspot.com",
-//     messagingSenderId: "670502096879",
-//     appId: "1:670502096879:web:d06e9f32378e0296fbf01a",
-//     measurementId: "G-F4CZ8W9P2B"
-// });
-
-// var db = firebase.firestore();
-
 var games = db.collection('games');
 
 function getDisplayName(uid) {
