@@ -51,7 +51,6 @@
 
         games.doc(gameDocId).get().then(function (doc) {
           var d = new Date();
-          var acceptedUser = "";
           var queue = doc.data().queue;
 
           for (uid in queue) {
@@ -62,7 +61,7 @@
             }
           }
 
-          
+
         });
       }
     </script>
