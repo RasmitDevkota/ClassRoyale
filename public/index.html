@@ -45,11 +45,10 @@
       var emails = db.collection("emails");
 
       function userJoin(gameDocId) {
-        
         games.doc(gameDocId).update({
           queue: firebase.firestore.FieldValue.delete()
         });
-        
+
         games.doc(gameDocId).get().then(function (doc) {
 
           var newData = doc.data();
