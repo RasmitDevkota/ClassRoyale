@@ -49,6 +49,8 @@
           return doc.data().uid;
         });
 
+        console.log(uid)
+
         var gameDoc = games.doc();
         gameDoc.set({
           status: "PENDING",
