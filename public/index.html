@@ -48,8 +48,6 @@
         emails.doc(name).get().then(function (doc) {
           var uid = doc.data().uid;
 
-          console.log(uid);
-
           var gameDoc = games.doc();
           gameDoc.set({
             status: "PENDING",
