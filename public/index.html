@@ -46,7 +46,7 @@
 
       function getuid(name) {
         var uid = "";
-        emails.doc(name).get().then(function (doc) {
+        return emails.doc(name).get().then(function (doc) {
           return uid = doc.data().uid;
         });
         return uid
