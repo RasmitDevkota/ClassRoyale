@@ -54,8 +54,7 @@
         var gameDoc = games.doc();
         gameDoc.set({
           status: "PENDING",
-          user1: {
-            uid: uid,
+          user1.uid: uid,
             name: name
           }
         }).then(function () {
