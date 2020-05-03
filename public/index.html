@@ -66,6 +66,7 @@
 
       function joinGame(gameId, name) {
         console.log(uid(name));
+        var uid = uid(name);
 
         games.doc(gameId).update({
           status: "CHECKING",
