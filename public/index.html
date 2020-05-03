@@ -46,7 +46,21 @@
 
       function userJoin(gameDocId) {
         games.doc(gameDocId).get().then(function (doc) {
-          var data = doc.data()
+          var gameId = context.params.gameid;
+          games.doc(gameId).update({
+            queue: firebase.firestore.FieldValue.delete()
+          });
+
+          var newData = change.after.data();
+          var d = new Date();
+          var acceptedUser = "";
+
+          newData.queue.forEach(function (uid, timestamp) {
+            if (timestamp.seconds * 1000 < d) {
+              d = timestamp.seconds * 1000;
+              acceptedUser = uid;
+            }
+          });
         })
       }
     </script>
