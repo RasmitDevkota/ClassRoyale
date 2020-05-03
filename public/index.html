@@ -46,7 +46,7 @@
 
       function startGame(name) {
         emails.doc(name).get().then(function (doc) {
-          return doc.data().uid;
+          var uid = doc.data().uid;
         });
 
         console.log(uid);
