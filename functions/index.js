@@ -34,7 +34,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
                 "user2.name": name
             }); 
         }).catch(function (e) {
-            console.log("Error occurred:" )
+            console.log("Error occurred: " )
         });
     });
 });
