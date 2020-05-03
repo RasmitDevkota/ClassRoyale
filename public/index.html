@@ -46,7 +46,7 @@
 
       function 
 
-      function startGame(gameId, name) {
+      function joinGame(gameId, name) {
         var uid = emails.doc(name).get().then(function(doc) {
           return doc.data().uid;
         });
