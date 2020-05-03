@@ -26,16 +26,15 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
         
         users.doc(uid).get().then(function (doc) {
             var name = doc.data().displayName;
-            
-        });
 
-        games.doc(gameDocId).update({
-            queue: firebase.firestore.FieldValue.delete(),
-            status: "CHOSEN",
-            user2: {
-                uid: acceptedUser,
-                name: name
-            }
+            games.doc(gameDocId).update({
+                queue: firebase.firestore.FieldValue.delete(),
+                status: "CHOSEN",
+                user2: {
+                    uid: acceptedUser,
+                    name: name
+                }
+            }); 
         });
     });
 });
