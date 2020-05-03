@@ -18,6 +18,7 @@ var games = db.collection('games');
 function getDisplayName(uid) {
     users.doc(uid).get().then(function (doc) {
         var name = doc.data().displayName;
+        return name;
     });
     return name;
 }
