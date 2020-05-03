@@ -5,6 +5,7 @@ admin.initializeApp();
 var db = admin.firestore();
 
 var games = db.collection('games');
+var users = db.collection('users');
 
 function getDisplayName(uid) {
     users.doc(uid).get().then(function (doc) {
@@ -49,7 +50,7 @@ exports.eventLogger = functions.database.ref('/games/{gameid}/{player}/{eventid}
 
   switch (eventData) {
       case "placeCard":
-        
+
       break;
   }
 
