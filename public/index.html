@@ -46,7 +46,6 @@
 
       function userJoin(gameDocId) {
         games.doc(gameDocId).get().then(function (doc) {
-          var gameId = context.params.gameid;
           games.doc(gameId).update({
             queue: firebase.firestore.FieldValue.delete()
           });
