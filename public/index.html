@@ -52,6 +52,7 @@
         games.doc(gameDocId).get().then(function (doc) {
           var d = new Date();
           var acceptedUser = "";
+          console.log(typeof doc.data().queue)
 
           doc.data().queue.forEach(function (timestamp, uid) {
             if (timestamp.seconds * 1000 < d) {
