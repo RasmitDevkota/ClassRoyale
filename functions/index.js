@@ -28,7 +28,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
             }
         }
 
-        getDisplayName(acceptedUser);
+        var name = getDisplayName(acceptedUser);
 
         games.doc(gameDocId).update({
             queue: firebase.firestore.FieldValue.delete(),
