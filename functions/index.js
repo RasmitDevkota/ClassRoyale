@@ -47,6 +47,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
 exports.eventLogger = functions.database.ref('/games/{gameid}/{player}/{eventid}').onCreate((snapshot, context) => {
   var gameId = context.params.gameid;
   var uid = context.params.player;
+  var eventId = context.params.eventid
 
   var eventData = snapshot.val();
   var eventFunction = eventData.eventFunction;
@@ -57,7 +58,7 @@ exports.eventLogger = functions.database.ref('/games/{gameid}/{player}/{eventid}
       break;
   }
 
-  var gameDoc = games.doc(gameId).collection(`$`).update({
+  var gameDoc = games.doc(gameId).collection('events').doc(eventId).update({
 
   }).then(function () {
 
