@@ -8,11 +8,10 @@ var games = db.collection('games');
 var users = db.collection('users');
 
 function getDisplayName(uid) {
-    users.doc(uid).get().then(function (doc) {
+    return users.doc(uid).get().then(function (doc) {
         var name = doc.data().displayName;
         return name;
     });
-    return name;
 }
 
 exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((change, context) => {
@@ -20,6 +19,8 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
     games.doc(gameDocId).get().then(function (doc) {
         var d = new Date();
         var queue = doc.data().queue;
+
+        
 
         for (uid in queue) {
             var seconds = queue[uid].seconds * 1000;
