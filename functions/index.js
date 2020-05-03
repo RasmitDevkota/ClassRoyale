@@ -32,7 +32,6 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
                 status: "CHOSEN",
                 "user2.uid": acceptedUser,
                 "user2.name": name
-                }
             }); 
         });
     });
