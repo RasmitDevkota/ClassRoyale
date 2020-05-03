@@ -31,7 +31,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
                 queue: firebase.firestore.FieldValue.delete(),
                 status: "CHOSEN",
                 "user2.uid": acceptedUser,
-                    name: name
+                "user2.name: name
                 }
             }); 
         });
