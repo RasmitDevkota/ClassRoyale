@@ -51,7 +51,7 @@
             queue: firebase.firestore.FieldValue.delete()
           });
 
-          var newData = change.after.data();
+          var newData = doc.data();
           var d = new Date();
           var acceptedUser = "";
 
