@@ -58,7 +58,8 @@
           }
 
           games.doc(gameDocId).update({
-            queue: firebase.firestore.FieldValue.delete()
+            queue: firebase.firestore.FieldValue.delete(),
+            
           });
         });
       }
