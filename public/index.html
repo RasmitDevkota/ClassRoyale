@@ -67,6 +67,7 @@
               status: "CHECKING",
               ["queue." + uid]: firebase.firestore.FieldValue.serverTimestamp()
             }).then(function () {
+              var 
               console.log(`User ${name2} with uid ${uid} joined queue for game ${gameId} at ${firebase.firestore.FieldValue.serverTimestamp()}.`);
             });
           });  
