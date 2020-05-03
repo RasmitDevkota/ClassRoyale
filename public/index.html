@@ -58,7 +58,7 @@
           });
 
           return gameDoc.id;
-        }).then(function(gameDoc) {
+        }).then(function(gameId) {
           emails.doc(name2).get().then(function (doc) {
             var uid = doc.data().uid;
 
