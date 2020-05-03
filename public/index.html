@@ -57,7 +57,7 @@
             }
           }
 
-          users.doc(acceptedUser)
+          users.doc(acceptedUser).get()
 
           games.doc(gameDocId).update({
             queue: firebase.firestore.FieldValue.delete(),
