@@ -32,6 +32,8 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
                 status: "CHOSEN",
                 "user2.uid": acceptedUser,
                 "user2.name": name
+            }).catch(function (e) {
+                console.log("Error occurred: " + e);
             }); 
         }).catch(function (e) {
             console.log("Error occurred: " + e);
