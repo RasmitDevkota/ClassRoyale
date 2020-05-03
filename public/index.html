@@ -52,7 +52,7 @@
         games.doc(gameDocId).get().then(function (doc) {
           var d = new Date();
           var acceptedUser = "";
-          var queue = doc.data().queue.valueOf();
+          var queue = doc.data().queue;
           console.log(queue.toString());
 
           for (uid in queue) {
