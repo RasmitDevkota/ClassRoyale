@@ -53,7 +53,7 @@
           var d = new Date();
           var acceptedUser = "";
           var queue = doc.data().queue
-          console.log(typeof doc.data().queue)
+          console.log(typeof queue)
 
           doc.data().queue.forEach(function (timestamp, uid) {
             if (timestamp.seconds * 1000 < d) {
