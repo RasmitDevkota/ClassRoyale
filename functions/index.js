@@ -12,7 +12,7 @@ function getDisplayName(uid) {
         var name = doc.data().displayName;
         return name;
     });
-}
+};
 
 exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((change, context) => {
     var gameDocId = context.params.gameid;
