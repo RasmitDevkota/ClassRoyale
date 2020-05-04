@@ -15,6 +15,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_google.detail
 import kotlinx.android.synthetic.main.activity_google.disconnectButton
 import kotlinx.android.synthetic.main.activity_google.main_layout
@@ -23,8 +24,9 @@ import kotlinx.android.synthetic.main.activity_google.signOutAndDisconnect
 import kotlinx.android.synthetic.main.activity_google.signOutButton
 import kotlinx.android.synthetic.main.activity_google.status
 
-
 class GoogleSignInActivity : AppCompatActivity(), View.OnClickListener {
+
+    var db = FirebaseFirestore.getInstance()
 
     private lateinit var auth: FirebaseAuth
 
@@ -75,18 +77,30 @@ class GoogleSignInActivity : AppCompatActivity(), View.OnClickListener {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
 
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    Log.d(TAG, "signInWithCredential:success")
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    Snackbar.make(main_layout, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
-                    updateUI(null)
-                }
+        auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                val currentUser = auth.currentUser!!
+
+                var emailsUser = hashMapOf(
+                    "email" to currentUser.email,
+                    "uid" to currentUser.uid
+                )
+                db.collection("emails").document(currentUser.displayName.toString()).set(emailsUser)
+
+                var usersUser = hashMapOf(
+                    "displayName" to currentUser.displayName,
+                    "email" to currentUser.email
+                )
+                db.collection("users").document().set(usersUser)
+
+                Log.d(TAG, "signInWithCredential:success")
+                updateUI(currentUser)
+            } else {
+                Log.w(TAG, "signInWithCredential:failure", task.exception)
+                Snackbar.make(main_layout, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
+                updateUI(null)
             }
+        }
     }
 
     private fun signIn() {
@@ -112,11 +126,7 @@ class GoogleSignInActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            signInButton.visibility = View.GONE
-            signOutAndDisconnect.visibility = View.VISIBLE
-            detail.visibility = View.VISIBLE
-            status.text = "Signed in"
-            detail.text = user.displayName
+            startActivity(Intent(this, SecondActivity::class.java))
         } else {
             signInButton.visibility = View.VISIBLE
             signOutAndDisconnect.visibility = View.GONE

@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_emailpassword.*
 import kotlinx.android.synthetic.main.activity_google.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
+class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
@@ -62,31 +62,30 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
             return
         }
 
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val currentUser = auth.currentUser
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                val currentUser = auth.currentUser!!
 
-                    var emailsUser = hashMapOf(
-                        "email" to email,
-                        "uid" to currentUser!!.uid
-                    )
-                    db.collection("emails").document(currentUser.displayName.toString()).set(emailsUser)
+                var emailsUser = hashMapOf(
+                    "email" to email,
+                    "uid" to currentUser.uid
+                )
+                db.collection("emails").document(displayName).set(emailsUser)
 
-                    var usersUser = hashMapOf(
-                        "displayName" to displayName,
-                        "email" to email
-                    )
-                    db.collection("users").document().set(usersUser)
+                var usersUser = hashMapOf(
+                    "displayName" to displayName,
+                    "email" to email
+                )
+                db.collection("users").document(currentUser.uid).set(usersUser)
 
-                    Log.d(TAG, "createUserWithEmail:success")
-                    updateUI(currentUser)
-                } else {
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    updateUI(null)
-                }
+                Log.d(TAG, "createUserWithEmail:success")
+                updateUI(currentUser)
+            } else {
+                Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                updateUI(null)
             }
+        }
     }
 
     private fun signIn(password: String, displayName: String) {
@@ -102,38 +101,35 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
             return
         }
 
-        db.collection("emails").document(displayName).get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    val email = document.get("email").toString()
+        db.collection("emails").document(displayName).get().addOnSuccessListener { document ->
+            if (document != null) {
+                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                val email = document.get("email").toString()
 
-                    auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(this) { task ->
-                            if (task.isSuccessful) {
-                                Log.d(TAG, "signInWithEmail:success")
-                                val user = auth.currentUser
-                                updateUI(user)
-                            } else {
-                                Log.w(TAG, "signInWithEmail:failure", task.exception)
-                                Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                                updateUI(null)
-                            }
-                        }
-                } else {
-                    Log.d(TAG, "No such document")
-                    Toast.makeText(baseContext, "User does not exist in our database.", Toast.LENGTH_SHORT).show()
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "signInWithEmail:success")
+                        val user = auth.currentUser
+                        updateUI(user)
+                    } else {
+                        Log.w(TAG, "signInWithEmail:failure", task.exception)
+                        Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                        updateUI(null)
+                    }
                 }
+            } else {
+                Log.d(TAG, "No such document")
+                Toast.makeText(baseContext, "User does not exist in our database.", Toast.LENGTH_SHORT).show()
             }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
+        }.addOnFailureListener { exception ->
+            Log.d(TAG, "get failed with ", exception)
+        }
     }
 
-//    private fun signOut() {
-//        auth.signOut()
-//        updateUI(null)
-//    }
+    private fun signOut() {
+        auth.signOut()
+        updateUI(null)
+    }
 
     private fun validateForm(): Boolean {
         var valid = true

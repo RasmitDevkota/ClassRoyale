@@ -16,7 +16,6 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 // Activity for the Login Screen
 class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
@@ -44,8 +43,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         private val ctx: Context,
         resource: Int,
         private val classes: Array<Class<*>>
-    ) :
-        ArrayAdapter<Class<*>>(ctx, resource, classes) {
+    ) : ArrayAdapter<Class<*>>(ctx, resource, classes) {
         private var descriptionIds: IntArray? = null
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
