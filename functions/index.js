@@ -16,7 +16,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
         console.log()
 
         if (!queue) {
-            return;
+            return 
         }
 
         for (uid in queue) {
@@ -32,10 +32,8 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
             games.doc(gameDocId).update({
                 queue: admin.firestore.FieldValue.delete(),
                 status: "CHOSEN",
-                user2: {
-                    uid: acceptedUser,
-                    name: name
-                }
+                "user2.uid": acceptedUser,
+                "user2.name": name
             }).catch(function (e) {
                 console.error("(36) " + e);
             });
