@@ -33,7 +33,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
                 queue: admin.firestore.FieldValue.delete(),
                 status: "CHOSEN",
                 "user2: acceptedUser,
-                "user2.name: name
+                name: name
             }).catch(function (e) {
                 console.error("(36) " + e);
             });
