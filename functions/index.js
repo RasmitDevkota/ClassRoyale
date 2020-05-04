@@ -16,7 +16,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
         console.log()
 
         if (!queue) {
-            return 0;
+            return;
         }
 
         for (uid in queue) {
