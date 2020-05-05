@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE", "UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
+@file:Suppress("UNUSED_VARIABLE")
 
 package com.alientech.classroyale
 
@@ -28,10 +28,11 @@ class SecondActivity : AppCompatActivity() {
     val mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
     var games = db.collection("games")
-    var myGameDoc = ""
     var mine = false
     var status = "READY"
     var currentGame = ""
+    var rejected = false
+    var abandoned = false
 //
 //    var cardCollection = db.collection("cards").document("cards")
 //    var normalCards = cardCollection.collection("normal")
@@ -44,12 +45,12 @@ class SecondActivity : AppCompatActivity() {
 
     var functions: FirebaseFunctions = FirebaseFunctions.getInstance()
 
+    val startGameButton = findViewById<Button>(R.id.enterQueue)
+    val disconnectButton = findViewById<Button>(R.id.disconnectButton)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-
-        val startGameButton = findViewById<Button>(R.id.enterQueue)
-        val disconnectButton = findViewById<Button>(R.id.disconnectButton)
 
         startGameButton.setOnClickListener {
             startGameButton.visibility = View.INVISIBLE
@@ -70,28 +71,57 @@ class SecondActivity : AppCompatActivity() {
             disconnectButton.visibility = View.VISIBLE
 
             opponentListener(getUserGame())
+        } else if (getUserStatus() == "LOADING" || getUserStatus() == "STARTED") {
+            val intent = Intent(this, ThirdActivity::class.java)
+            val b = Bundle()
+            b.putStringArrayList("gameData", arrayListOf("user1", getUserGame()))
+            intent.putExtras(b)
+
+            startActivity(intent)
         }
     }
 
     fun safeDisconnect() {
-        if (getUserStatus() == "READY") {
+        if (status == "READY") {
             Log.d(TAG, "Safe to go!")
-        } else if (getUserStatus() == "PENDING" && myGameDoc != "" && mine && getUserGame() != null) {
-            games.document(myGameDoc).delete()
-            removeUserGame(myGameDoc)
-            setUserStatus("READY")
-            Log.d(TAG, myGameDoc)
-        } else if (getUserStatus() == "CHECKING" && getUserGame() != null) {
-            var disconnectData = mapOf(
-                "gameId" to myGameDoc,
-                "uid" to uid
-            )
-            functions.getHttpsCallable("disconnect").call(disconnectData)
+        } else if ((status == "PENDING" || status == "CHECKING") && mine) {
+            // PENDING: My Game - Delete document, change user status + CHECKING: My Game - Delete document, change user status
 
-            Log.d(TAG, disconnectData.toString())
+            games.document(currentGame).delete()
+            removeUserGame()
+            setUserStatus("READY")
+        } else if (status == "PENDING" && !mine) {
+            // PENDING: Game Queue - Change user status
+
+            removeUserGame()
+            setUserStatus("READY")
+        } else if (status == "CHECKING" && !mine) {
+            // CHECKING: Game Queue - Leave queue, change user status
+
+            games.document(currentGame).update(mapOf(
+                "queue.${uid}" to FieldValue.delete()
+            ))
+            removeUserGame()
+            setUserStatus("READY")
+        } else if (status == "CHOSEN" && mine) {
+            games.document(currentGame).delete()
+            removeUserGame()
+            setUserStatus("READY")
+        } else if (status == "CHOSEN" && mine) {
+            games.document(currentGame).delete()
+            removeUserGame()
+            setUserStatus("READY")
+        } else if (rejected) {
+            // CHOSEN: Game Queue (Rejected Only)  - Clean Disconnect
+            Log.d(TAG, "Safe to go!")
+        } else if (getUserStatus() == "ENDED") {
+            removeUserGame()
+            setUserStatus("READY")
+        } else {
+            Log.e(TAG, "UHHHHHHHHHHHHHHHH THIS ISN'T SUPPOSED TO HAPPEN-")
         }
 
-        Log.d(TAG, getUserStatus() + " " + myGameDoc)
+        Log.d(TAG, getUserStatus() + " " + getUserGame())
     }
 
     public override fun onDestroy() {
@@ -127,18 +157,13 @@ class SecondActivity : AppCompatActivity() {
         ))
     }
 
-    fun removeUserGame(gameDocId: String) {
+    fun removeUserGame() {
         db.collection("users").document(uid).update(mapOf(
             "currentGame" to FieldValue.delete()
         ))
     }
 
-    private fun startGame() {
-        if (getUserStatus() != "READY") {
-            Log.d(TAG, getUserGame())
-            return
-        }
-
+    fun startGame(): Any {
         val queueData = hashMapOf(
             "status" to "CHECKING",
             "queue.${uid}" to FieldValue.serverTimestamp()
@@ -152,97 +177,121 @@ class SecondActivity : AppCompatActivity() {
             )
         )
 
+        setUserStatus("PENDING")
+
         games.whereEqualTo("status", "PENDING").limit(1).get().addOnSuccessListener { documents ->
+
             if (documents.size() != 0) {
                 for (doc in documents) {
-                    setUserStatus("PENDING")
+                    setUserStatus("CHECKING")
                     mine = false
-                    setUserGame(doc.id)
 
-                    if (doc.data["user1.uid"] == uid) {
-                        myGameDoc = doc.id
-                        mine = true
-                        opponentListener(doc.id)
-                    } else {
-                        games.document(doc.id).update(queueData)
+                    games.document(doc.id).update(queueData)
 
-                        checkListener(doc.id)
+                    var attempt = checkListener(doc.id)
+                    if (attempt == "FAILURE") {
+                        return@addOnSuccessListener
                     }
                 }
             } else {
                 var gameDoc = games.document()
                 gameDoc.set(userData).addOnSuccessListener {
                     setUserStatus("PENDING")
-                    myGameDoc = gameDoc.id
+                    currentGame = gameDoc.id
                     mine = true
-                    setUserGame(myGameDoc)
+                    setUserGame(currentGame)
 
-                    opponentListener(myGameDoc)
+                    var attempt = opponentListener(currentGame)
+                    if (attempt == "FAILURE") {
+                        return@addOnSuccessListener
+                    }
                 }
             }
         }
+
+        return if (rejected) {
+            startGame()
+        } else {
+            recap()
+        }
     }
 
-    fun opponentListener(gameDocId: String) {
+    fun opponentListener(gameDocId: String): Any {
         var matchListener = games.document(gameDocId).addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w(TAG, "Listen failed.", e)
                 return@addSnapshotListener
             }
 
-            if (snapshot != null && snapshot.exists()) {
+            if (snapshot != null && snapshot.exists() && !snapshot.metadata.hasPendingWrites()) {
                 var documentStatus = snapshot.data!!["status"]
 
-                if (documentStatus == "CHECKING" || documentStatus == "CHOSEN") {
+                if (documentStatus == "CHECKING") {
                     setUserStatus("CHECKING")
+                } else if (documentStatus == "CHOSEN") {
+                    disconnectButton.setOnClickListener(null)
+                    setUserStatus("CHOSEN")
 
                     var opponentuid = snapshot.data!!["user2.uid"]
 
                     Toast.makeText(this, "Found game with user $opponentuid", Toast.LENGTH_LONG).show()
 
-//                                val intent = Intent(this, ThirdActivity::class.java)
-//                                val b = Bundle()
-//                                b.putStringArrayList("gameData", arrayListOf("user1", gameDoc.id))
-//                                intent.putExtras(b)
+//                    val intent = Intent(this, ThirdActivity::class.java)
+//                    val b = Bundle()
+//                    b.putStringArrayList("gameData", arrayListOf("user1", gameDocId))
+//                    intent.putExtras(b)
 //
-//                                startActivity(intent)
+//                    startActivity(intent)
+                } else {
+                    abandoned = true
+                    return@addSnapshotListener
                 }
             } else {
                 Log.w(TAG, "Game confirmation data missing.")
             }
         }
-
         matchListener.remove()
+
+        if (abandoned) {
+            return opponentListener(gameDocId)
+        } else {
+            return "FAILURE"
+        }
     }
 
-    fun checkListener(gameDocId: String) {
+    fun checkListener(gameDocId: String): String {
         var matchListener = games.document(gameDocId).addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w(TAG, "Listen failed.", e)
                 return@addSnapshotListener
             }
 
-            if (snapshot != null && snapshot.exists()) {
+            if (snapshot != null && snapshot.exists() && !snapshot.metadata.hasPendingWrites()) {
                 var documentStatus = snapshot.data!!["status"]
 
-                // CLOUD FUNCTION FOR DISCONNECT SHOULD, IF THERE WAS ANOTHER AVAILABLE USER STILL KNOWN, GET THAT USER AND JOIN
-                if (documentStatus == "CHECKING" || documentStatus == "CHOSEN") {
-                    setUserStatus("CHECKING")
-                    myGameDoc = gameDocId
+                if (documentStatus == "CHOSEN") {
+                    currentGame = gameDocId
 
                     var accepteduid = snapshot.data!!["user2.uid"]
                     if (accepteduid == uid) {
+                        setUserStatus("CHOSEN")
+                        setUserGame(gameDocId)
+                        disconnectButton.setOnClickListener(null)
+
                         var opponentuid = snapshot.data!!["user1.uid"]
                         Toast.makeText(this, "Found game with user $opponentuid", Toast.LENGTH_LONG).show()
+
+//                        val intent = Intent(this, ThirdActivity::class.java)
+//                        val b = Bundle()
+//                        b.putStringArrayList("gameData", arrayListOf("user1", currentGame))
+//                        intent.putExtras(b)
 //
-//                                    val intent = Intent(this, ThirdActivity::class.java)
-//                                    val b = Bundle()
-//                                    b.putStringArrayList("gameData", arrayListOf("user1", myGameDoc))
-//                                    intent.putExtras(b)
-//
-//                                    startActivity(intent)
+//                        startActivity(intent)
                     } else {
                         Toast.makeText(this, "Game join rejected", Toast.LENGTH_LONG).show()
+                        rejected = true
+                        setUserStatus("PENDING")
+                        return@addSnapshotListener
                     }
                 }
             } else {
@@ -251,14 +300,24 @@ class SecondActivity : AppCompatActivity() {
         }
 
         matchListener.remove()
+
+        return if (rejected) {
+            "FAILURE"
+        } else {
+            "SUCCESS"
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             var docRef = data!!.getStringExtra("docRef")
             var gameLogs = games.document(docRef)
         }
+    }
+
+    fun recap() {
+
     }
 
     // GAME STUFF END

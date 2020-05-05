@@ -52,7 +52,7 @@
           gameDoc.set({
             status: "PENDING",
             "user1": {
-              "uid": uid, 
+              "uid": uid,
               "name": name1}
           }).then(function () {
             console.log(`User ${name1} with uid ${uid} created game ${gameDoc.id}.`);
@@ -70,7 +70,7 @@
               var seconds = firebase.firestore.FieldValue.serverTimestamp().seconds * 1000;
               console.log(`User ${name2} with uid ${uid} joined queue for game ${gameId} at ${seconds}.`);
             });
-          });  
+          });
         });
       }
 

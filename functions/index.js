@@ -25,7 +25,7 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
                 var acceptedUser = uid;
             }
         }
-        
+
         users.doc(uid).get().then(function (doc) {
             var name = doc.data().displayName;
 
@@ -44,6 +44,8 @@ exports.userJoin = functions.firestore.document('games/{gameid}').onUpdate((chan
         console.log("(42) " + e);
     });
 });
+
+exports.disconnect
 
 exports.eventLogger = functions.database.ref('/games/{gameid}/{player}/{eventid}').onCreate((snapshot, context) => {
   var gameId = context.params.gameid;

@@ -1,7 +1,11 @@
 package com.alientech.classroyale
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +29,10 @@ class ThirdActivity : AppCompatActivity() {
 
     val db = FirebaseFirestore.getInstance()
     val mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+
+    var status = "LOADING"
+    var gameDocRef = ""
+    var mine = false
 
     var usersUser = db.collection("users").document(uid)
     var userClass = 0
@@ -59,40 +67,106 @@ class ThirdActivity : AppCompatActivity() {
         var b = intent.extras
         if (b != null) {
             var whichUser = b.getStringArrayList("gameData")[0]
-            var gameDocRef = b.getStringArrayList("gameData")[1]
+            gameDocRef = b.getStringArrayList("gameData")[1]
             gameLogs = db.collection("game").document(gameDocRef)
 
-            usersUser.get().addOnSuccessListener { document ->
-                var userClass = document.data!!["class"]
-                var userGrade = document.data!!["grade"]
-            }
+            if (getUserStatus() != "DISCONNECTED") {
+                usersUser.get().addOnSuccessListener { document ->
+                    var userClass = document.data!!["class"]
+                    var userGrade = document.data!!["grade"]
+                }
 
-            if (whichUser == "user1") {
-                var loadData = mapOf(
-                    "startTime" to FieldValue.serverTimestamp(),
-                    "user1" to mapOf(
-                        "name" to displayName,
-                        "uid" to uid,
-                        "icon" to user!!.photoUrl,
-                        "class" to userClass,
-                        "grade" to userGrade
+                if (whichUser == "user1") {
+                    var loadData = mapOf(
+                        "startTime" to FieldValue.serverTimestamp(),
+                        "user1" to mapOf(
+                            "name" to displayName,
+                            "uid" to uid,
+                            "icon" to user!!.photoUrl,
+                            "class" to userClass,
+                            "grade" to userGrade
+                        )
                     )
-                )
-                db.collection("games").document(gameDocRef).update(loadData)
-            } else {
-                var loadData = mapOf(
-                    "user2" to mapOf(
-                        "name" to displayName,
-                        "uid" to uid,
-                        "icon" to user!!.photoUrl,
-                        "class" to ""
+                    db.collection("games").document(gameDocRef).update(loadData)
+                } else {
+                    var loadData = mapOf(
+                        "user2" to mapOf(
+                            "name" to displayName,
+                            "uid" to uid,
+                            "icon" to user!!.photoUrl,
+                            "class" to userClass,
+                            "grade" to userGrade
+                        )
                     )
-                )
-                db.collection("games").document(gameDocRef).update(loadData)
+                    db.collection("games").document(gameDocRef).update(loadData)
+                }
             }
-
         }
     }
+
+    fun safeDisconnect() {
+        if (getUserStatus() == "LOADING") {
+            
+        } else if (getUserStatus() == "STARTED") {
+
+        } else {
+            Log.e(TAG, "UHHHHHHHHHHHHHHHH THIS ISN'T SUPPOSED TO HAPPEN-")
+        }
+
+        Log.d(TAG, getUserStatus() + " " + getUserGame())
+    }
+
+    public override fun onDestroy() {
+        super.onDestroy()
+        safeDisconnect()
+    }
+
+    fun getUserStatus(): String {
+        db.collection("users").document(uid).get().addOnSuccessListener { document ->
+            if (document != null) {
+                status = if (document.data!!["gameStatus"] == null) "READY" else document.data!!["gameStatus"].toString()
+            }
+        }
+        return status
+    }
+
+    fun setUserStatus(newStatus: String) {
+        db.collection("users").document(uid).update(mapOf(
+            "gameStatus" to newStatus
+        ))
+    }
+
+    fun getUserGame(): String {
+        db.collection("users").document(uid).get().addOnSuccessListener { document ->
+            gameDocRef = document.data!!["gameDocRef"].toString()
+        }
+        return gameDocRef
+    }
+
+    fun setUserGame(gameDocId: String) {
+        db.collection("users").document(uid).update(mapOf(
+            "gameDocRef" to gameDocId
+        ))
+    }
+
+    fun removeUserGame() {
+        db.collection("users").document(uid).update(mapOf(
+            "gameDocRef" to FieldValue.delete()
+        ))
+    }
+
+    private fun isNetworkAvailable(): Boolean {
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE)
+        return if (connectivityManager is ConnectivityManager) {
+            val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
+            networkInfo?.isConnected ?: false
+        } else false
+    }
+
+
+    val cm = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+    val isConnected: Boolean = activeNetwork?.isConnected == true
 
     fun actionHandler() {
         // ADD CODE TO PROCESS WHAT NEEDS TO HAPPEN
@@ -162,5 +236,9 @@ class ThirdActivity : AppCompatActivity() {
             // Do final UI stuff
             // Set content layout back to the main menu
         }
+    }
+
+    companion object {
+        private const val TAG = "GameActivity"
     }
 }
