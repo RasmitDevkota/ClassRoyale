@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.alientech.classroyale">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:glEsVersion="0x00030000" android:required="true" />
+    <uses-feature android:name="android.hardware.camera.ar" />
 
     <application
             android:allowBackup="true"
@@ -11,11 +16,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <meta-data android:name="com.google.ar.core" android:value="required" />
         <activity android:name=".GoogleSignInActivity">
         </activity>
         <activity android:name=".EmailPasswordActivity">
-        </activity>
-        <activity android:name=".ThirdActivity">
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -25,6 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity">
+        </activity>
+        <activity android:name=".ThirdActivity">
         </activity>
     </application>
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CardView">
+        <attr name="name" format="string" />
+        <attr name="hp" format="integer" />
+        <attr name="attackDamage" format="integer" />
+        <attr name="level" format="integer" />
+        <attr name="xp" format="integer" />
+        <attr name="displayingProperties" format="boolean" />
+        <attr name="isPersonCard" format="boolean" />
+    </declare-styleable>
+</resources>

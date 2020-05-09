@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE")
+@file:Suppress("UNUSED_VARIABLE", "UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
 
 package com.alientech.classroyale
 
@@ -10,12 +10,13 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.functions.FirebaseFunctions
-import kotlin.reflect.typeOf
 
 // Activity for the Home Screen
 class SecondActivity : AppCompatActivity() {
@@ -33,38 +34,44 @@ class SecondActivity : AppCompatActivity() {
     var currentGame = ""
     var rejected = false
     var abandoned = false
-//
-//    var cardCollection = db.collection("cards").document("cards")
-//    var normalCards = cardCollection.collection("normal")
-//    var personCards = cardCollection.collection("person")
-//
-//    var userDecks = db.collection("userDecks").document(displayName)
-//    var userCardCollection = db.collection("userCollections").document(displayName)
-//    var userNormalCards = userCardCollection.collection("normal")
-//    var userPersonCards = userCardCollection.collection("person")
+
+    var cardCollection = db.collection("cards").document("cards")
+    var normalCards = cardCollection.collection("normal")
+    var personCards = cardCollection.collection("person")
+
+    var userDecks = db.collection("userDecks").document(displayName)
+    var userCardCollection = db.collection("userCollections").document(displayName)
+    var userNormalCards = userCardCollection.collection("normal")
+    var userPersonCards = userCardCollection.collection("person")
 
     var functions: FirebaseFunctions = FirebaseFunctions.getInstance()
 
-    val startGameButton = findViewById<Button>(R.id.enterQueue)
-    val disconnectButton = findViewById<Button>(R.id.disconnectButton)
+    lateinit var startGameButton: Button
+    lateinit var disconnectButton: Button
+    lateinit var arButton: Button
+
+    private val navListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        var selectedFragment: Fragment? = null
+        when (item.itemId) {
+            R.id.home -> selectedFragment = HomeFragment()
+            R.id.friends -> selectedFragment = FriendsFragment()
+            R.id.cards -> selectedFragment = CardsFragment()
+        }
+        supportFragmentManager.beginTransaction().replace(
+            R.id.fragment_frame,
+            selectedFragment!!
+        ).commit()
+        true
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        startGameButton.setOnClickListener {
-            startGameButton.visibility = View.INVISIBLE
-            disconnectButton.visibility = View.VISIBLE
+        val navigation = findViewById<BottomNavigationView>(R.id.navigtion_menu)
+        navigation.setOnNavigationItemSelectedListener(navListener)
 
-            startGame()
-        }
-
-        disconnectButton.setOnClickListener {
-            safeDisconnect()
-
-            startGameButton.visibility = View.VISIBLE
-            disconnectButton.visibility = View.INVISIBLE
-        }
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_frame, HomeFragment()).commit()
 
         if (getUserStatus() == "CHECKING") {
             startGameButton.visibility = View.INVISIBLE

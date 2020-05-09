@@ -1,23 +1,25 @@
+@file:Suppress("UNUSED_VARIABLE", "UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
+
 package com.alientech.classroyale
 
-class Card(
-    name: String,
-    HP: Int,
-    attackDamage: Int,
-    description: String,
-    rarity: String,
-    isPersonCard: Boolean,
-    isDisplayingProperties: Boolean,
-    level: Int,
-    XP: Int,
-    XPToLevelUp: Int
-) {
+import android.R
+import android.content.Context
+import android.util.AttributeSet
+import android.util.Log
+import android.view.View
+import com.google.firebase.firestore.FirebaseFirestore
+
+
+val db = FirebaseFirestore.getInstance()
+var games = db.collection("games")
+
+interface Card {
     var name: String
-        get() {return this.name}
+        get() { return name}
         set(value) {this.name = name}
 
     var HP: Int
-        get() {return this.HP}
+        get() { return HP}
         set(value) {
             this.HP = HP
             for (i in 0 until this.level - 1) {
@@ -26,7 +28,7 @@ class Card(
         }
 
     var attackDamage: Int
-        get() {return this.attackDamage}
+        get() { return attackDamage}
         set(value) {
             this.attackDamage = attackDamage
             for (i in 0 until this.level - 1) {
@@ -35,41 +37,33 @@ class Card(
         }
 
     var description: String
-        get() {return this.description}
-        set(value) {this.description = description}
+        get() { return description }
+        set(value) { this.description = description }
 
     var rarity: String
-        get() {return this.rarity}
-        set(value) {this.rarity = rarity}
-
-    var isPersonCard: Boolean
-        get() {return this.isPersonCard}
-        set(value) {this.isPersonCard = isPersonCard}
+        get() { return rarity }
+        set(value) { this.rarity = rarity }
 
     var isDisplayingProperties: Boolean
-        get() {return this.isDisplayingProperties}
-        set(value) {this.isDisplayingProperties = isDisplayingProperties}
+        get() { return isDisplayingProperties }
+        set(value) { this.isDisplayingProperties = isDisplayingProperties }
 
     var level: Int
-        get() {return this.level}
-        set(value) {this.level = level}
+        get() { return level }
+        set(value) {this.level = level }
 
     var xp: Int
-        get() {return xp}
-        set(value) {this.xp = xp}
+        get() { return xp}
+        set(value) { this.xp = xp }
 
     var xpToLevelUp: Int
-        get() {return xpToLevelUp}
+        get() { return xpToLevelUp }
         set(value) {
             this.xpToLevelUp = xpToLevelUp
             for (i in 0 until level - 1) {
-                upgradeXPToLevelUp()
+                this.xpToLevelUp = arrayListOf<Int>(1000, 1400, 1900, 2500, 3200, 4000, 4900, 5900, 7000, 8200, 9500, 11000)[level - 1]
             }
         }
-
-    fun upgradeXPToLevelUp() {
-        this.xpToLevelUp += (0.3 * this.xpToLevelUp).toInt()
-    }
 
     fun upgradeHP() {
         this.HP += (0.15 * this.HP).toInt()
@@ -79,25 +73,18 @@ class Card(
         this.attackDamage += (0.15 * this.attackDamage).toInt()
     }
 
-    fun study() {
-        if (this.level < 12) {
-            if (this.xp >= this.xpToLevelUp) {
-                upgradeHP()
-                upgradeAttackDamage()
-                this.level = this.level + 1
-                this.xp = this.xp - this.xpToLevelUp
-                upgradeXPToLevelUp()
-            }
+    fun study(gameDocId: String) {
+        games.document(gameDocId).get().addOnSuccessListener { document ->
+            //
         }
-    }
 
-    fun play() {
-        val performance = this.evaluatePerformance()
-        this.xp = this.xp + performance
-    }
-
-    fun evaluatePerformance(): Int {
-        return 34433434;
+        if (this.level < 12 && this.xp >= this.xpToLevelUp) {
+            upgradeHP()
+            upgradeAttackDamage()
+            this.level = this.level + 1
+            this.xp = this.xp - this.xpToLevelUp
+            this.xpToLevelUp = arrayListOf<Int>(1000, 1400, 1900, 2500, 3200, 4000, 4900, 5900, 7000, 8200, 9500, 11000)[level - 1]
+        }
     }
 
     companion object {
@@ -108,4 +95,77 @@ class Card(
         const val LEGENDARY = "Legendary"
         const val MYTHICAL = "Mythical"
     }
+}
+
+class PersonCard (
+    name: String,
+    HP: Int,
+    attackDamage: Int,
+    description: String,
+    rarity: String,
+    isDisplayingProperties: Boolean,
+    level: Int,
+    XP: Int,
+    XPToLevelUp: Int
+) : Card {
+
+
+    companion object {
+        const val isPersonCard = true
+    }
+}
+
+class NormalCard (
+    name: String,
+    HP: Int,
+    attackDamage: Int,
+    description: String,
+    rarity: String,
+    isDisplayingProperties: Boolean,
+    level: Int,
+    XP: Int,
+    XPToLevelUp: Int
+) : Card {
+    companion object {
+        const val isPersonCard = false
+    }
+}
+
+class StructureCard (
+    name: String,
+    HP: Int,
+    description: String,
+    rarity: String,
+    isDisplayingProperties: Boolean,
+    level: Int,
+    XP: Int,
+    XPToLevelUp: Int
+) : Card {
+    companion object {
+        const val isPersonCard = false
+    }
+}
+
+open class CardView (context: Context, attrs: AttributeSet) : View (context, attrs), Card {
+    private fun checkContext() {
+        if (context is SecondActivity) {
+
+        } else if (context is ThirdActivity) {
+
+        } else {
+            Log.e("CardView.checkContext()", "Context does not match either SecondActivity or ThirdActivity")
+        }
+    }
+}
+
+class PersonCardView (context: Context, attrs: AttributeSet) : CardView (context, attrs) {
+
+}
+
+class NormalCardView (context: Context, attrs: AttributeSet) : CardView (context, attrs) {
+
+}
+
+class StructureCardView (context: Context, attrs: AttributeSet) : CardView (context, attrs) {
+
 }

@@ -1,26 +1,40 @@
+@file:Suppress("UNUSED_VARIABLE", "UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
+
 package com.alientech.classroyale
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.Task
+import com.google.ar.sceneform.Node
+import com.google.ar.sceneform.Scene
+import com.google.ar.sceneform.SceneView
+import com.google.ar.sceneform.math.Vector3
+import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.functions.FirebaseFunctions
+import kotlinx.android.synthetic.main.activity_third.*
 import kotlin.math.ceil
 import kotlin.math.pow
 
 // Activity for when the user is in-game
-class ThirdActivity : AppCompatActivity() {
+class ThirdActivity : AppCompatActivity(), View.OnClickListener {
 
     val user = FirebaseAuth.getInstance().currentUser
     var uid = user!!.uid
@@ -38,9 +52,9 @@ class ThirdActivity : AppCompatActivity() {
     var userClass = 0
     var userGrade = 0
 
-    // MAKE gameLogs TAKE A PARAMETER OF WHAT THE DOCUMENT IS
     lateinit var gameLogs: DocumentReference
-    var events = gameLogs.collection("events")
+    lateinit var events: CollectionReference
+    lateinit var localLogs: ArrayList<Map<Any, Any>>
     var i = 1
     var prngList: MutableList<String> = ArrayList()
     var j = 0
@@ -60,9 +74,15 @@ class ThirdActivity : AppCompatActivity() {
 
     var handler = Handler()
 
+    lateinit var scene: Scene
+
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
+
+        scene = sceneView.scene
+        renderObject(Uri.parse("testModel.sfb"))
 
         var b = intent.extras
         if (b != null) {
@@ -104,9 +124,54 @@ class ThirdActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun renderObject(parse: Uri) {
+        ModelRenderable.builder().setSource(this, parse).build()
+            .thenAccept {
+                addNodeToScene(it)
+            }
+            .exceptionally {
+                val builder = AlertDialog.Builder(this)
+                builder.setMessage(it.message).setTitle("error!")
+                val dialog = builder.create()
+                dialog.show()
+                return@exceptionally null
+            }
+    }
+
+    private fun addNodeToScene(model: ModelRenderable?) {
+        model?.let {
+            var testModel = Node().apply {
+                setParent(scene)
+                localPosition = Vector3(0f, 0f, -1f)
+                localScale = Vector3(0.5f, 0.5f, 0.5f)
+                name = "TestModel"
+                renderable = it
+            }
+
+            val scene = findViewById<SceneView>(R.id.sceneView).scene
+            scene.addChild(testModel)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sceneView.pause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sceneView.resume()
+    }
+
+    public override fun onDestroy() {
+        super.onDestroy()
+        safeDisconnect()
+    }
+
     fun safeDisconnect() {
         if (getUserStatus() == "LOADING") {
-            
+
         } else if (getUserStatus() == "STARTED") {
 
         } else {
@@ -114,11 +179,6 @@ class ThirdActivity : AppCompatActivity() {
         }
 
         Log.d(TAG, getUserStatus() + " " + getUserGame())
-    }
-
-    public override fun onDestroy() {
-        super.onDestroy()
-        safeDisconnect()
     }
 
     fun getUserStatus(): String {
@@ -163,25 +223,34 @@ class ThirdActivity : AppCompatActivity() {
         } else false
     }
 
-
-    val cm = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
-    val isConnected: Boolean = activeNetwork?.isConnected == true
-
-    fun actionHandler() {
-        // ADD CODE TO PROCESS WHAT NEEDS TO HAPPEN
-        lateinit var event: String
-
-        functions.getHttpsCallable(event).call(event)
+    fun actionHandler(event: String) {
+        functions.getHttpsCallable("eventLogger").call(event)
         handler.postDelayed({
-            // ADD SWITCH CASE TO GET WHAT THE EVENT IS AND RUN THE CORRECT FUNCTION
+            when (event) {
+                "placeCard" -> {
+
+                }
+                "cardDestroyed" -> {
+
+                }
+                "specialAttackButton" -> {
+
+                }
+            }
         }, 10000)
     }
 
-    fun onClick(view: View) {
-        when (view.getId()) {
+    override fun onClick(view: View) {
+        var nonStandardEvents = arrayOf("placeCard", "cardDestroyed")
+        var nonStandardClicks = arrayOf("specialAttackButton")
+
+        if (nonStandardClicks.contains(view.id.toString())) {
+
+        } else if (view.id.toString().contains("Card")) {
 
         }
+
+        actionHandler(view.id.toString())
     }
 
     fun prngGenerator() {
@@ -193,8 +262,13 @@ class ThirdActivity : AppCompatActivity() {
         var randResult = prngList[randSeed]
     }
 
+    fun newCard() {
+
+    }
+
     fun placeCard(position: Array<Int>, name: String, HP: Int, attackDamage: Int, description: String, rarity: String, isPersonCard: Boolean, isDisplayingProperties: Boolean, level: Int, XP: Int, XPToLevelUp: Int) {
-        var newCard = Card(name, HP, attackDamage, description, rarity, isPersonCard, isDisplayingProperties, level, XP, XPToLevelUp)
+        // INSTANTIATE THE CARD
+
         var event = events.document(uid + i)
 
         var cardData = hashMapOf(
@@ -221,12 +295,16 @@ class ThirdActivity : AppCompatActivity() {
         i++
     }
 
-    fun endGame(): Task<Any> {
+    fun forfeit() {
+
+    }
+
+    fun endGame() {
         val data = hashMapOf(
             "uid" to uid
         )
 
-        return functions.getHttpsCallable("endGame").call(data).continueWith { task ->
+        functions.getHttpsCallable("endGame").call(data).continueWith { task ->
             var event = events.document(uid + i)
             event.set(
                 "endTime" to FieldValue.serverTimestamp()

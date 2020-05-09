@@ -32,4 +32,7 @@
 
     <string name="id_fmt" tools:ignore="UnusedResources">User ID: %s</string>
     <string name="email_fmt" tools:ignore="UnusedResources">Email: %s</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
