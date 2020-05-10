@@ -3,10 +3,12 @@
     <declare-styleable name="CardView">
         <attr name="name" format="string" />
         <attr name="hp" format="integer" />
-        <attr name="attackDamage" format="integer" />
+        <attr name="type" format="string" />
+        <attr name="description" format="string" />
+        <attr name="rarity" format="string" />
         <attr name="level" format="integer" />
+        <attr name="attackDamage" format="integer" />
         <attr name="xp" format="integer" />
-        <attr name="displayingProperties" format="boolean" />
-        <attr name="isPersonCard" format="boolean" />
+        <attr name="xpToLevelUp" format="integer" />
     </declare-styleable>
 </resources>

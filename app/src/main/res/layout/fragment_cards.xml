@@ -1,14 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cards Fragment"
-        android:textSize="32sp"
-        android:layout_centerInParent="true"/>
 
-</RelativeLayout>
+        <LinearLayout
+            android:background="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_weight="3.5"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Deck"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:layout_marginBottom="6dp"/>
+
+            <TableLayout
+                android:id="@+id/deck"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow android:paddingHorizontal="5dp">
+
+                    <com.alientech.classroyale.CardView
+                        card:name="YAYAYA"
+                        card:type="person"
+                        android:clickable="true"
+                        android:id="@+id/first_card"
+                        android:layout_gravity="center"
+                        android:layout_height="50dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        card_view:cardCornerRadius="4dp">
+
+                        <TextView
+                            android:text="First Card"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </com.alientech.classroyale.CardView>
+
+                    <com.alientech.classroyale.CardView
+                        card:name="YAYAYA"
+                        card:type="person"
+                        android:clickable="true"
+                        android:id="@+id/first_card1"
+                        android:layout_gravity="center"
+                        android:layout_height="50dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        card_view:cardCornerRadius="4dp">
+
+                        <TextView
+                            android:text="First Card"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </com.alientech.classroyale.CardView>
+
+                    <com.alientech.classroyale.CardView
+                        card:name="YAYAYA"
+                        card:type="person"
+                        android:clickable="true"
+                        android:id="@+id/first_card2"
+                        android:layout_gravity="center"
+                        android:layout_height="50dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        card_view:cardCornerRadius="4dp">
+
+                        <TextView
+                            android:text="First Card"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </com.alientech.classroyale.CardView>
+
+                    <com.alientech.classroyale.CardView
+                        card:name="YAYAYA"
+                        card:type="person"
+                        android:clickable="true"
+                        android:id="@+id/first_card3"
+                        android:layout_gravity="center"
+                        android:layout_height="50dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        card_view:cardCornerRadius="4dp">
+
+                        <TextView
+                            android:text="First Card"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </com.alientech.classroyale.CardView>
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingHorizontal="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <com.alientech.classroyale.CardView
+                        card:name="YAYAYA"
+                        card:type="person"
+                        android:clickable="true"
+                        android:id="@+id/first_card4"
+                        android:layout_gravity="center"
+                        android:layout_height="50dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        card_view:cardCornerRadius="4dp">
+
+                        <TextView
+                            android:text="First Card"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </com.alientech.classroyale.CardView>
+
+                    <com.alientech.classroyale.CardView
+                        card:name="YAYAYA"
+                        card:type="person"
+                        android:clickable="true"
+                        android:id="@+id/first_card5"
+                        android:layout_gravity="center"
+                        android:layout_height="50dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        card_view:cardCornerRadius="4dp">
+
+                        <TextView
+                            android:text="First Card"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </com.alientech.classroyale.CardView>
+
+                    <com.alientech.classroyale.CardView
+                        card:name="YAYAYA"
+                        card:type="person"
+                        android:clickable="true"
+                        android:id="@+id/first_card6"
+                        android:layout_gravity="center"
+                        android:layout_height="50dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        card_view:cardCornerRadius="4dp">
+
+                        <TextView
+                            android:text="First Card"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </com.alientech.classroyale.CardView>
+
+                    <com.alientech.classroyale.CardView
+                        card:name="YAYAYA"
+                        card:type="person"
+                        android:clickable="true"
+                        android:id="@+id/first_card7"
+                        android:layout_gravity="center"
+                        android:layout_height="50dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        card_view:cardCornerRadius="4dp">
+
+                        <TextView
+                            android:text="First Card"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </com.alientech.classroyale.CardView>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+
+
+    <LinearLayout
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1">
+
+    </LinearLayout>
+
+</LinearLayout>

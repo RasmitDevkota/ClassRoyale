@@ -266,7 +266,7 @@ class ThirdActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    fun placeCard(position: Array<Int>, name: String, HP: Int, attackDamage: Int, description: String, rarity: String, isPersonCard: Boolean, isDisplayingProperties: Boolean, level: Int, XP: Int, XPToLevelUp: Int) {
+    fun placeCard(position: Array<Int>, name: String, HP: Int, attackDamage: Int, description: String, rarity: String, type: String, isDisplayingProperties: Boolean, level: Int, XP: Int, XPToLevelUp: Int) {
         // INSTANTIATE THE CARD
 
         var event = events.document(uid + i)
@@ -277,7 +277,7 @@ class ThirdActivity : AppCompatActivity(), View.OnClickListener {
             "attackDamage" to attackDamage,
             "description" to description,
             "rarity" to rarity,
-            "isPersonCard" to isPersonCard,
+            "type" to type,
             "isDisplayingProperties" to isDisplayingProperties,
             "level" to level,
             "XP" to XP,
