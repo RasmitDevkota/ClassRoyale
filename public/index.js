@@ -25,7 +25,7 @@ function addCard() {
     var rarity = document.getElementById("cardRarity").textContent;
     var thumbnail = document.getElementById("cardThumbnail");
 
-    TODO("Use rarity to generate ");
+    TODO("Use rarity to generate HP, ");
 
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
