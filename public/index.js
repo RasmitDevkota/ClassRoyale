@@ -37,6 +37,7 @@ function addCard() {
         ['Common', 3],
         ['Normal', {}],
         ['Rare', undefined]
+        ['Rare', undefined]
     ]);
     
     switch (rarity) {
