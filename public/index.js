@@ -20,7 +20,6 @@ var cardThumbnails = storage.child('card_thumbnails')
 
 function addCard() {
     var name = document.getElementById("cardName").value;
-    var type = document.getElementById("cardType").value;
     var description = document.getElementById("cardDescription").value;
 
     var type= "";
