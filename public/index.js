@@ -27,7 +27,17 @@ function addCard() {
 
     var seed = Math.round(Math.random());
     var HPValues = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600]
-    var attackDamageValues = []
+    var attackDamageValues = [30
+35
+40
+45
+50
+55
+60
+65
+70
+75
+80]
 
     switch (rarity) {
         case "Common":
