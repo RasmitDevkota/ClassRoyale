@@ -23,8 +23,8 @@ function addCard() {
     var type = document.getElementById("cardType").textContent;
     var description = document.getElementById("cardDescription").textContent;
     var rarity = document.getElementById("cardRarity").textContent;
-    var level = 0;
     var thumbnail = document.getElementById("cardThumbnail");
+    var level = 0;
 
     TODO("Use rarity to ");
 
