@@ -25,7 +25,7 @@ function addCard() {
     var rarity = document.getElementById("cardRarity").value;
     var thumbnail = document.getElementById("cardThumbnail").files[0];
 
-    if (!name || !type || !description || !rarity) {
+    if (!name || !type || !description || !rarity || !thumbnail) {
         alert ("You forgot to enter an input for something! Every field is required!");
         return console.log("Not enough parameters given. " + name + description + type + rarity);
     }
