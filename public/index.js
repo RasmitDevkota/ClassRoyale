@@ -35,6 +35,7 @@ function addCard() {
                 description: description,
                 rarity: rarity,
                 level: level,
+                XP: XP,
                 
             })
         } else {
