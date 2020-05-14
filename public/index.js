@@ -30,7 +30,7 @@ function addCard() {
         if (!doc.exists) {
 
         } else {
-            return console.log(`Card ${name} of type ${type} already exists.`)
+            return console.log(`Card ${name} of type ${type} already exists.`);
         }
     })
 }
