@@ -35,7 +35,7 @@ function addCard() {
     var attackDamageValues = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80];
     var seedOffsets = new Map([
         ['Common', 3],
-        ['bar', {}],
+        ['', {}],
         ['baz', undefined]
     ]);
     
