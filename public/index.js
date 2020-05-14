@@ -22,7 +22,7 @@ function addCard() {
     var name = document.getElementById("cardName").textContent;
     var type = document.getElementById("cardType").textContent;
     var description = document.getElementById("cardDescription").textContent;
-    var rarity = document.getElementById("cardRarity").textContent;
+    var rarity = document.getElementById("cardRarity").value;
     var thumbnail = document.getElementById("cardThumbnail");
 
     var seed = Math.round(Math.random());
