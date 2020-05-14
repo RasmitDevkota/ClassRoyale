@@ -38,7 +38,7 @@ function addCard() {
         ['Normal', 2],
         ['Rare', 4],
         ['Ultra Rare', 6],
-        ['Legendary', undefined],
+        ['Legendary', 8],
         ['Mythical', undefined]
     ]);
     
