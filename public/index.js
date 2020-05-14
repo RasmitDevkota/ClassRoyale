@@ -27,9 +27,6 @@ function addCard() {
 
     $('cardType').click(function () {
         type = $("cardType").val();
-    });
-
-    $('cardRarity').click(function () {
         rarity = $("cardRarity").val();
 
     var thumbnail = document.getElementById("cardThumbnail").files[0];
