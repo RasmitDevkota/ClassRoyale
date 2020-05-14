@@ -34,7 +34,7 @@ function addCard() {
 
     reader.onloadend = function () {
         preview.src = reader.result;
-        return alert(reader.readAsDataURL);
+        return console.log(reader.readAsDataURL);
     }
 
     if (thumbnail) {
