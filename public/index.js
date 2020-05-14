@@ -37,7 +37,7 @@ function addCard() {
         ['foo', 3],
         ['bar', {}],
         ['baz', undefined]
-    ])
+    ]);
     
     switch (rarity) {
         case "Common":
