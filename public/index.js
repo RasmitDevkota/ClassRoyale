@@ -29,7 +29,9 @@ function addCard() {
         alert ("You forgot to enter an input for something! Every field is required!");
         return console.log("Not enough parameters given.");
     }
-    
+
+    var preview = document.querySelector('img');
+    var file = document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
 
     reader.onloadend = function () {
