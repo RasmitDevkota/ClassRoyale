@@ -65,7 +65,7 @@ function addCard() {
             if (["Person", "Normal"].includes(type)) {
                 var attackDamage = attackDamageValues[seed + 10];
             } else {
-                var attackDamage = null;
+                var attackDamage = null
             }
             break;
     }
