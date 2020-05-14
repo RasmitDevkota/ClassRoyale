@@ -31,7 +31,8 @@ function addCard() {
     }
 
     thumbnail.onchange(function (e) {
-        var file = e.target.files
+        var file = e.target.files[0];
+        
     })
 
     // var reader = new FileReader();
