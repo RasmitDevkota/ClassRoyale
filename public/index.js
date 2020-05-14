@@ -64,7 +64,9 @@ function addCard() {
             var HP = HPValues[seed + 10];
             if (["Person", "Normal"].includes(type)) {
                 var attackDamage = attackDamageValues[seed + 10];
-            } 
+            } else {
+                
+            }
             break;
     }
 
