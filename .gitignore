@@ -12,3 +12,5 @@
 /captures
 .externalNativeBuild
 node_modules
+*.sfa
+*.sfb
