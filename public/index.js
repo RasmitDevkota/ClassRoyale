@@ -24,8 +24,6 @@ function addCard() {
     var description = document.getElementById("cardDescription").textContent;
     var rarity = document.getElementById("cardRarity").textContent;
     var thumbnail = document.getElementById("cardThumbnail");
-    TODO("Use rarity to generate HP, attackDamage, and xpToLevelUp");
-
 
     var HP = 0;
     var attackDamage = 0;
