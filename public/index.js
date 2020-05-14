@@ -22,6 +22,8 @@ function addCard() {
     var description = document.getElementById("cardDescription").textContent;
     var rarity = document.getElementById("cardRarity").textContent;
     var level = document.getElementById("cardLevel").textContent;
+    var level = document.getElementById("cardLevel").textContent;
+
     var XP = document.getElementById("cardXP").textContent;
     var xpToLevelUp = document.getElementById("cardxpToLevelUp").textContent;
 
