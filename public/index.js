@@ -35,7 +35,7 @@ function addCard() {
         var storageRef = firebase.storage.ref('card_thumbnails/' + file.name);
 
         storageRef.put(file);
-    })
+    });
 
     // var reader = new FileReader();
     // reader.onloadend = function () {
