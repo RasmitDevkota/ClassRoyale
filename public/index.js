@@ -32,7 +32,7 @@ function addCard() {
 
     var reader = new FileReader();
     reader.onloadend = function () {
-        return console.log(reader.readAsDataURL());
+        return console.log(reader.readAsDataURL(thumbnail));
     }
 
     if (thumbnail) {
