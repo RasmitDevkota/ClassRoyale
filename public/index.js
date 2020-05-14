@@ -47,6 +47,9 @@ function addCard() {
             console.log(`Card ${name} of type ${type} already exists.`);
             return alert(`Card ${name} of type ${type} already exists. Please try something else!`);
         }
+    }).catch(function (e) {
+        console.log(e);
+        return alert("Error occurred! Please contact a developer!");
     });
 }
 
