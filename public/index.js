@@ -36,7 +36,8 @@ function addCard() {
     var seedOffsets = new Map([
         ['foo', 3],
         ['bar', {}],
-        ['baz', undefined]])
+        ['baz', undefined]
+    ])
     
     switch (rarity) {
         case "Common":
