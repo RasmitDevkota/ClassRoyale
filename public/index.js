@@ -107,7 +107,7 @@ function addCard() {
                     xpToLevelUp: 1000
                 }).then(function () {
                     console.log(`Successfully added card ${name} of type ${type}!`);
-                    return alert("Successfully added card ${name} of type ${type}!");
+                    return alert(`Successfully added card ${name} of type ${type}!");
                 }).catch(function (e) {
                     console.log(e);
                     return alert("Error occurred! Please contact a developer!");
