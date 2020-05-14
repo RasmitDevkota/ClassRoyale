@@ -26,7 +26,7 @@ function addCard() {
     var level = 0
     var thumbnail = document.getElementById("cardThumbnail");
 
-    TODO("Insert xpToLevelUp Calculator!!!");
+    TODO("Use rarity to ");
 
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
