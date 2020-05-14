@@ -110,7 +110,6 @@ function addCard() {
                     description: description,
                     rarity: rarity,
                     level: 1,
-                    attackDamage: attackDamage,
                     XP: 0,
                     xpToLevelUp: 1000
                 }).then(function () {
