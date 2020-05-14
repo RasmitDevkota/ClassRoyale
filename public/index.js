@@ -24,6 +24,7 @@ function addCard() {
     var type = $("cardType").val();
     var rarity = $("cardRarity").val();
     var thumbnail = document.getElementById("cardThumbnail").files[0];
+    var preview = document.getElementById("cardThumbnailPreview");
 
     if (!name || type == "" || !description || rarity == "") {
         alert ("You forgot to enter an input for something! Every field is required!");
@@ -31,7 +32,6 @@ function addCard() {
     }
 
     var reader = new FileReader();
-    var preview = document.getElementById("cardThumbnailPreview");
 
     reader.onloadend = function () {
         preview.src = reader.result;
