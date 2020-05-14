@@ -28,7 +28,8 @@ function addCard() {
     var seed = Math.round(Math.random());
 
     switch (rarity) {
-        case ""
+        case "Common":
+        break;
     }
 
     var HP = 0;
