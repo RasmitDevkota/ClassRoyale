@@ -31,7 +31,7 @@ function addCard() {
     }
 
     var storageRef = firebase.storage().ref('card_thumbnails/' + file.name);
-    storageRef.put(file).then(function (snapshot) {
+    storageRef.put(thumbnail).then(function (snapshot) {
         console.log('Uploaded file ' + file.name + '!');
     });
 
