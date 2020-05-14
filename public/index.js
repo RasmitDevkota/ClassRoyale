@@ -28,7 +28,9 @@ function addCard() {
     if (!name || !type || !description || !rarity || !thumbnail) {
         alert ("You forgot to enter an input for something! Every field is required!");
         return console.log("Not enough parameters given.");
-    } else 
+    } else {
+        return;
+    }
 
     var seed = Math.round(Math.random());
     var HPValues = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600];
