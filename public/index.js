@@ -23,7 +23,7 @@ function addCard() {
     var type = document.getElementById("cardType").value;
     var description = document.getElementById("cardDescription").textContent;
     var rarity = document.getElementById("cardRarity").value;
-    var thumbnail = document.getElementById("cardThumbnail");
+    var thumbnail = document.getElementById("cardThumbnail").file;
 
     if (!name || !type || !description || !rarity || !thumbnail)
 
