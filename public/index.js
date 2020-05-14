@@ -32,6 +32,9 @@ function addCard() {
                 name: name,
                 HP: HP,
                 type: type,
+                description: description,
+                rarity: rarity,
+                level: level,
                 
             })
         } else {
