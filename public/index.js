@@ -29,7 +29,7 @@ function addCard() {
 
     switch (rarity) {
         case "Common":
-            if (["Person", "Normal"].includes)
+            if (["Person", "Normal"].includes())
             break;
         case "Normal":
             break;
