@@ -30,6 +30,22 @@ function addCard() {
         return console.log("Not enough parameters given.");
     }
 
+    function previewFile() {
+        var preview = document.querySelector('img');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+    }
+
     var seed = Math.round(Math.random());
     var HPValues = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600];
     var attackDamageValues = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80];
