@@ -29,7 +29,7 @@ function addCard() {
 
     switch (rarity) {
         case "Common":
-            if (["Person"])
+            if (["Person", "Normal"])
             break;
         case "Normal":
             break;
