@@ -22,7 +22,6 @@ function addCard() {
     var name = document.getElementById("cardName").textContent;
     var type = document.getElementById("cardType").value;
     var description = document.getElementById("cardDescription").textContent;
-    var rarity = document.getElementById("cardRarity").value;
 
     $('.dropdown-item').click(function () {
         rarity = $(this).text();
