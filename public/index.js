@@ -32,7 +32,7 @@ function addCard() {
 
     thumbnail.onchange(function (e) {
         var file = e.target.files[0];
-        var storageRef = firebase.storage.ref('card_thumbnails/')
+        var storageRef = firebase.storage.ref('card_thumbnails/' + file.name)
     })
 
     // var reader = new FileReader();
