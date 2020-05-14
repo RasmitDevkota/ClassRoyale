@@ -41,7 +41,7 @@ function addCard() {
         ['Legendary', 8],
         ['Mythical', 10]
     ]);
-    var seedOffset = seedOffsets
+    var seedOffset = seedOffsets.get()
     
     switch (rarity) {
         case "Common":
