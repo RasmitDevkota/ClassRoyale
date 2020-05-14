@@ -38,6 +38,7 @@ function addCard() {
         ['Normal', {}],
         ['Rare', undefined],
         ['Rare', undefined],
+        ['Rare', undefined],
         ['Rare', undefined]
     ]);
     
