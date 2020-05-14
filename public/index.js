@@ -38,7 +38,7 @@ function addCard() {
             break;
         case "Legendary":
             break;
-        case "Common":
+        case "Mythical":
             break;
     }
 
