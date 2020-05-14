@@ -26,7 +26,7 @@ function addCard() {
     var XP = document.getElementById("cardXP").textContent;
     var xpToLevelUp = document.getElementById("cardxpToLevelUp").textContent;
 
-    cards.collection(type).doc()
+    cards.collection(type).doc(name)
 }
 
 function testGame(name1, name2) {
