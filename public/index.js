@@ -22,7 +22,7 @@ function addCard() {
     var name = document.getElementById("cardName").value;
     var description = document.getElementById("cardDescription").value;
     var type = document.getElementById("cardType").value;
-    var rarity = $("cardRarity").value;
+    var rarity = document.getElementById("cardRarity").value;
     var thumbnail = document.getElementById("cardThumbnail").files[0];
     var preview = document.getElementById("cardThumbnailPreview");
 
