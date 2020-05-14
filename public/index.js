@@ -30,19 +30,19 @@ function addCard() {
         return console.log("Not enough parameters given.");
     }
 
-        var preview = document.querySelector('img');
-        var file = document.querySelector('input[type=file]').files[0];
-        var reader = new FileReader();
+    var preview = document.querySelector('img');
+    var file = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
 
-        reader.onloadend = function () {
-            preview.src = reader.result;
-        }
+    reader.onloadend = function () {
+        preview.src = reader.result;
+    }
 
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = "";
-        }
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+    }
 
     var seed = Math.round(Math.random());
     var HPValues = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600];
