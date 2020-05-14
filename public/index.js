@@ -41,6 +41,7 @@ function addCard() {
                 return alert("Successfully added card ${name} of type ${type}!");
             }).catch(function (e) {
                 console.log(e);
+                return alert("Error occurred! Please contact a developer!");
             })
         } else {
             console.log(`Card ${name} of type ${type} already exists.`);
