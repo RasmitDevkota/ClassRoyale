@@ -19,7 +19,7 @@ var storage = firebase.storage().ref();
 var cardThumbnails = storage.child('card_thumbnails')
 
 function addCard() {
-    var name = document.getElementById("cardName").value;
+    var name = ("cardName").value;
     var description = document.getElementById("cardDescription").value;
 
     var type= "";
