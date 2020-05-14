@@ -26,10 +26,10 @@ function addCard() {
     var type= "";
     var rarity = "";
 
-    $('cardRarity').click(function () {
+    $('cardType').click(function () {
         rarity = $(this).text();
     });
-    
+
     $('cardRarity').click(function () {
         rarity = $(this).text();
     });
