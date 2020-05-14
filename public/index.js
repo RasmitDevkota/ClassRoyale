@@ -40,6 +40,7 @@ function addCard() {
     if (thumbnail) {
         reader.readAsDataURL(thumbnail);
     } else {
+        preview.src = "";
         return alert("Card thumbnail is missing!");
     }
 
