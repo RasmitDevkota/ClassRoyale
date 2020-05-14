@@ -26,7 +26,7 @@ function addCard() {
     var rarity = "";
 
     $('cardType').click(function () {
-        type = $(this).text();
+        type = $(this).val();
     });
 
     $('cardRarity').click(function () {
