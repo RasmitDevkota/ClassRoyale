@@ -26,6 +26,9 @@ function addCard() {
     var thumbnail = document.getElementById("cardThumbnail");
 
     var seed = Math.round(Math.random());
+
+
+    
     var HP = 0;
     var attackDamage = 0;
 
