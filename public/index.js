@@ -34,7 +34,8 @@ function addCard() {
     var HPValues = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600];
     var attackDamageValues = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80];
     var seedOffsets = new Map([
-                        ['foo', 3], ['bar', {}], ['baz', undefined]])
+        ['foo', 3],
+        ['bar', {}], ['baz', undefined]])
     
     switch (rarity) {
         case "Common":
