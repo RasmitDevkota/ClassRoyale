@@ -24,7 +24,7 @@ function addCard() {
     var description = document.getElementById("cardDescription").textContent;
 
     var rarity = "";
-    var 
+    var type=""
 
     $('cardRarity').click(function () {
         rarity = $(this).text();
