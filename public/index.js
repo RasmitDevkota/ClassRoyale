@@ -42,7 +42,7 @@ function addCard() {
             })
         } else {
             console.log(`Card ${name} of type ${type} already exists.`);
-            alert(`Card ${name} of type ${type} already exists. Please try something else!`);
+            return alert(`Card ${name} of type ${type} already exists. Please try something else!`);
         }
     })
 }
