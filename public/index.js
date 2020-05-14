@@ -29,6 +29,9 @@ function addCard() {
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
             cards.collection(type).doc(name).set({
+                name: name,
+                HP: HP,
+                type: type,
                 
             })
         } else {
