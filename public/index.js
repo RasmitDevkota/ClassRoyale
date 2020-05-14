@@ -37,7 +37,7 @@ function addCard() {
                 level: level,
                 XP: XP,
                 xpToLevelUp: xpToLevelUp
-            }).then({
+            }).then(function () {
                 console.log("Success!")
             })
         } else {
