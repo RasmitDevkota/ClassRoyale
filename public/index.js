@@ -49,6 +49,9 @@ function addCard() {
             }
             break;
         case "Legendary":
+            if (["Person", "Normal"].includes(type)) {
+
+            }
             break;
         case "Mythical":
             break;
