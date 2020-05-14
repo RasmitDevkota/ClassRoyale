@@ -41,7 +41,14 @@ function addCard() {
         ['Legendary', 8],
         ['Mythical', 10]
     ]);
-    var seedOffset = seedOffsets.get(rarity)
+    var seedOffset = seedOffsets.get(rarity);
+
+    var HP = HPValues[seed];
+    if (["Person", "Normal"].includes(type)) {
+        var attackDamage = attackDamageValues[seed];
+    } else {
+        var attackDamage = null;
+    }
     
     switch (rarity) {
         case "Common":
