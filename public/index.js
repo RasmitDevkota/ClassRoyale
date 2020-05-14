@@ -21,7 +21,7 @@ var cardThumbnails = storage.child('card_thumbnails')
 function addCard() {
     var name = document.getElementById("cardName").value;
     var description = document.getElementById("cardDescription").value;
-    var type = $("cardType").val();
+    var type = document.getElementById("cardType").val();
     var rarity = $("cardRarity").val();
     var thumbnail = document.getElementById("cardThumbnail").files[0];
     var preview = document.getElementById("cardThumbnailPreview");
