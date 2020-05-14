@@ -80,7 +80,7 @@ function addCard() {
             break;
     }
 
-    console.log(`${name}, ${HP}, ${type}, ${description}, ${rarity}, ${level}, ${attackDamage}, ${XP}, ${xpToLevelUp}`)
+    console.log(`${name}, ${HP}, ${type}, ${description}, ${rarity}, ${level}, ${attackDamage}, ${0}, ${xpToLevelUp}`)
 
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
