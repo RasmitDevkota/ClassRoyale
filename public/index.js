@@ -37,7 +37,7 @@ function addCard() {
                 rarity: rarity,
                 level: 0,
                 attackDamage: attackDamage,
-                XP: XP,
+                XP: 0,
                 xpToLevelUp: xpToLevelUp
             }).then(function() {
                 console.log("Successfully added card ${name} of type ${type}!");
