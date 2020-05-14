@@ -30,7 +30,7 @@ function addCard() {
     switch (rarity) {
         case "Common":
             break;
-        case "Common":
+        case "Normal":
             break;
         case "Common":
             break;
