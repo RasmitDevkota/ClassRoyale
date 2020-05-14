@@ -28,7 +28,7 @@ function addCard() {
 
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
-            
+            cards.collection(type).doc(name).
         } else {
             console.log(`Card ${name} of type ${type} already exists.`);
             alert(`Card ${name} of type ${type} already exists. Please try something else!`);
