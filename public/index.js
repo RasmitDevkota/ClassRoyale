@@ -38,7 +38,7 @@ function addCard() {
         return alert(reader.readAsDataURL);
     }
 
-    if (file) {
+    if () {
         reader.readAsDataURL(file);
     } else {
         preview.src = "";
