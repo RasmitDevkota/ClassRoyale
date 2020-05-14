@@ -30,15 +30,15 @@ function addCard() {
         return console.log("Not enough parameters given. " + name + description + type + rarity);
     }
 
-        var file = e.target.files[0];
-        if (!file) {
-            return console.log("File: " + file);
-        }
+    var file = e.target.files[0];
+    if (!file) {
+        return console.log("File: " + file);
+    }
 
-        var storageRef = firebase.storage.ref('card_thumbnails/' + file.name);
-        storageRef.put(file).then(function (snapshot) {
-            console.log('Uploaded file ' + file.name + '!');
-        });
+    var storageRef = firebase.storage.ref('card_thumbnails/' + file.name);
+    storageRef.put(file).then(function (snapshot) {
+        console.log('Uploaded file ' + file.name + '!');
+    });
 
     var seed = Math.round(Math.random());
     var HPValues = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600];
