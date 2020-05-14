@@ -23,7 +23,7 @@ function addCard() {
     var rarity = document.getElementById("cardRarity").textContent;
     var level = document.getElementById("cardLevel").textContent;
     var XP = document.getElementById("cardXP").textContent;
-    var xpToLevelUp = document.getElementById("cardXpToLevelUp").textContent;
+    var xpToLevelUp = document.getElementById("cardxpToLevelUp").textContent;
 
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
