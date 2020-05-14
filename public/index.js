@@ -41,7 +41,7 @@ function addCard() {
     if (thumbnail) {
         reader.readAsDataURL(file);
     } else {
-        preview.src = "";
+        return alert("Card thumbnail is missing!");
     }
 
     var seed = Math.round(Math.random());
