@@ -35,7 +35,7 @@ function addCard() {
     }
 
     if (thumbnail) {
-        reader.readAsDataURL(cardThumbnail);
+        reader.readAsDataURL(thumbnail);
     } else {
         return alert("Card thumbnail is missing!");
     }
