@@ -26,11 +26,12 @@ function addCard() {
     var thumbnail = document.getElementById("cardThumbnail");
 
     var seed = Math.round(Math.random());
+    var HP
 
     switch (rarity) {
         case "Common":
             if (["Person", "Normal"].includes(type)) {
-                
+
             }
             break;
         case "Normal":
