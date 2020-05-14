@@ -1,4 +1,3 @@
-
 firebase.initializeApp({
     apiKey: "AIzaSyDz4E7cWDIMedScuc4TvGdEawhWGOLn4SQ",
     authDomain: "class-royale.firebaseapp.com",
