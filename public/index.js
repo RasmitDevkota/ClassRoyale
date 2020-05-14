@@ -54,6 +54,9 @@ function addCard() {
             }
             break;
         case "Mythical":
+            if (["Person", "Normal"].includes(type)) {
+
+            }
             break;
     }
 
