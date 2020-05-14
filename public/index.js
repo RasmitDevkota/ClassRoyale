@@ -1,6 +1,6 @@
 firebase.initializeApp({
     apiKey: "AIzaSyDz4E7cWDIMedScuc4TvGdEawhWGOLn4SQ",
-    authDomain: "class-royale.firebaseapp.com",
+    authDomain: "classroyale.firebaseapp.com",
     databaseURL: "https://class-royale.firebaseio.com",
     projectId: "class-royale",
     storageBucket: "class-royale.appspot.com",
