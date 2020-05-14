@@ -27,7 +27,7 @@ function addCard() {
 
     if (!name || !type || !description || !rarity || !thumbnail) {
         alert ("You forgot to enter an input for something! Every field is required!");
-        return console.log("Not enough parameters given. " + name + description + type + rarity);
+        return console.log("Not enough parameters given.");
     }
 
     var storageRef = firebase.storage().ref('card_thumbnails/' + name);
