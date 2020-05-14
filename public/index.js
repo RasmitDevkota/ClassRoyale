@@ -38,7 +38,9 @@ function addCard() {
 
         var storageRef = firebase.storage.ref('card_thumbnails/' + file.name);
 
-        storageRef.put(file);
+        storageRef.put(file).then(function (snapshot) {
+            console.log('Uploaded a blob or file!');
+        });
     });
 
     var seed = Math.round(Math.random());
