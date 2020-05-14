@@ -20,7 +20,7 @@ var cardThumbnails = storage.child('card_thumbnails')
 
 function addCard() {
     var name = $("cardName").val();
-    var description = document.getElementById("cardDescription").val();
+    var description = $("cardDescription").val();
 
     var type= "";
     var rarity = "";
