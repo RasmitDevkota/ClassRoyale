@@ -23,7 +23,7 @@ function addCard() {
     var type = document.getElementById("cardType").value;
     var description = document.getElementById("cardDescription").textContent;
 
-    $('.dropdown-item').click(function () {
+    $('cardRarity').click(function () {
         rarity = $(this).text();
     });
 
