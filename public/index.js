@@ -103,7 +103,6 @@ function addCard() {
                     return alert("Error occurred! Please contact a developer!");
                 });
             } else {
-
                 cards.collection(type).doc(name).set({
                     name: name,
                     HP: HP,
