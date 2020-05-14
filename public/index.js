@@ -37,7 +37,7 @@ function addCard() {
                 level: level,
                 XP: XP,
                 xpToLevelUp: xpToLevelUp
-            })
+            }).then()
         } else {
             console.log(`Card ${name} of type ${type} already exists.`);
             alert(`Card ${name} of type ${type} already exists. Please try something else!`);
