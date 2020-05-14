@@ -44,6 +44,9 @@ function addCard() {
             }
             break;
         case "Ultra Rare":
+            if (["Person", "Normal"].includes(type)) {
+
+            }
             break;
         case "Legendary":
             break;
