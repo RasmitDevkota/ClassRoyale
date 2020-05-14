@@ -26,7 +26,7 @@ function addCard() {
     var thumbnail = document.getElementById("cardThumbnail");
 
     var seed = Math.round(Math.random());
-    var HP
+    var HPV
 
     switch (rarity) {
         case "Common":
