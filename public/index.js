@@ -90,7 +90,7 @@ function addCard() {
                 type: type,
                 description: description,
                 rarity: rarity,
-                level: 0,
+                level: 1,
                 attackDamage: attackDamage,
                 XP: 0,
                 xpToLevelUp: 1000
