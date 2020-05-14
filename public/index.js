@@ -53,7 +53,7 @@ function addCard() {
 
     console.log(`${name}, ${HP}, ${type}, ${description}, ${rarity}, 1, ${attackDamage}, 0, 1000`);
 
-    cards.collection(type).doc(name).get().then(function (doc) {
+    cards.collection(type.toLowerCase()).doc(name).get().then(function (doc) {
         if (!doc.exists) {
             if (["Person", "Normal"].includes(type)) {
                 cards.collection(type).doc(name).set({
