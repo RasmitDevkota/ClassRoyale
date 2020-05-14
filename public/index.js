@@ -30,7 +30,7 @@ function addCard() {
         return console.log("Not enough parameters given. " + name + description + type + rarity);
     }
 
-    thumbnail.addEventListener('change',(function (e) {
+    thumbnail.addEventListener('change', (function (e) {
         var file = e.target.files[0];
         var storageRef = firebase.storage.ref('card_thumbnails/' + file.name);
 
