@@ -42,7 +42,7 @@ function addCard() {
                 level: 0,
                 attackDamage: attackDamage,
                 XP: 0,
-                xpToLevelUp: xpToLevelUp
+                xpToLevelUp: 1000
             }).then(function() {
                 console.log("Successfully added card ${name} of type ${type}!");
                 return alert("Successfully added card ${name} of type ${type}!");
