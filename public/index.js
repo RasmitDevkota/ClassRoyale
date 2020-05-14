@@ -28,8 +28,6 @@ function addCard() {
     if (!name || !type || !description || !rarity || !thumbnail) {
         alert ("You forgot to enter an input for something! Every field is required!");
         return console.log("Not enough parameters given.");
-    } else {
-        return alert("Continue!");
     }
 
     var seed = Math.round(Math.random());
