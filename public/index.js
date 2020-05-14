@@ -30,7 +30,7 @@ function addCard() {
     });
 
     $('cardRarity').click(function () {
-        rarity = $(this).text();
+        rarity = $(this).val();
     });
 
     var thumbnail = document.getElementById("cardThumbnail").files[0];
