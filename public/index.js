@@ -41,7 +41,6 @@ function addCard() {
     
     switch (rarity) {
         case "Common":
-            var HP = HPValues[seed];
             if (["Person", "Normal"].includes(type)) {
                 var attackDamage = attackDamageValues[seed];
             } else {
