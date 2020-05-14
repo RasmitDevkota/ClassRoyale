@@ -28,7 +28,7 @@ function addCard() {
     var attackDamage = document.getElementById("cardAttackDamage").textContent;
     var XP = document.getElementById("cardXP").textContent;
     var xpToLevelUp = document.getElementById("cardxpToLevelUp").textContent;
-    var thumbnail = 
+    var thumbnail = document.getElementById("cardThumbnail")
 
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
