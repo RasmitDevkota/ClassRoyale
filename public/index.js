@@ -29,7 +29,7 @@ function addCard() {
 
     var HP = 0;
     var attackDamage = 0;
-    
+    var xpToLevelUp = 0;
 
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
