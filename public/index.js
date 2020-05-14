@@ -27,7 +27,6 @@ function addCard() {
     var level = 0
     var thumbnail = document.getElementById("cardThumbnail");
 
-
     TODO("Insert xpToLevelUp Calculator!!!");
 
     cards.collection(type).doc(name).get().then(function (doc) {
