@@ -43,7 +43,7 @@ function addCard() {
             }
             break;
         case "Rare":
-            var HP = HPValues[seed + 2];
+            var HP = HPValues[seed + 4];
             if (["Person", "Normal"].includes(type)) {
                 var attackDamage = attackDamageValues[seed + 2];
             }
