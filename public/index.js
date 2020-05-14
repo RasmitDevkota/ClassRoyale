@@ -55,7 +55,7 @@ function addCard() {
             }
             break;
         case "Legendary":
-            var HP = HPValues[seed + 2];
+            var HP = HPValues[seed + 8];
             if (["Person", "Normal"].includes(type)) {
                 var attackDamage = attackDamageValues[seed + 2];
             }
