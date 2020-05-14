@@ -16,7 +16,7 @@ var users = db.collection("users");
 var emails = db.collection("emails");
 
 var storage = firebase.storage().ref();
-var cardThumbnails = storage.child('')
+var cardThumbnails = storage.child('card_thumbnails')
 
 function addCard() {
     var name = document.getElementById("cardName").textContent;
