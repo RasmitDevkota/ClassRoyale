@@ -30,7 +30,6 @@ function addCard() {
         return console.log("Not enough parameters given. " + name + description + type + rarity);
     }
 
-    thumbnail.addEventListener('change', function (e) {
         var file = e.target.files[0];
         if (!file) {
             return console.log("File: " + file);
