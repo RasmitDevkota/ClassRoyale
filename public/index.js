@@ -30,7 +30,7 @@ function addCard() {
         return console.log("Not enough parameters given. " + name + description + type + rarity);
     }
 
-    
+    thumbnail.onCh
 
     // var reader = new FileReader();
     // reader.onloadend = function () {
