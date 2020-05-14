@@ -50,57 +50,7 @@ function addCard() {
     } else {
         var attackDamage = null;
     }
-    
-    switch (rarity) {
-        case "Common":
-            var HP = HPValues[seed];
-            if (["Person", "Normal"].includes(type)) {
-                var attackDamage = attackDamageValues[seed];
-            } else {
-                var attackDamage = null;
-            }
-            break;
-        case "Normal":
-            var HP = HPValues[seed + 2];
-            if (["Person", "Normal"].includes(type)) {
-                var attackDamage = attackDamageValues[seed + 2];
-            } else {
-                var attackDamage = null;
-            }
-            break;
-        case "Rare":
-            var HP = HPValues[seed + 4];
-            if (["Person", "Normal"].includes(type)) {
-                var attackDamage = attackDamageValues[seed + 4];
-            } else {
-                var attackDamage = null;
-            }
-            break;
-        case "Ultra Rare":
-            var HP = HPValues[seed + 6];
-            if (["Person", "Normal"].includes(type)) {
-                var attackDamage = attackDamageValues[seed + 6];
-            } else {
-                var attackDamage = null;
-            }
-            break;
-        case "Legendary":
-            var HP = HPValues[seed + 8];
-            if (["Person", "Normal"].includes(type)) {
-                var attackDamage = attackDamageValues[seed + 8];
-            } else {
-                var attackDamage = null;
-            }
-            break;
-        case "Mythical":
-            var HP = HPValues[seed + 10];
-            if (["Person", "Normal"].includes(type)) {
-                var attackDamage = attackDamageValues[seed + 10];
-            } else {
-                var attackDamage = null;
-            }
-            break;
-    }
+
 
     console.log(`${name}, ${HP}, ${type}, ${description}, ${rarity}, 1, ${attackDamage}, 0, 1000`);
 
