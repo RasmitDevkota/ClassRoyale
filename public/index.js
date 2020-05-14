@@ -27,7 +27,7 @@ function addCard() {
 
     var HP = 0;
     var attackDamage = 0;
-    var xpToLevelUp = 100;
+    var xpToLevelUp = 1000;
 
     TODO("Use rarity to generate HP, attackDamage, and xpToLevelUp");
 
