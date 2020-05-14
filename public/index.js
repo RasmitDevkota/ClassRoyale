@@ -35,7 +35,7 @@ function addCard() {
     var reader = new FileReader();
 
     reader.onloadend = function () {
-        return alert(read)
+        return alert(reader)
     }
 
     if (file) {
