@@ -25,6 +25,7 @@ function addCard() {
     var rarity = document.getElementById("cardRarity").textContent;
     var thumbnail = document.getElementById("cardThumbnail");
 
+    var seed = 
     var HP = 0;
     var attackDamage = 0;
 
