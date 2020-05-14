@@ -22,9 +22,6 @@ function addCard() {
     var name = $("cardName").val();
     var description = $("cardDescription").val();
 
-    var type= "";
-    var rarity = "";
-
     type = $("cardType").val();
     rarity = $("cardRarity").val();
 
