@@ -85,25 +85,8 @@ function addCard() {
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
             if (["Person", "Normal"].includes(type)) {
-                
+
             }
-            cards.collection(type).doc(name).set({
-                name: name,
-                HP: HP,
-                type: type,
-                description: description,
-                rarity: rarity,
-                level: 1,
-                attackDamage: attackDamage,
-                XP: 0,
-                xpToLevelUp: 1000
-            }).then(function() {
-                console.log("Successfully added card ${name} of type ${type}!");
-                return alert("Successfully added card ${name} of type ${type}!");
-            }).catch(function (e) {
-                console.log(e);
-                return alert("Error occurred! Please contact a developer!");
-            });
         } else {
             console.log(`Card ${name} of type ${type} already exists.`);
             return alert(`Card ${name} of type ${type} already exists. Please try something else!`);
