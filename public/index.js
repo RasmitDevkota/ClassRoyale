@@ -23,6 +23,11 @@ function addCard() {
     var type = document.getElementById("cardType").value;
     var description = document.getElementById("cardDescription").textContent;
     var rarity = document.getElementById("cardRarity").value;
+
+    $('.dropdown-item').click(function () {
+        console.log($(this).text());
+    });
+
     var thumbnail = document.getElementById("cardThumbnail").files[0];
 
     if (!name || !type || !description || !rarity) {
