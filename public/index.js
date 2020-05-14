@@ -68,7 +68,7 @@ function addCard() {
             break;
     }
 
-    console.log("")
+    console.log(``)
 
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
