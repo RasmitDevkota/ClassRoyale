@@ -44,7 +44,7 @@ function addCard() {
             console.log(`Card ${name} of type ${type} already exists.`);
             return alert(`Card ${name} of type ${type} already exists. Please try something else!`);
         }
-    })
+    });
 }
 
 function testGame(name1, name2) {
