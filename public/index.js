@@ -23,6 +23,8 @@ function addCard() {
     var type = document.getElementById("cardType").value;
     var description = document.getElementById("cardDescription").textContent;
 
+    var rarity = ""
+
     $('cardRarity').click(function () {
         rarity = $(this).text();
     });
