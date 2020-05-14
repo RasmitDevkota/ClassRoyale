@@ -26,7 +26,7 @@ function addCard() {
     var thumbnail = document.getElementById("cardThumbnail").files[0];
 
     if (!name || !type || !description || !rarity || !thumbnail) {
-        alert ("You forgot to ")
+        alert ("You forgot to enter an input for something! Make sure everything is ")
         return console.log("Not enough parameters given.");
     }
 
