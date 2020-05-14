@@ -26,10 +26,10 @@ function addCard() {
     var rarity = document.getElementById("cardRarity").textContent;
     var level = 0
     var attackDamage = document.getElementById("cardAttackDamage").textContent;
-
-    
-    TODO("Insert xpToLevelUp Calculator!!!");
     var thumbnail = document.getElementById("cardThumbnail");
+
+
+    TODO("Insert xpToLevelUp Calculator!!!");
 
     cards.collection(type).doc(name).get().then(function (doc) {
         if (!doc.exists) {
