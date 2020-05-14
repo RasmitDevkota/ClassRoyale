@@ -10,7 +10,7 @@ firebase.initializeApp({
 });
 
 var db = firebase.firestore();
-var cards = db.collection("cards").document("cards");
+var cards = db.collection("cards").d("cards");
 var games = db.collection("games");
 var users = db.collection("users");
 var emails = db.collection("emails");
