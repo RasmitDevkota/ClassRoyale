@@ -29,7 +29,17 @@ function addCard() {
 
     switch (rarity) {
         case "Common":
-        break;
+            break;
+        case "Common":
+            break;
+        case "Common":
+            break;
+        case "Common":
+            break;
+        case "Common":
+            break;
+        case "Common":
+            break;
     }
 
     var HP = 0;
