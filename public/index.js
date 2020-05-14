@@ -26,7 +26,7 @@ function addCard() {
     var thumbnail = document.getElementById("cardThumbnail");
 
     var seed = Math.round(Math.random());
-    var HPValues = [100
+    var HPValues = [100,
 150,
 200,
 250,
