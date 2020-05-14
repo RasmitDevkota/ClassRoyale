@@ -27,8 +27,8 @@ function addCard() {
 
     var seed = Math.round(Math.random());
 
+    switch (rarity)
 
-    
     var HP = 0;
     var attackDamage = 0;
 
