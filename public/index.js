@@ -33,7 +33,6 @@ function addCard() {
         case "Common":
             if (["Person", "Normal"].includes(type)) {
                 var attackDamage = attackDamageValues[seed];
-
             }
             break;
         case "Normal":
