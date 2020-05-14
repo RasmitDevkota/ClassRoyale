@@ -80,8 +80,6 @@ function addCard() {
             break;
     }
 
-    
-
     console.log(`${name}, ${HP}, ${type}, ${description}, ${rarity}, 1, ${attackDamage}, 0, 1000`);
 
     cards.collection(type).doc(name).get().then(function (doc) {
