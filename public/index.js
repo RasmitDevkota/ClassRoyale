@@ -26,7 +26,8 @@ function addCard() {
     var thumbnail = document.getElementById("cardThumbnail");
 
     var seed = Math.round(Math.random());
-    var HPValues = [100,150,200,250,300,350,400,450,500,550,600]
+    var HPValues = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600]
+    var attackDamageValues = []
 
     switch (rarity) {
         case "Common":
