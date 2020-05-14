@@ -36,7 +36,7 @@ function addCard() {
             break;
         case "Ultra Rare":
             break;
-        case "":
+        case "Legendary":
             break;
         case "Common":
             break;
