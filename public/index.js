@@ -35,6 +35,7 @@ function addCard() {
                 description: description,
                 rarity: rarity,
                 level: level,
+                attackDamage: attackDamage,
                 XP: XP,
                 xpToLevelUp: xpToLevelUp
             }).then(function() {
