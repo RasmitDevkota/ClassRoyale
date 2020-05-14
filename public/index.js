@@ -32,7 +32,7 @@ function addCard() {
 
     var storageRef = firebase.storage().ref('card_thumbnails/' + thumbnail.name);
     storageRef.put(thumbnail).then(function (snapshot) {
-        console.log('Uploaded file ' + file.name + '!');
+        console.log('Uploaded file ' + thumbnail.name + '!');
     });
 
     var seed = Math.round(Math.random());
