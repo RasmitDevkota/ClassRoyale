@@ -30,16 +30,16 @@ function addCard() {
         return console.log("Not enough parameters given. " + name + description + type + rarity);
     }
 
-    var reader = new FileReader();
-    reader.onloadend = function () {
-        return console.log(reader.readAsDataURL(thumbnail));
-    }
+    // var reader = new FileReader();
+    // reader.onloadend = function () {
+    //     return console.log(reader.readAsDataURL(thumbnail));
+    // }
 
-    if (thumbnail) {
-        reader.readAsDataURL(thumbnail);
-    } else {
-        return alert("Card thumbnail is missing! Please insert an image!");
-    }
+    // if (thumbnail) {
+    //     reader.readAsDataURL(thumbnail);
+    // } else {
+    //     return alert("Card thumbnail is missing! Please insert an image!");
+    // }
 
     var seed = Math.round(Math.random());
     var HPValues = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600];
