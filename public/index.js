@@ -56,7 +56,7 @@ function addCard() {
     cards.collection(type.toLowerCase()).doc(name).get().then(function (doc) {
         if (!doc.exists) {
             if (["Person", "Normal"].includes(type)) {
-                cards.collection(type).doc(name).set({
+                cards.collection(type.toLowerCase()).doc(name).set({
                     name: name,
                     HP: HP,
                     type: type,
