@@ -16,7 +16,6 @@ var users = db.collection("users");
 var emails = db.collection("emails");
 
 var storage = firebase.storage().ref();
-var storageRef = storage.ref();
 
 function addCard() {
     var name = document.getElementById("cardName").textContent;
