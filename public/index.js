@@ -19,7 +19,7 @@ var storage = firebase.storage().ref();
 var cardThumbnails = storage.child('card_thumbnails')
 
 function addCard() {
-    var name = $("cardName").val();
+    var name = $("cardName").text();
     var description = $("cardDescription").val();
 
     var type = $("cardType").val();
