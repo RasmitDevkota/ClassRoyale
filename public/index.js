@@ -30,11 +30,6 @@ function addCard() {
         return console.log("Not enough parameters given. " + name + description + type + rarity);
     }
 
-    var file = thumbnail.files[0];
-    if (!file) {
-        return console.log("File: " + file);
-    }
-
     var storageRef = firebase.storage().ref('card_thumbnails/' + file.name);
     storageRef.put(file).then(function (snapshot) {
         console.log('Uploaded file ' + file.name + '!');
