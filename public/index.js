@@ -68,9 +68,6 @@ function addCard() {
             break;
     }
 
-    var HP = 0;
-    var attackDamage = 0;
-
     TODO("Use rarity to generate HP and attackDamage");
 
     cards.collection(type).doc(name).get().then(function (doc) {
