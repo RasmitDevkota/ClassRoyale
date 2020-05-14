@@ -29,7 +29,7 @@ function addCard() {
 
     switch (rarity) {
         case "Common":
-            if (["Person", "Normal"])
+            if (["Person", "Normal"].conta)
             break;
         case "Normal":
             break;
