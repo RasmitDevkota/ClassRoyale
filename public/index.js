@@ -25,7 +25,6 @@ function addCard() {
     var description = document.getElementById("cardDescription").textContent;
     var rarity = document.getElementById("cardRarity").textContent;
     var level = 0
-    var attackDamage = document.getElementById("cardAttackDamage").textContent;
     var thumbnail = document.getElementById("cardThumbnail");
 
 
