@@ -27,7 +27,7 @@ function addCard() {
     var xpToLevelUp = document.getElementById("cardxpToLevelUp").textContent;
 
     cards.collection(type).doc(name).get().then(function (doc) {
-        
+        if (doc.exists)
     })
 }
 
