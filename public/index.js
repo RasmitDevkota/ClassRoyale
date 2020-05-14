@@ -24,7 +24,7 @@ function addCard() {
     var type = document.getElementById("cardType").textContent;
     var description = document.getElementById("cardDescription").textContent;
     var rarity = document.getElementById("cardRarity").textContent;
-    var x
+    var level = 0
     var attackDamage = document.getElementById("cardAttackDamage").textContent;
     var XP = document.getElementById("cardXP").textContent;
     TODO("Insert xpToLevelUp Calculator!!!");
