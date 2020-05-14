@@ -40,7 +40,6 @@ function addCard() {
         storageRef.put(file).then(function (snapshot) {
             console.log('Uploaded file ' + file.name + '!');
         });
-    });
 
     var seed = Math.round(Math.random());
     var HPValues = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600];
