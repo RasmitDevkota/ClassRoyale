@@ -32,7 +32,7 @@ function addCard() {
     switch (rarity) {
         case "Common":
             if (["Person", "Normal"].includes(type)) {
-                var attackDamage = att
+                var attackDamage = attackDamageValues[]
             }
             break;
         case "Normal":
