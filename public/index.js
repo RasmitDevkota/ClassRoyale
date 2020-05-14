@@ -25,7 +25,7 @@ function addCard() {
     var rarity = document.getElementById("cardRarity").value;
 
     $('.dropdown-item').click(function () {
-        rarity = $(this).text());
+        rarity = $(this).text();
     });
 
     var thumbnail = document.getElementById("cardThumbnail").files[0];
