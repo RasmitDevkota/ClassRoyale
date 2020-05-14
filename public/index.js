@@ -32,7 +32,7 @@ function addCard() {
             break;
         case "Normal":
             break;
-        case "Common":
+        case "Rare":
             break;
         case "Common":
             break;
