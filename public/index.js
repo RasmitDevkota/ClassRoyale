@@ -36,7 +36,7 @@ function addCard() {
                 rarity: rarity,
                 level: level,
                 XP: XP,
-                
+                xpToLevelUp: xpToLevelUp
             })
         } else {
             console.log(`Card ${name} of type ${type} already exists.`);
