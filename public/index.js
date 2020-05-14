@@ -36,7 +36,7 @@ function addCard() {
     var seedOffsets = new Map([
         ['Common', 0],
         ['Normal', 2],
-        ['Rare', undefined],
+        ['Rare', 4],
         ['Ultra Rare', undefined],
         ['Legendary', undefined],
         ['Mythical', undefined]
