@@ -102,6 +102,25 @@ function addCard() {
                     console.log(e);
                     return alert("Error occurred! Please contact a developer!");
                 });
+            } else {
+
+                cards.collection(type).doc(name).set({
+                    name: name,
+                    HP: HP,
+                    type: type,
+                    description: description,
+                    rarity: rarity,
+                    level: 1,
+                    attackDamage: attackDamage,
+                    XP: 0,
+                    xpToLevelUp: 1000
+                }).then(function () {
+                    console.log("Successfully added card ${name} of type ${type}!");
+                    return alert("Successfully added card ${name} of type ${type}!");
+                }).catch(function (e) {
+                    console.log(e);
+                    return alert("Error occurred! Please contact a developer!");
+                });
             }
         } else {
             console.log(`Card ${name} of type ${type} already exists.`);
