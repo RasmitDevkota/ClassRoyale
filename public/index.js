@@ -51,7 +51,7 @@ function addCard() {
         case "Ultra Rare":
             var HP = HPValues[seed + 6];
             if (["Person", "Normal"].includes(type)) {
-                var attackDamage = attackDamageValues[seed + 2];
+                var attackDamage = attackDamageValues[seed + 6];
             }
             break;
         case "Legendary":
