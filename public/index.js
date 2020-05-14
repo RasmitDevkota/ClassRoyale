@@ -118,6 +118,8 @@ function addCard() {
                     XP: 0,
                     xpToLevelUp: 1000
                 }).then(function () {
+
+                    
                     console.log(`Successfully added card ${name} of type ${type}!`);
                     return alert(`Successfully added card ${name} of type ${type}!`);
                 }).catch(function (e) {
