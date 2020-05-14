@@ -118,7 +118,6 @@ function addCard() {
                     XP: 0,
                     xpToLevelUp: 1000
                 }).then(function () {
-
                     var storageRef = firebase.storage().ref('card_thumbnails/' + name);
                     storageRef.put(thumbnail).then(function (snapshot) {
                         console.log('Uploaded file ' + thumbnail.name + '!');
