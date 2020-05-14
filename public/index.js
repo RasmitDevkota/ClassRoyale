@@ -34,7 +34,7 @@ function addCard() {
         var file = e.target.files[0];
         var storageRef = firebase.storage.ref('card_thumbnails/' + file.name);
 
-        storageRef.put()
+        storageRef.put(file);
     })
 
     // var reader = new FileReader();
