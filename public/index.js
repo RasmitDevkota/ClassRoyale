@@ -30,7 +30,7 @@ function addCard() {
         return console.log("Not enough parameters given.");
     }
 
-    var preview = document.querySelector('img');
+    var preview = document.get;
 
     reader.onloadend = function () {
         return alert(reader.readAsDataURL);
