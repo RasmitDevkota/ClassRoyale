@@ -26,7 +26,7 @@ function addCard() {
     var thumbnail = document.getElementById("cardThumbnail").files[0];
 
     if (!name || !type || !description || !rarity || !thumbnail) {
-        return console.log("Not enough parameters given.")
+        return console.log("Not enough parameters given.");
     }
 
     var seed = Math.round(Math.random());
