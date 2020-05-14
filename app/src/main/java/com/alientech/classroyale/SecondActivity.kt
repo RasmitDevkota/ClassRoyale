@@ -12,13 +12,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.functions.FirebaseFunctions
+
 
 // Activity for the Home Screen
 class SecondActivity : AppCompatActivity(), OutOfDeckPopup.NoticeDialogListener {
@@ -51,6 +52,7 @@ class SecondActivity : AppCompatActivity(), OutOfDeckPopup.NoticeDialogListener 
     lateinit var startGameButton: Button
     lateinit var disconnectButton: Button
     lateinit var arButton: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -132,9 +134,21 @@ class SecondActivity : AppCompatActivity(), OutOfDeckPopup.NoticeDialogListener 
         Log.d(TAG, getUserStatus() + " " + getUserGame())
     }
 
-    public override fun onDestroy() {
+    override fun onDestroy() {
         super.onDestroy()
         safeDisconnect()
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        Log.d(TAG, "Nah, that's definitely not right...")
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        Log.d(TAG, "Nah, that's definitely not right...")
     }
 
     fun getUserStatus(): String {
@@ -328,64 +342,14 @@ class SecondActivity : AppCompatActivity(), OutOfDeckPopup.NoticeDialogListener 
 
     }
 
-    fun cardData(name: String, type: String) {
-        when(type) {
-            "normal" -> {
-                normalCards.document(name).get().addOnSuccessListener { document ->
-                    if (document != null) {
-                        Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    } else {
-                        Log.e(TAG, "No such document")
-                    }
-                }.addOnFailureListener { exception ->
-                    Log.e(TAG, "get failed with ", exception)
-                }
-            }
-
-            "person" -> {
-                personCards.document(name).get().addOnSuccessListener { document ->
-                    if (document != null) {
-                        Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    } else {
-                        Log.e(TAG, "No such document")
-                    }
-                }.addOnFailureListener { exception ->
-                    Log.e(TAG, "get failed with ", exception)
-                }
-            }
-        }
-    }
-
-    fun cardUnlock (cardType: String, cardName: String) {
-        var newCard = cardCollection.collection(cardType).document(cardName)
-        var newCardData = newCard.get()
-        var newCardDestination = userCardCollection.collection(cardType)
-
-        newCardDestination.document(cardName).set(newCardData)
-    }
-
-    fun editDeck (deckNumber: String, addCardName: String, addCardType: String,  removeCardName: String, removeCardType: String) {
-        var addCard = userCardCollection.collection(addCardType).document(addCardName)
-        lateinit var addCardData: DocumentSnapshot
-        addCard.get().addOnSuccessListener { documentSnapshot -> addCardData = documentSnapshot }
-
-        userDecks.collection(deckNumber).document(removeCardName).delete()
-
-        var addCardDeck = userDecks.collection(deckNumber)
-        addCardDeck.document(addCardName).set(addCardData)
-    }
-
-    fun showNoticeDialog() {
-        val dialog = OutOfDeckPopup()
-        supportFragmentManager?.let { dialog.show(it, "NoticeDialogFragment") }
-    }
+    private val CardsFragment: FragmentActivity? = null
 
     override fun onDialogPositiveClick(dialog: DialogFragment) {
         Log.d("CardsFragment", "Add card to deck")
     }
 
     override fun onDialogNegativeClick(dialog: DialogFragment) {
-        Log.d("CardsFragment", "Closed Popup")
+        dialog.dismiss()
     }
 
     companion object {

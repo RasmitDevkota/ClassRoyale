@@ -39,11 +39,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         startActivity(Intent(this, clicked))
     }
 
-    class MyArrayAdapter(
-        private val ctx: Context,
-        resource: Int,
-        private val classes: Array<Class<*>>
-    ) : ArrayAdapter<Class<*>>(ctx, resource, classes) {
+    class MyArrayAdapter(private val ctx: Context, resource: Int, private val classes: Array<Class<*>>) : ArrayAdapter<Class<*>>(ctx, resource, classes) {
         private var descriptionIds: IntArray? = null
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {

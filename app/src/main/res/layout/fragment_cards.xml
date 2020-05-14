@@ -14,7 +14,7 @@
             android:background="@color/colorPrimary"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_weight="3.5"
+            android:layout_weight="3"
             android:orientation="vertical">
 
             <TextView
@@ -34,10 +34,12 @@
                 <TableRow android:paddingHorizontal="5dp">
 
                     <com.alientech.classroyale.CardView
-                        card:name="YAYAYA"
-                        card:type="person"
+                        card:name=""
+                        card:type=""
+                        card:description=""
+                        card:rarity=""
                         android:clickable="true"
-                        android:id="@+id/first_card"
+                        android:id="@+id/card_1"
                         android:layout_gravity="center"
                         android:layout_height="50dp"
                         android:layout_width="0dp"
@@ -51,10 +53,12 @@
                     </com.alientech.classroyale.CardView>
 
                     <com.alientech.classroyale.CardView
-                        card:name="YAYAYA"
-                        card:type="person"
+                        card:name=""
+                        card:type=""
+                        card:description=""
+                        card:rarity=""
                         android:clickable="true"
-                        android:id="@+id/first_card1"
+                        android:id="@+id/card_2"
                         android:layout_gravity="center"
                         android:layout_height="50dp"
                         android:layout_width="0dp"
@@ -68,10 +72,12 @@
                     </com.alientech.classroyale.CardView>
 
                     <com.alientech.classroyale.CardView
-                        card:name="YAYAYA"
-                        card:type="person"
+                        card:name=""
+                        card:type=""
+                        card:description=""
+                        card:rarity=""
                         android:clickable="true"
-                        android:id="@+id/first_card2"
+                        android:id="@+id/card_3"
                         android:layout_gravity="center"
                         android:layout_height="50dp"
                         android:layout_width="0dp"
@@ -85,10 +91,12 @@
                     </com.alientech.classroyale.CardView>
 
                     <com.alientech.classroyale.CardView
-                        card:name="YAYAYA"
-                        card:type="person"
+                        card:name=""
+                        card:type=""
+                        card:description=""
+                        card:rarity=""
                         android:clickable="true"
-                        android:id="@+id/first_card3"
+                        android:id="@+id/card_4"
                         android:layout_gravity="center"
                         android:layout_height="50dp"
                         android:layout_width="0dp"
@@ -105,13 +113,15 @@
 
                 <TableRow
                     android:paddingHorizontal="5dp"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="7dp">
 
                     <com.alientech.classroyale.CardView
-                        card:name="YAYAYA"
-                        card:type="person"
+                        card:name=""
+                        card:type=""
+                        card:description=""
+                        card:rarity=""
                         android:clickable="true"
-                        android:id="@+id/first_card4"
+                        android:id="@+id/card_5"
                         android:layout_gravity="center"
                         android:layout_height="50dp"
                         android:layout_width="0dp"
@@ -125,10 +135,12 @@
                     </com.alientech.classroyale.CardView>
 
                     <com.alientech.classroyale.CardView
-                        card:name="YAYAYA"
-                        card:type="person"
+                        card:name=""
+                        card:type=""
+                        card:description=""
+                        card:rarity=""
                         android:clickable="true"
-                        android:id="@+id/first_card5"
+                        android:id="@+id/card_6"
                         android:layout_gravity="center"
                         android:layout_height="50dp"
                         android:layout_width="0dp"
@@ -142,10 +154,12 @@
                     </com.alientech.classroyale.CardView>
 
                     <com.alientech.classroyale.CardView
-                        card:name="YAYAYA"
-                        card:type="person"
+                        card:name=""
+                        card:type=""
+                        card:description=""
+                        card:rarity=""
                         android:clickable="true"
-                        android:id="@+id/first_card6"
+                        android:id="@+id/card_7"
                         android:layout_gravity="center"
                         android:layout_height="50dp"
                         android:layout_width="0dp"
@@ -159,10 +173,12 @@
                     </com.alientech.classroyale.CardView>
 
                     <com.alientech.classroyale.CardView
-                        card:name="YAYAYA"
-                        card:type="person"
+                        card:name=""
+                        card:type=""
+                        card:description=""
+                        card:rarity=""
                         android:clickable="true"
-                        android:id="@+id/first_card7"
+                        android:id="@+id/card_8"
                         android:layout_gravity="center"
                         android:layout_height="50dp"
                         android:layout_width="0dp"
