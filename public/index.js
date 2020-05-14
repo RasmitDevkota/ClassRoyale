@@ -34,6 +34,8 @@ function addCard() {
             var HP = HPValues[seed];
             if (["Person", "Normal"].includes(type)) {
                 var attackDamage = attackDamageValues[seed];
+            } else {
+                var attackDamage = null;
             }
             break;
         case "Normal":
