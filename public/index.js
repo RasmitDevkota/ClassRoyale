@@ -31,7 +31,7 @@ function addCard() {
     }
 
     thumbnail.addEventListener('change', function (e) {
-        if ()
+        
 
         var file = e.target.files[0];
         var storageRef = firebase.storage.ref('card_thumbnails/' + file.name);
