@@ -33,6 +33,7 @@ function addCard() {
     var preview = document.getElementById("cardThumbnailPreview");
 
     reader.onloadend = function () {
+        preview.src = reader.result;
         return alert(reader.readAsDataURL);
     }
 
