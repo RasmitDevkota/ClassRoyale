@@ -30,7 +30,7 @@ function addCard() {
         return console.log("Not enough parameters given. " + name + description + type + rarity);
     }
 
-    var file = e.target.files[0];
+    var file = thumbnail.files[0];
     if (!file) {
         return console.log("File: " + file);
     }
