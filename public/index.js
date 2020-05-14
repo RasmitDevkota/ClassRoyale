@@ -37,7 +37,7 @@ function addCard() {
 
     if (!name || !type || !description || !rarity) {
         alert ("You forgot to enter an input for something! Every field is required!");
-        return console.log("Not enough parameters given. " + name + type + description + type + rarity);
+        return console.log("Not enough parameters given. " + name + description + type + rarity);
     }
 
     var preview = document.getElementById("cardThumbnailPreview");
