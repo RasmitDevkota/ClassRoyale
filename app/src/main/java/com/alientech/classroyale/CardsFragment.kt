@@ -3,19 +3,22 @@ package com.alientech.classroyale
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.functions.FirebaseFunctions
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.fragment_cards.*
 import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL
@@ -42,9 +45,9 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
     var userPersonCards = userCardCollection.collection("person")
     var userStructureCards = userCardCollection.collection("structure")
 
-    var functions: FirebaseFunctions = FirebaseFunctions.getInstance()
+    val storage = FirebaseStorage.getInstance()
+    val storageRef = storage.reference
 
-    lateinit var deck: TableLayout
     lateinit var card1: CardView
     lateinit var card2: CardView
     lateinit var card3: CardView
@@ -70,7 +73,7 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
 
         for (card in deck) {
             card.setOnClickListener{
-                var dialog = OutOfDeckPopup(TODO("Get data from firebase and put here!"))
+                var dialog = OutOfDeckPopup("Hello! I will fix this soon")
                 Log.d("Cards", "Clicked")
                 dialog.show(activity!!.supportFragmentManager, "NoticeDialogFragment")
             }
@@ -79,6 +82,7 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
         userDecks.get().addOnSuccessListener { document ->
             if (document == null || document.data == null) {
                 Log.d("Cards", "No deck found, returning to default deck")
+                // Generate default deck/set it up in FS
                 return@addOnSuccessListener
             }
 
@@ -219,62 +223,17 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
                     attackDamage = deckCard[8] as Int
                 }
             }
+
+            for (i in 1..8) {
+                outOfDeckCards[i - 1] = userDeck["card$i"]?.get(0) as String
+            }
         }
 
-//        card1.setOnClickListener{
-//            var dialog = OutOfDeckPopup("Insert card properties here!!!!")
-//            Log.d("Cards", "Clicked")
-//            dialog.show(activity!!.supportFragmentManager, "NoticeDialogFragment")
-//        }
-//
-//        card2.setOnClickListener{
-//            var dialog = OutOfDeckPopup("Insert card properties here!!!!")
-//            Log.d("Cards", "Clicked")
-//            dialog.show(activity!!.supportFragmentManager, "NoticeDialogFragment")
-//        }
-//
-//        card3.setOnClickListener{
-//            var dialog = OutOfDeckPopup("Insert card properties here!!!!")
-//            Log.d("Cards", "Clicked")
-//            dialog.show(activity!!.supportFragmentManager, "NoticeDialogFragment")
-//        }
-//
-//        card4.setOnClickListener{
-//            var dialog = OutOfDeckPopup("Insert card properties here!!!!")
-//            Log.d("Cards", "Clicked")
-//            dialog.show(activity!!.supportFragmentManager, "NoticeDialogFragment")
-//        }
-//
-//        card5.setOnClickListener{
-//            var dialog = OutOfDeckPopup("Insert card properties here!!!!")
-//            Log.d("Cards", "Clicked")
-//            dialog.show(activity!!.supportFragmentManager, "NoticeDialogFragment")
-//        }
-//
-//        card6.setOnClickListener{
-//            var dialog = OutOfDeckPopup("Insert card properties here!!!!")
-//            Log.d("Cards", "Clicked")
-//            dialog.show(activity!!.supportFragmentManager, "NoticeDialogFragment")
-//        }
-//
-//        card7.setOnClickListener{
-//            var dialog = OutOfDeckPopup("Insert card properties here!!!!")
-//            Log.d("Cards", "Clicked")
-//            dialog.show(activity!!.supportFragmentManager, "NoticeDialogFragment")
-//        }
-//
-//        card8.setOnClickListener{
-//            var dialog = OutOfDeckPopup("Insert card properties here!!!!")
-//            Log.d("Cards", "Clicked")
-//            dialog.show(activity!!.supportFragmentManager, "NoticeDialogFragment")
-//        }
+        val adapter = OutOfDeckCardsAdapter(activity!!, android.R.layout.activity_list_item, outOfDeckCards, cardTypes)
 
-//        val adapter = OutOfDeckCardsAdapter(activity!!, android.R.layout.activity_list_item, outOfDeckCards)
-//        adapter.setDescriptionIds(TODO("Insert stuff here (card image urls?)"))
-//
-//        this.listView.adapter = adapter
-//        this.listView.onItemClickListener = TODO("Sorry I have no clue what goes here tbh")
+        this.listView.adapter = adapter
     }
+
 
     fun cardUnlock (cardType: String, cardName: String) {
         var newCard = cardCollection.collection(cardType).document(cardName)
@@ -324,47 +283,89 @@ class CardsFragment : Fragment(R.layout.fragment_cards) {
         }
     }
 
-//    lateinit var outOfDeckCards: Array<String>
-//
-//    fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-//        val clicked = outOfDeckCards[position]
-//        TODO("Insert dialog stuff idk")
-//    }
-//
-//    class OutOfDeckCardsAdapter(private val ctx: Context, resource: Int, private val outOfDeckCards: Array<String>) : ArrayAdapter<String>(ctx, resource, outOfDeckCards) {
-//        private var descriptionIds: Array<String>? = null
-//
-//        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
-//            var view = convertView
-//
-//            if (convertView == null) {
-//                val inflater = ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//                view = inflater.inflate(android.R.layout.activity_list_item, null)
-//            }
-//
-//            view?.findViewById<ImageView>(android.R.id.icon)?.setImageBitmap(getBitmapFromURL(descriptionIds?.get(position)))
-//            view?.findViewById<TextView>(android.R.id.text1)?.text = outOfDeckCards!![position]
-//
-//            return view
-//        }
-//
-//        fun setDescriptionIds(descriptionIds: Array<String>) {
-//            this.descriptionIds = descriptionIds
-//        }
-//
-//        fun getBitmapFromURL(src: String?): Bitmap? {
-//            return try {
-//                val url = URL(src)
-//                val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
-//                connection.setDoInput(true)
-//                connection.connect()
-//                val input: InputStream = connection.getInputStream()
-//                val myBitmap = BitmapFactory.decodeStream(input)
-//                myBitmap
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//                null
-//            }
-//        }
-//    }
+    var outOfDeckCards: Array<String> = arrayOf("Wonkek", "Chair", "Wonkek", "Wonkek", "Wonkek", "Wonkek", "Wonkek", "Wonkek")
+    var cardTypes: Array<String> = arrayOf("Person", "Structure", "Person", "Person", "Person", "Person", "Person", "Person")
+
+    class OutOfDeckCardsAdapter(private val ctx: Context, resource: Int, private val outOfDeckCards: Array<String>, private val types: Array<String>) : ArrayAdapter<String>(ctx, resource, outOfDeckCards) {
+        val user = FirebaseAuth.getInstance().currentUser
+        val db = FirebaseFirestore.getInstance()
+        val storage = FirebaseStorage.getInstance()
+        val storageRef = storage.reference
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
+            var view = convertView
+
+            if (convertView == null) {
+                val inflater = ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                view = inflater.inflate(android.R.layout.activity_list_item, null)
+            }
+
+            db.collection("cards").document("cards").collection("${types[position].toLowerCase()}").document("${outOfDeckCards[position]}").get().addOnSuccessListener{ document ->
+                var thumbnailRef = document.data!!["storageRef"].toString()
+
+                Log.d("OutOfDeckAdapter", "${types[position]}, ${outOfDeckCards[position]}, $thumbnailRef")
+
+                val storageReference = "https://firebasestorage.googleapis.com/v0/b/class-royale.appspot.com/o/card_thumbnails%2F${outOfDeckCards[position]}?alt=media"
+                val imageView = view?.findViewById<ImageView>(android.R.id.icon)
+
+                if (imageView != null) {
+                    if (view != null) {
+                        BitmapFromURL().execute(storageReference)
+                    } else {
+                        Log.e("Cards", "Something null")
+                    }
+                } else {
+                    Log.e("Cards", "Something null")
+                }
+            }
+
+            view?.findViewById<TextView>(android.R.id.text1)?.text = outOfDeckCards[position]
+
+            return view
+        }
+
+        fun getBitmapFromURL(src: String?): Bitmap? {
+            return try {
+                Log.d("src", src)
+                val url = URL(src)
+                val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
+                connection.doInput = true
+                connection.connect()
+                val input: InputStream = connection.getInputStream()
+                val myBitmap = BitmapFactory.decodeStream(input)
+                Log.d("Bitmap", "returned")
+                myBitmap
+            } catch (e: Exception) {
+                e.printStackTrace()
+                null
+            }
+        }
+
+        private open class BitmapFromURL : AsyncTask<String, Int?, Bitmap?>() {
+            override fun doInBackground(vararg params: String?): Bitmap? {
+                return try {
+                    Log.d("src", params[0])
+                    val url = URL(params[0])
+                    val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
+                    connection.doInput = true
+                    connection.connect()
+                    val input: InputStream = connection.inputStream
+                    val myBitmap = BitmapFactory.decodeStream(input)
+                    Log.d("Bitmap", "returned")
+                    myBitmap
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    null
+                }
+            }
+
+            override fun onProgressUpdate(vararg values: Int?) {
+                super.onProgressUpdate()
+            }
+
+            override fun onPostExecute(result: Bitmap?) {
+                super.onPostExecute(result)
+            }
+        }
+    }
 }

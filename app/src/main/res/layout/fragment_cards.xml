@@ -198,13 +198,12 @@
         </LinearLayout>
 
 
-
-    <LinearLayout
-        android:background="@color/colorPrimaryDark"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:layout_weight="1">
-
-    </LinearLayout>
+        <ListView
+            android:id="@+id/listView"
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            android:layout_weight="1"/>
 
 </LinearLayout>
