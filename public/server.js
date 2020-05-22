@@ -18,7 +18,6 @@ app.use(express.static(path.join(__dirname, '')));
 
 const botName = 'ChatCord Bot';
 
-// Run when client connects
 io.on('connection', socket => {
     socket.on('joinRoom', ({ username, room }) => {
         const user = userJoin(socket.id, username, room);
