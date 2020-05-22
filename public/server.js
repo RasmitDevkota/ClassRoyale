@@ -13,7 +13,6 @@ const {
 const server = http.createServer(app);
 const io = socketio(server);
 
-
 const botName = 'ChatCord Bot';
 
 io.on('connection', socket => {
