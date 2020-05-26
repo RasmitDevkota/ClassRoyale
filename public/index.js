@@ -181,11 +181,12 @@ function joinGame(/* gameId, */name) {
         name: name
     }).then(
         setTimeout(function () {
-        queue.on('value', function (snapshot) {
-            var data = snapshot.val();
+            queue.on('value', function (snapshot) {
+                var data = snapshot.val();
 
-            return console.log(data);
-        }, 3000);
+                return console.log(data);
+            }
+    }, 3000);
     });
 
     queue.on('child_removed', function (data) {
