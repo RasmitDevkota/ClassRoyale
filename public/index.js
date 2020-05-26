@@ -157,6 +157,8 @@ function startGame(name) {
         return console.log(postElement, data.key, data.val().text, data.val().author);
     });
 
+    return;
+
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
         var data = snapshot.val();
 
