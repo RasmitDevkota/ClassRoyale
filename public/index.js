@@ -146,10 +146,7 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    queues.equalTo("PENDING", "QUEUE").limitToFirst(1);
-
-    var userId = firebase.auth().currentUser.uid;
-    return firebase.database().ref('/users/' + userId).once('value').then(function (snapshot) {
+    queues.equalTo("PENDING", "QUEUE").limitToFirst(1).once('value').then(function (snapshot) {
         var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
         // ...
     });
