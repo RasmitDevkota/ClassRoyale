@@ -186,6 +186,7 @@ function joinGame(/* gameId, */name) {
 
             return console.log(data);
         });
+        )
     });
 
     queue.on('child_removed', function (data) {
