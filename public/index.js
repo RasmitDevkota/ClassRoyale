@@ -158,7 +158,7 @@ function startGame(name) {
     });
 
     queue.on('child_changed', function (data) {
-        setCommentValues(postElement, data.key, data.val().text, data.val().author);
+        console.log(postElement, data.key, data.val().text, data.val().author);
     });
 
     queue.on('child_removed', function (data) {
