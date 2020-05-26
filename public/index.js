@@ -146,6 +146,8 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
+
+    
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
         var data = snapshot.val();
 
