@@ -146,7 +146,6 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    // Create a new post reference with an auto-generated id
     var newPostRef = postListRef.push();
     newPostRef.set({
         // ...
