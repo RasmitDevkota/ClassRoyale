@@ -195,7 +195,8 @@ function joinGame(name) {
         } else if (i == 1) {
             return;
         } else {
-            alert('Error occurred!')
+            alert('Error occurred!');
+            
         }
     });
 
