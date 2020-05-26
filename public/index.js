@@ -153,7 +153,6 @@ function startGame(name) {
         "user1": name
     });
 
-    var queue = firebase.database().ref('post-comments/' + postId);
     queue.on('child_added', function (data) {
         addCommentElement(postElement, data.key, data.val().text, data.val().author);
     });
