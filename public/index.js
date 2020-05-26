@@ -176,7 +176,7 @@ function startGame(name) {
 
 function joinGame(gameId, name) {
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1)
-        .on('value', function (snapshot) {
+    .on('value', function (snapshot) {
         var data = snapshot.val();
 
         console.log(data);
