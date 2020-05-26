@@ -189,6 +189,8 @@ function joinGame(name) {
 
             i++;
         });
+
+        if (i == 0)
     });
 
     return;
