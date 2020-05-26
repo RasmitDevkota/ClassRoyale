@@ -186,7 +186,7 @@ function joinGame(/* gameId, */name) {
             queue.on('value', function (snapshot) {
                 var data = snapshot.val();
 
-                return console.log("joinGame value", data);
+                return console.log("joinGame value", data.value);
             });
 
             queue.on('child_removed', function (data) {
