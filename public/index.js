@@ -180,7 +180,8 @@ function joinGame(/* gameId, */name) {
     update['/queues/' + gameToJoin + '/' + name] = firebase.firestore.FieldValue.serverTimestamp();
     return firebase.database().ref().update(update).then(function () {
         setTimeout(function () {
-            console.log (gameToJoin)
+            console.log(gameToJoin);
+            
             // gameToJoin.on('value', function (snapshot) {
             //     var data = snapshot.val();
 
