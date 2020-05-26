@@ -145,7 +145,7 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    var recentPostsRef = firebase.database().ref('posts').limitToLast(100);
+    var queue = firebase.database().ref('posts').limitToLast(100);
 
     return;
     emails.doc(name).get().then(function (doc) {
