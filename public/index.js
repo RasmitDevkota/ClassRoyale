@@ -153,8 +153,6 @@ function startGame(name) {
         "user1": name
     });
 
-    
-
     queue.on('child_added', function (data) {
         return console.log(data.key, data.val().text, data.val().author);
     });
