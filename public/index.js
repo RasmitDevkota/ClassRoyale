@@ -178,6 +178,7 @@ function joinGame(name) {
         var i = 0;
         snapshot.forEach(function (childSnapshot) {
             i++;
+            
             var gameKey = childSnapshot.key;
             console.log(gameKey);
 
