@@ -179,7 +179,7 @@ function joinGame(/* gameId, */name) {
 
     queue.child("queue/" + name).push().set({
         name: name
-    }).then({}
+    }).then({
         setTimeout(function () {
             queue.on('value', function (snapshot) {
                 var data = snapshot.val();
