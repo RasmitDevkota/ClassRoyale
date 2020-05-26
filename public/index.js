@@ -178,7 +178,8 @@ function joinGame(/* gameId, */name) {
     var queue = queues.orderByValue().equalTo("PENDING", "queue").limitToFirst(1);
 
     queue.push().set({
-        name: name
+        "queue": {
+            name: name
     }).then(function () {
         setTimeout(function () {
             queue.on('value', function (snapshot) {
