@@ -170,7 +170,6 @@ function joinGame(name) {
 
             firebase.database().ref().update(update).then(function () {
                 alert('Found a game!');
-            
             });
 
             i++;
