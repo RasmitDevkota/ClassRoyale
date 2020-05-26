@@ -189,10 +189,6 @@ function joinGame(/* gameId, */name) {
         }, 3000);
     });
 
-    queue.on('child_removed', function (data) {
-        return console.log(data.key);
-    });
-
     return;
     emails.doc(name).get().then(function (doc) {
         var uid = doc.data().uid;
