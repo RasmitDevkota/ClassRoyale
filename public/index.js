@@ -147,15 +147,6 @@ function testGame(name1, name2) {
 
 function startGame(name) {
     queues.child(name).push().set({
-        "ts-functions": {
-            "metrics": {
-                "views": 1200000,
-                "likes": 251000,
-                "shares": 1200,
-            },
-            "title": "Why you should use TypeScript for writing Cloud Functions",
-            "author": "Doug",
-        },
         "android-arch-3": {
             "metrics": {
                 "views": 900000,
