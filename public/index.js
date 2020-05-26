@@ -146,7 +146,7 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    queues.ref(name).push().set({
+    queues.child(name).push().set({
         "status": "PENDING",
         "user1": name
     });
