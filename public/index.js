@@ -155,22 +155,6 @@ function startGame(name) {
             return console.log("startGame", data.key, data.val().text, data.val().author);
         });
     });
-
-    return;
-    emails.doc(name).get().then(function (doc) {
-        var uid = doc.data().uid;
-
-        var gameDoc = games.doc();
-        gameDoc.set({
-            status: "PENDING",
-            user1: {
-                uid: uid,
-                name: name
-            }
-        }).then(function () {
-            console.log(`User ${name} with uid ${uid} created game ${gameDoc.id}.`);
-        });
-    });
 }
 
 function joinGame(name) {
