@@ -146,9 +146,12 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    var queue = queues.child.push({
+    var queue = queues.push({
         "status": "PENDING",
         "user1": name
+    });
+
+    queue.set({
     });
 
     queue.on('child_added', function (data) {
