@@ -166,7 +166,7 @@ function startGame(name) {
                 "title": "Using Android Architecture Components with Firebase Realtime Database (Part 3)",
                 "author": "Doug",
             }
-        },
+        }
     });
 
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
