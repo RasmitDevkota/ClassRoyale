@@ -153,7 +153,18 @@ function startGame(name) {
         "user1": name
     });
 
-    queue.
+    var commentsRef = firebase.database().ref('post-comments/' + postId);
+    commentsRef.on('child_added', function (data) {
+        addCommentElement(postElement, data.key, data.val().text, data.val().author);
+    });
+
+    commentsRef.on('child_changed', function (data) {
+        setCommentValues(postElement, data.key, data.val().text, data.val().author);
+    });
+
+    commentsRef.on('child_removed', function (data) {
+        deleteComment(postElement, data.key);
+    });
 
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
         var data = snapshot.val();
