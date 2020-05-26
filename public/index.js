@@ -183,7 +183,7 @@ function joinGame(/* gameId, */name) {
         }
     }).then(function () {
         setTimeout(function () {
-            queue.on('value', function (snapshot) {
+            gameToJoin.on('value', function (snapshot) {
                 var data = snapshot.val();
 
                 return console.log("joinGame value", data);
