@@ -180,15 +180,15 @@ function joinGame(/* gameId, */name) {
     update['/queues/' + gameToJoin + '/' + name] = firebase.firestore.FieldValue.serverTimestamp();
     return firebase.database().ref().update(update).then(function () {
         setTimeout(function () {
-            gameToJoin.on('value', function (snapshot) {
-                var data = snapshot.val();
+            // gameToJoin.on('value', function (snapshot) {
+            //     var data = snapshot.val();
 
-                return console.log("joinGame value", data);
-            });
+            //     return console.log("joinGame value", data);
+            // });
 
-            gameToJoin.on('child_removed', function (data) {
-                return console.log("joinGame removed", data.key);
-            });
+            // gameToJoin.on('child_removed', function (data) {
+            //     return console.log("joinGame removed", data.key);
+            // });
         }, 3000);
     });
 
