@@ -179,7 +179,7 @@ function joinGame(name) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             // ...
-        });;
+        });
 
     var update = {};
     update['/queues/' + gameToJoin + '/queue/' + name] = new Date().getTime();
