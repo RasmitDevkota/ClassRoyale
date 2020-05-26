@@ -146,7 +146,7 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    queues.child(uid).push().set({
+    queues.child(name).push().set({
         "${userid}": {
             "ts-functions": {
                 "metrics": {
