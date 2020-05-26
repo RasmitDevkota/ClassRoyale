@@ -149,7 +149,6 @@ function startGame(name) {
     var queue = queues.child(name);
 
     queue.push({
-
         "status": "PENDING",
         "user1": name
     });
