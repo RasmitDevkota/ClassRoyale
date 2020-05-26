@@ -191,7 +191,7 @@ function joinGame(name) {
         });
 
         if (i == 0) {
-            
+            return joinGame(name);
         }
     });
 
