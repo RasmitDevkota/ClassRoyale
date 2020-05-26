@@ -180,6 +180,7 @@ function joinGame(/* gameId, */name) {
     queue.push().set({
         "queue": {
             name: name
+        }
     }).then(function () {
         setTimeout(function () {
             queue.on('value', function (snapshot) {
