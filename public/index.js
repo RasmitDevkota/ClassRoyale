@@ -174,13 +174,13 @@ function startGame(name) {
 }
 
 function joinGame(name) {
-    queues.orderByValue().equalTo("PENDING", "queue").limitToFirst(1).once('value', function (snapshot) {
+    queues.orderByValue().equalTo("PENDING", "stat").limitToFirst(1).once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
             var gameKey = childSnapshot.key;
 
             var update = {};
             update['/queues/' + gameKey + '/queue/' + name] = new Date().getTime();
-            
+
             firebase.database().ref().update(update).then(function () {
                 console.log(gameKey);
             });
