@@ -181,7 +181,7 @@ function joinGame(name) {
             var update = {};
             update['/queues/' + gameKey + '/queue/' + name] = new Date().getTime();
             firebase.database().ref().update(update).then(function () {
-                    console.log(gameKey);
+                console.log(gameKey);
             });
         });
     });
