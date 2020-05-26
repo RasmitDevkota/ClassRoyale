@@ -149,6 +149,7 @@ function startGame(name) {
     var queue = queues.child(name);
 
     queue.set({
+        
     });
 
     queue.on('child_added', function (data) {
