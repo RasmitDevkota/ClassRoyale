@@ -147,7 +147,26 @@ function testGame(name1, name2) {
 
 function startGame(name) {
     queues.push().set({
-        
+        "posts": {
+            "ts-functions": {
+                "metrics": {
+                    "views": 1200000,
+                    "likes": 251000,
+                    "shares": 1200,
+                },
+                "title": "Why you should use TypeScript for writing Cloud Functions",
+                "author": "Doug",
+            },
+            "android-arch-3": {
+                "metrics": {
+                    "views": 900000,
+                    "likes": 117000,
+                    "shares": 144,
+                },
+                "title": "Using Android Architecture Components with Firebase Realtime Database (Part 3)",
+                "author": "Doug",
+            }
+        },
     });
 
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
