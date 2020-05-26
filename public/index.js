@@ -184,7 +184,7 @@ function joinGame(gameId, name) {
     });
 
     queue.on('child_removed', function (data) {
-        deleteComment(postElement, data.key);
+        console.log(postElement, data.key);
     });
 
     return;
