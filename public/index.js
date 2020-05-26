@@ -183,6 +183,11 @@ function joinGame(gameId, name) {
         console.log(data);
     });
 
+
+    commentsRef.on('child_changed', function (data) {
+        setCommentValues(postElement, data.key, data.val().text, data.val().author);
+    });
+
     return;
     emails.doc(name).get().then(function (doc) {
         var uid = doc.data().uid;
