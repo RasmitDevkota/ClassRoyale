@@ -180,24 +180,6 @@ function joinGame(name) {
         });
     });
 
-    var update = {};
-    update['/queues/' + gameToJoin + '/queue/' + name] = new Date().getTime();
-    firebase.database().ref().update(update).then(function () {
-        setTimeout(function () {
-            console.log(gameToJoin);
-            
-            // gameToJoin.on('value', function (snapshot) {
-            //     var data = snapshot.val();
-
-            //     return console.log("joinGame value", data);
-            // });
-
-            // gameToJoin.on('child_removed', function (data) {
-            //     return console.log("joinGame removed", data.key);
-            // });
-        }, 3000);
-    });
-
     return;
     emails.doc(name).get().then(function (doc) {
         var uid = doc.data().uid;
