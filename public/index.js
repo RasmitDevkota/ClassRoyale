@@ -174,7 +174,7 @@ function startGame(name) {
     });
 }
 
-function joinGame(/* gameId,*/name ) {
+function joinGame(/* gameId,*/name) {
     var queue = queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1);
 
     queue.push("queue/" + name)
