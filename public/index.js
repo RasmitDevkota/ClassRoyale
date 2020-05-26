@@ -158,8 +158,6 @@ function startGame(name) {
     });
 
     return;
-
-    return;
     emails.doc(name).get().then(function (doc) {
         var uid = doc.data().uid;
 
