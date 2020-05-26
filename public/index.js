@@ -146,6 +146,7 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
+    queues.
 
     return;
     emails.doc(name).get().then(function (doc) {
