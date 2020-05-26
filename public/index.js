@@ -177,6 +177,8 @@ function startGame(name) {
 function joinGame(/* gameId, */name) {
     var gameToJoin = queues.orderByValue().equalTo("PENDING", "queue").limitToFirst(1);
 
+    var 
+
     gameToJoin.push().set({
         "queue": {
             name: firebase.firestore.FieldValue.serverTimestamp()
