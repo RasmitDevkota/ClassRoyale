@@ -179,7 +179,7 @@ function joinGame(name) {
             var gameKey = childSnapshot.key;
 
             var update = {};
-            update['/queues/' + gameToJoin + '/queue/' + name] = new Date().getTime();
+            update['/queues/' + gameKey + '/queue/' + name] = new Date().getTime();
             firebase.database().ref().update(update).then(function () {
                 setTimeout(function () {
                     console.log(gameToJoin);
