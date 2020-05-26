@@ -185,7 +185,7 @@ function joinGame(/* gameId, */name) {
                 var data = snapshot.val();
 
                 return console.log(data);
-            }
+            });
         }, 3000);
     });
 
