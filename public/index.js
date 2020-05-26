@@ -172,7 +172,6 @@ function joinGame(name) {
                 console.log('Found a game!');
 
                 queue.once('child_removed', function (data) {
-                    alert('User found!');
                     return console.log("startGame", data.key, data.val().text, data.val().author);
                 });
             });
