@@ -177,7 +177,7 @@ function joinGame(name) {
     var gameToJoin = queues.orderByValue().equalTo("PENDING", "queue").limitToFirst(1).key;
 
     var update = {};
-    update['/queues/' + gameToJoin + '/queue/' + name] = firebase.firestore.FieldValue.serverTimestamp();
+    update['/queues/' + gameToJoin + '/queue/' + name] = new Date().;
     firebase.database().ref().update(update).then(function () {
         setTimeout(function () {
             console.log(gameToJoin);
