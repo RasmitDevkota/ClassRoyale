@@ -186,6 +186,8 @@ function joinGame(name) {
             firebase.database().ref().update(update).then(function () {
                 console.log("Yay!");
             });
+            
+            i++;
         });
     });
 
