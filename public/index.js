@@ -169,7 +169,7 @@ function joinGame(name) {
             update['/queues/' + gameKey + '/queue/' + name] = new Date().getTime();
 
             firebase.database().ref().update(update).then(function () {
-                return ('Found a game!');
+                console.log('Found a game!');
             });
 
             i++;
