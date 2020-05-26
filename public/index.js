@@ -158,11 +158,11 @@ function startGame(name) {
         addCommentElement(postElement, data.key, data.val().text, data.val().author);
     });
 
-    commentsRef.on('child_changed', function (data) {
+    queue.on('child_changed', function (data) {
         setCommentValues(postElement, data.key, data.val().text, data.val().author);
     });
 
-    commentsRef.on('child_removed', function (data) {
+    queue.on('child_removed', function (data) {
         deleteComment(postElement, data.key);
     });
 
