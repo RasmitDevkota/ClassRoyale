@@ -147,7 +147,7 @@ function testGame(name1, name2) {
 function startGame(name) {
 
 
-    
+    return;
     emails.doc(name).get().then(function (doc) {
         var uid = doc.data().uid;
 
