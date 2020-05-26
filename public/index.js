@@ -189,7 +189,7 @@ function joinGame(/* gameId, */name) {
                 return console.log("joinGame value", data);
             });
 
-            queue.on('child_removed', function (data) {
+            gameToJoin.on('child_removed', function (data) {
                 return console.log("joinGame removed", data.key);
             });
         }, 3000);
