@@ -146,8 +146,7 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    var newPostRef = postListRef.push();
-    newPostRef.set({
+    var newPostRef = postListRef.push().set({
         // ...
     });
 
