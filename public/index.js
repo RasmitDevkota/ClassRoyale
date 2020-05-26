@@ -177,6 +177,7 @@ function joinGame(name) {
     queues.orderByValue().equalTo("PENDING", "status").limitToFirst(1).once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
             var gameKey = childSnapshot.key;
+            console.log(gameKey);
 
             var update = {};
             update['/queues/' + gameKey + '/queue/' + name] = new Date().getTime();
