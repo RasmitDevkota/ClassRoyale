@@ -148,7 +148,7 @@ function testGame(name1, name2) {
 function startGame(name) {
     queues.child(name).push().set({
         "status": {
-            ""
+        
         },
         "user1": {
 
