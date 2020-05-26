@@ -152,8 +152,6 @@ function startGame(name) {
         "status": "PENDING",
         "user1": name
     }).then(function () {
-
-
         queue.on('child_added', function (data) {
             return console.log(data.key, data.val().text, data.val().author);
         });
