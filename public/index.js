@@ -161,10 +161,6 @@ function startGame(name) {
         console.log(postElement, data.key, data.val().text, data.val().author);
     });
 
-    queue.on('child_removed', function (data) {
-        deleteComment(postElement, data.key);
-    });
-
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
         var data = snapshot.val();
 
