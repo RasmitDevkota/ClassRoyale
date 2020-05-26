@@ -177,6 +177,26 @@ function joinGame(name) {
     var gameToJoin = queues.orderByValue().equalTo("PENDING", "queue").limitToFirst(1).once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;
+
+
+
+            var update = {};
+            update['/queues/' + gameToJoin + '/queue/' + name] = new Date().getTime();
+            firebase.database().ref().update(update).then(function () {
+                setTimeout(function () {
+                    console.log(gameToJoin);
+
+                    // gameToJoin.on('value', function (snapshot) {
+                    //     var data = snapshot.val();
+
+                    //     return console.log("joinGame value", data);
+                    // });
+
+                    // gameToJoin.on('child_removed', function (data) {
+                    //     return console.log("joinGame removed", data.key);
+                    // });
+                }, 3000);
+            });
         });
     });
 
