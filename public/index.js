@@ -199,16 +199,4 @@ function joinGame(name) {
             return console.error(`Error occurred: joinGame query size ${i} not equal to 0 or 1`);
         }
     });
-
-    return;
-    emails.doc(name).get().then(function (doc) {
-        var uid = doc.data().uid;
-
-        games.doc(gameId).update({
-            status: "CHECKING",
-            ["queue." + uid]: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(function () {
-            console.log(`User ${name} with uid ${uid} joined queue for game ${gameId} at ${firebase.firestore.FieldValue.serverTimestamp()}.`);
-        });
-    });
 }
