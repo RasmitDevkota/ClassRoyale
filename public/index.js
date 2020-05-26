@@ -149,7 +149,9 @@ function startGame(name) {
     queues.child(name).push().set({
         "status": {
         },
-        "user1":
+        "user1": {
+            
+        }
     });
 
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
