@@ -179,7 +179,7 @@ function joinGame(/* gameId, */name) {
 
     queue.push().set({
         "queue": {
-            name: name
+            name: fir
         }
     }).then(function () {
         setTimeout(function () {
