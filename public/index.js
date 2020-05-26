@@ -145,7 +145,6 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    var queue = firebase.database().ref('posts').limitToLast(100);
 
     return;
     emails.doc(name).get().then(function (doc) {
