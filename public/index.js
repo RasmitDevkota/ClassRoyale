@@ -196,7 +196,7 @@ function joinGame(name) {
             return;
         } else {
             alert('Error occurred!');
-            return console.error("Error occurred: joinGame query size not equal to 0 or 1")
+            return console.error("Error occurred: joinGame query size not equal to 0 or 1");
         }
     });
 
