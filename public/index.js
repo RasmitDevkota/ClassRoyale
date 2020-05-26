@@ -177,7 +177,7 @@ function startGame(name) {
 function joinGame(/* gameId, */name) {
     var queue = queues.orderByValue().equalTo("PENDING", "queue").limitToFirst(1);
 
-    queue.ref('queue').push().set({
+    queue..push().set({
         name: name
     }).then(function () {
         setTimeout(function () {
