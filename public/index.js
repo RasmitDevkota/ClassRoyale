@@ -148,13 +148,6 @@ function testGame(name1, name2) {
 function startGame(name) {
     queues.child(name).push().set({
         "status": {
-            "metrics": {
-                "views": 900000,
-                "likes": 117000,
-                "shares": 144,
-            },
-            "title": "Using Android Architecture Components with Firebase Realtime Database (Part 3)",
-            "author": "Doug",
         }
     });
 
