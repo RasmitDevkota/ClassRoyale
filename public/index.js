@@ -146,7 +146,7 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    postListRef.push().set({
+    queues.push().set({
         // ...
     });
 
