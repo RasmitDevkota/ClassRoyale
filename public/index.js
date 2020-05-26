@@ -149,7 +149,7 @@ function startGame(name) {
     var queue = queues.push({
         "status": "PENDING",
         "user1": name
-    );
+    });
 
     queue.set({
     });
