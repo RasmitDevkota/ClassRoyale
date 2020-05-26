@@ -147,7 +147,7 @@ function testGame(name1, name2) {
 
 function startGame(name) {
     queues.child(name).push().set({
-        "android-arch-3": {
+        "status": {
             "metrics": {
                 "views": 900000,
                 "likes": 117000,
