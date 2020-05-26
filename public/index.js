@@ -193,7 +193,6 @@ function joinGame(name) {
                     // gameToJoin.on('child_removed', function (data) {
                     //     return console.log("joinGame removed", data.key);
                     // });
-                }, 1000);
             });
         });
     });
