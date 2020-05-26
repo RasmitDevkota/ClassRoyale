@@ -190,7 +190,9 @@ function joinGame(name) {
             i++;
         });
 
-        if (i == 0)
+        if (i == 0) {
+            
+        }
     });
 
     return;
