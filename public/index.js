@@ -183,8 +183,6 @@ function joinGame(gameId, name) {
         console.log(data);
     });
 
-
-
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
         var data = snapshot.val();
 
