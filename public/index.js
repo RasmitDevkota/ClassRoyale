@@ -146,7 +146,7 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    queues.equalTo.limitToFirst(1);
+    queues.equalTo("").limitToFirst(1);
 
     return;
     emails.doc(name).get().then(function (doc) {
