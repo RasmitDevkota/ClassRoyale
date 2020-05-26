@@ -146,7 +146,7 @@ function testGame(name1, name2) {
 }
 
 function startGame(name) {
-    queues.equalTo("PENDING", "QUEUE").limitToFirst(1).once('value').then(function (snapshot) {
+    queues.equalTo("PENDING", "QUEUE").limitToFirst(1).on('value').then(function (snapshot) {
         
     });
 
