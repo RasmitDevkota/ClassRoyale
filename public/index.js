@@ -159,12 +159,6 @@ function startGame(name) {
 
     return;
 
-    queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
-        var data = snapshot.val();
-
-        console.log(data);
-    });
-
     return;
     emails.doc(name).get().then(function (doc) {
         var uid = doc.data().uid;
