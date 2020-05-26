@@ -179,7 +179,7 @@ function joinGame(/* gameId, */name) {
 
     queue.push().set({
         "queue": {
-            name: firebase.FieldValue.serverTimestamp
+            name: firebase.firestore.FieldValue.serverTimestamp
         }
     }).then(function () {
         setTimeout(function () {
