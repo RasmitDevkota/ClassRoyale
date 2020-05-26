@@ -148,8 +148,8 @@ function testGame(name1, name2) {
 function startGame(name) {
     var queue = queues.child(name);
 
-    queue.set({
-        
+    queue.({
+
     });
 
     queue.on('child_added', function (data) {
