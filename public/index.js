@@ -192,7 +192,7 @@ function joinGame(name) {
 
         if (i == 0) {
             return joinGame(name);
-        }
+        } else if (i == 1)
     });
 
     return;
