@@ -18,7 +18,7 @@ var emails = db.collection("emails");
 var storage = firebase.storage().ref();
 var cardThumbnails = storage.child('card_thumbnails');
 
-var realtime = firebase.database();
+var rt = firebase.database();
 
 function addCard() {
     var name = document.getElementById("cardName").value;
