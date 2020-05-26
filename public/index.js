@@ -19,6 +19,7 @@ var storage = firebase.storage().ref();
 var cardThumbnails = storage.child('card_thumbnails');
 
 var rt = firebase.database();
+var queues = firebase.database().ref('posts').limitToLast(100);
 
 function addCard() {
     var name = document.getElementById("cardName").value;
