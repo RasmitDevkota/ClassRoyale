@@ -199,4 +199,4 @@ function joinGame(name) {
             return console.error(`Error occurred: joinGame query size ${i} not equal to 0 or 1`);
         }
     });
-}
+};
