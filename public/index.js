@@ -157,10 +157,6 @@ function startGame(name) {
         console.log(postElement, data.key, data.val().text, data.val().author);
     });
 
-    queue.on('child_changed', function (data) {
-        console.log(postElement, data.key, data.val().text, data.val().author);
-    });
-
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
         var data = snapshot.val();
 
