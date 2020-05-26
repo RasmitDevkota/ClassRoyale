@@ -154,7 +154,7 @@ function startGame(name) {
     });
 
     queue.on('child_added', function (data) {
-        console.log(postElement, data.key, data.val().text, data.val().author);
+        return console.log(postElement, data.key, data.val().text, data.val().author);
     });
 
     queues.orderByKey().equalTo("PENDING", "QUEUE").limitToFirst(1).on('value', function (snapshot) {
