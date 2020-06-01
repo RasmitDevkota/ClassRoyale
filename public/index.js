@@ -190,7 +190,3 @@ function joinGame(name) {
         }
     });
 };
-
-function test() {
-    
-}
