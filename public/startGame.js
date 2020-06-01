@@ -1,1 +1,1 @@
-console.log('hiiiiiii');
+function (console.log('hiiiiiii');
