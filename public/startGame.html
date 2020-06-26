@@ -13,13 +13,13 @@
             if (params.length != 2) {
                 console.log("Incorrect number of params entered, ", params.length, " instead of 2 for function testGame");
             } else {
-                startGame.apply(null, params);
+                Game.apply(null, params);
             }
             break;
         case "startGame":
             if (params.length != 1) {
                 console.log("Incorrect number of params entered, ", params.length, " instead of 1 for function startGame");
-                startGame.apply(null, params);
+                testGamea.apply(null, params);
             }
             break;
         case "joinGame":
