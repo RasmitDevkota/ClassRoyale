@@ -10,7 +10,9 @@
 
     switch(action) {
         case "testGame":
-            if (params.length != 1)
+            if (params.length != 2) {
+                return console.log("Incorrect number of params entered, ")
+            }
     }
 
     testGame("hello", "hi");
