@@ -153,6 +153,7 @@ function startGame(name) {
     }).then(function () {
         console.log("Queue Created");
         
+        var i = 0
         queue.on('child_added', function (data) {
             if (i != 2) {
 
