@@ -168,7 +168,7 @@ function startGame(name) {
                     var queueList = {};
                     snapshot.forEach(function (queueEntry) {
                         var userName = queueEntry.key;
-                        var childData = queueEntry.val();
+                        var userTimestamp = queueEntry.val();
                         queueList.set(childKey, childData)
 
                         console.log(queueList);
