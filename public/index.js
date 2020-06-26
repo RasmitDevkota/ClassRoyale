@@ -168,8 +168,6 @@ function startGame(name) {
                     queue.update({
                         status: "CHECKING"
                     }).then(function () {
-
-
                         var queueList = new Map();
                         snapshot.forEach(function (queueEntry) {
                             var userName = queueEntry.key;
