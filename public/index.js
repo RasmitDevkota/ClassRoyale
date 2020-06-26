@@ -174,7 +174,7 @@ function startGame(name) {
                         console.log(queueList);
                     });
 
-                    var sortedQueueList = new Map([...queue.entries()].sort((a, b) => b[1] - a[1]));
+                    var sortedQueueList = new Map([...queueList.entries()].sort((a, b) => b[1] - a[1]));
                     console.log("Final Queue List: ", queueList);
                 });
             }
