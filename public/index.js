@@ -165,7 +165,7 @@ function startGame(name) {
                 console.log("startGame", "Found a match!", data.val());
 
                 queue.child('queue').once('value', function (snapshot) {
-                    var queueList = [];
+                    var queueList = {};
                     snapshot.forEach(function (childSnapshot) {
                         var childKey = childSnapshot.key;
                         var childData = childSnapshot.val();
