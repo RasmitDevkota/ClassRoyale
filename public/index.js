@@ -183,7 +183,6 @@ function startGame(name) {
                         console.log("Final Sorted Queue List:", sortedQueueList);
                         console.log("Chosen User:", chosenUser, sortedQueueList.entries().next().value);
                     }).then(function () {
-
                         queue.child('queue').remove();
 
                         queue.update({
