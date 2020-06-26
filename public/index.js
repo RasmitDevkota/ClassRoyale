@@ -209,7 +209,7 @@ function joinGame(name) {
             firebase.database().ref().update(update).then(function () {
                 console.log("Found a game!");
 
-                queues.child(gameKey).once('child_removed', function () {
+                queues.child(gameKey).once('child_added', function () {
                     queues.child(gameKey).once('value', function (data) {
                         console.log(data.val());
                         console.log(data.val()["user2"]);
