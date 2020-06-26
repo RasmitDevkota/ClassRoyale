@@ -158,7 +158,6 @@ function startGame(name) {
             if (i != 2) {
                 i++;
             }
-            console.log(i);
         });
     });
 }
