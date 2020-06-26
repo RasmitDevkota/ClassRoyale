@@ -164,7 +164,13 @@ function startGame(name) {
             } else {
                 console.log("startGame", "Found a match!", data.val());
 
-                
+                ref.once('value', function (snapshot) {
+                    snapshot.forEach(function (childSnapshot) {
+                        var childKey = childSnapshot.key;
+                        var childData = childSnapshot.val();
+                        // ...
+                    });
+                });
             }
         });
     });
