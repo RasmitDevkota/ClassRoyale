@@ -182,7 +182,7 @@ function startGame(name) {
 
                     queue.update({
                         
-                    })
+                    });
                 });
             }
         });
