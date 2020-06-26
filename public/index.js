@@ -160,7 +160,6 @@ function startGame(name) {
         queue.on('child_added', function (data) {
             if (i != 2) {
                 i++;
-                console.log(i);
             } else {
                 console.log("startGame", "Found a match!", data.val());
 
@@ -183,7 +182,7 @@ function startGame(name) {
 
                         console.log("Final Sorted Queue List:", sortedQueueList);
                         console.log("Chosen User:", chosenUser, sortedQueueList.entries().next().value);
-                        
+
                         return chosenUser;
                     }).then(function () {
                         queue.child('queue').remove();
