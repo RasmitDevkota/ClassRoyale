@@ -176,6 +176,7 @@ function startGame(name) {
 
                             console.log(queueList);
                         });
+                        
                     }).then(function () {
                         var sortedQueueList = new Map([...queueList.entries()].sort((a, b) => b[1] - a[1]));
                         var chosenUser = sortedQueueList.keys().next().value;
