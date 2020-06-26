@@ -210,6 +210,9 @@ function joinGame(name) {
                 console.log("Found a game!");
 
                 queues.child(gameKey).once('child_added', function () {
+                    if (i != 2) {
+                        i++;
+                    }
                     queues.child(gameKey).once('value', function (data) {
                         console.log(data.val());
                         console.log(data.val()["user2"]);
