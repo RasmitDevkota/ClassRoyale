@@ -2,7 +2,8 @@
 <script src="index.js"></script>
 
 <script>
-    
+    var urlParams = new URLSearchParams(window.location.search);
+        var query = urlParams.get('query');
 
     testGame("hello", "hi");
 </script>
