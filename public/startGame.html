@@ -26,6 +26,8 @@
         case "joinGame":
             if (params.length != 1) {
                 console.log("Incorrect number of params entered, ", params.length, " instead of 1 for function joinGame");
+            } else {
+                testGame.apply(null, params);
             }
             break;
     }
