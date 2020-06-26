@@ -163,6 +163,7 @@ function startGame(name) {
                 console.log(i);
             } else {
                 console.log("startGame", "Found a match!", data.val());
+                
             }
         });
     });
