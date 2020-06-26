@@ -169,7 +169,7 @@ function startGame(name) {
                     snapshot.forEach(function (childSnapshot) {
                         var childKey = childSnapshot.key;
                         var childData = childSnapshot.val();
-                        queueList.push()
+                        queueList.set()
 
                         console.log(childKey, " ", childData);
                     });
