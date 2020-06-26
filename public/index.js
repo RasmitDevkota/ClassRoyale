@@ -162,7 +162,7 @@ function startGame(name) {
                 i++;
                 console.log(i);
             } else {
-                i = 2;
+                i = 3;
 
                 console.log("Found a match!", data.val());
 
