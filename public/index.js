@@ -168,7 +168,7 @@ function startGame(name) {
                     snapshot.forEach(function (childSnapshot) {
                         var childKey = childSnapshot.key;
                         var childData = childSnapshot.val();
-                        // ...
+                        console.log()
                     });
                 });
             }
