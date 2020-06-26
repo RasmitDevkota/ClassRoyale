@@ -178,7 +178,7 @@ function joinGame(name) {
             firebase.database().ref().update(update).then(function () {
                 console.log("joinGame", "Found a game!");
 
-                queues.once('child_removed', function (data) {
+                queues.child('queue').once('child_removed', function (data) {
                     return console.log("joinGame", data.val());
                 });
             });
