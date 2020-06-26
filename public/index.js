@@ -199,6 +199,7 @@ function joinGame(name) {
                 console.log("joinGame", "Found a game!");
 
                 queues.child(gameKey).once('child_removed', function (data) {
+                    
                     return console.log("joinGame", data.val());
                 });
             });
