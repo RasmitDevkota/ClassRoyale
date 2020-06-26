@@ -173,7 +173,7 @@ function startGame(name) {
                             var userTimestamp = queueEntry.val();
                             queueList.set(userName, userTimestamp);
 
-                            console.log("queueList);
+                            console.log("QueuequeueList);
                         });
                         return queueList;
                     }).then(function (queueList) {
