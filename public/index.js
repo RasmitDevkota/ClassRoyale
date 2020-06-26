@@ -157,7 +157,7 @@ function startGame(name) {
             return console.log("startGame", data.key, data.val().text, data.val().author);
         });
     });
-};
+}
 
 function joinGame(name) {
     queues.orderByChild("status").equalTo("PENDING").limitToFirst(1).once('value', function (snapshot) {
