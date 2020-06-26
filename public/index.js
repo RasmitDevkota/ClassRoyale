@@ -161,7 +161,7 @@ function startGame(name) {
             if (i != 2) {
                 i++;
             } else {
-                console.log(Found a match!", data.val());
+                console.log("Found a match!", data.val());
 
                 queue.child('queue').once('value', function (snapshot) {
                     queue.update({
