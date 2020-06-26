@@ -184,7 +184,7 @@ function startGame(name) {
                         console.log("Chosen User:", chosenUser, sortedQueueList.entries().next().value);
 
                         return chosenUser;
-                    }).then(function () {
+                    }).then(function (chosenUser) {
                         queue.child('queue').remove();
 
                         queue.update({
