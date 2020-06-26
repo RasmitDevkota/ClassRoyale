@@ -213,7 +213,7 @@ function joinGame(name) {
 
                 var j = 0;
                 queues.child(gameKey).on('child_added', function () {
-                    if (i != 3) {
+                    if (j != 3) {
                         i++;
                     } else {
                         queues.child(gameKey).once('value', function (data) {
