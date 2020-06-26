@@ -113,7 +113,7 @@ function addCard() {
     });
 }
 
-function testGame(name1, name2 [one, two]) {
+function testGame(name1, name2 [var one, two]) {
     startGame(name1);
     joinGame(name2);
 
