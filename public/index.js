@@ -217,7 +217,7 @@ function joinGame(name) {
                         i++;
                     } else {
                         queues.child(gameKey).once('value', function (data) {
-                            console.log("Matchdata.val()["user2"]);
+                            console.log("Matched User:", data.val()["user2"]);
                         });
                     }
                 });
