@@ -157,7 +157,7 @@ function startGame(name) {
                 alert('User found!');
                 return console.log("startGame", data.key);
             } else {
-                console.log(data.val().us)
+                console.log(data.val().user1)
             }
         });
     });
