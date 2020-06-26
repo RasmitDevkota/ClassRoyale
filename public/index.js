@@ -202,7 +202,6 @@ function joinGame(name) {
         var i = 0;
         snapshot.forEach(function (childSnapshot) {
             var gameKey = childSnapshot.key;
-            console.log(gameKey);
 
             var update = {};
             update['/queues/' + gameKey + '/queue/' + name] = new Date().getTime();
