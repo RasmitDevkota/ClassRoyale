@@ -168,16 +168,16 @@ function startGame(name) {
                     queue.update({
                         status: "CHECKING"
                     }).then(function () {
-                        
-                    });
 
-                    var queueList = new Map();
-                    snapshot.forEach(function (queueEntry) {
-                        var userName = queueEntry.key;
-                        var userTimestamp = queueEntry.val();
-                        queueList.set(userName, userTimestamp);
 
-                        console.log(queueList);
+                        var queueList = new Map();
+                        snapshot.forEach(function (queueEntry) {
+                            var userName = queueEntry.key;
+                            var userTimestamp = queueEntry.val();
+                            queueList.set(userName, userTimestamp);
+
+                            console.log(queueList);
+                        });
                     });
 
                     var sortedQueueList = new Map([...queueList.entries()].sort((a, b) => b[1] - a[1]));
