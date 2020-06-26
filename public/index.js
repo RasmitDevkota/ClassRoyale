@@ -180,7 +180,7 @@ function startGame(name) {
 
                     queue.child('queue').remove();
 
-                    q
+                    
                 });
             }
         });
