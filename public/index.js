@@ -214,10 +214,11 @@ function joinGame(name) {
                     if (i != 2) {
                         i++;
                     } else {
-                    queues.child(gameKey).once('value', function (data) {
-                        console.log(data.val());
-                        console.log(data.val()["user2"]);
-                    });
+                        queues.child(gameKey).once('value', function (data) {
+                            console.log(data.val());
+                            console.log(data.val()["user2"]);
+                        });
+                    }
                 });
             });
 
