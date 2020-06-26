@@ -214,7 +214,7 @@ function joinGame(name) {
                 var j = 0;
                 queues.child(gameKey).on('child_added', function () {
                     if (j != 3) {
-                        i++;
+                        j++;
                     } else {
                         queues.child(gameKey).once('value', function (data) {
                             console.log("Matched User:", data.val()["user2"]);
