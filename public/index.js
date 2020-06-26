@@ -158,11 +158,11 @@ function startGame(name) {
         
         var i = 0;
         queue.on('child_added', function (data) {
-            if (i < 3) {
+            if (i < ) {
                 i++;
                 console.log(i);
             } else {
-                i++;
+                // i++;
 
                 console.log("Found a match!", data.val());
 
