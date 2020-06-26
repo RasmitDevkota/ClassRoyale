@@ -231,7 +231,7 @@ function joinGame(name) {
         } else if (i == 1) {
             return;
         } else {
-            return console.error(`Error occurred: joinGame query size ${i} not equal to 0 (no games found) or 1`);
+            return console.error(`Error occurred: joinGame query size ${i} not equal to 0 (no games found) or 1 ()`);
         }
     });
 }
