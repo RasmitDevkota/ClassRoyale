@@ -157,6 +157,8 @@ function startGame(name) {
         queue.on('child_added', function (data) {
             if (i != 2) {
                 i++;
+            } else {
+                
             }
             console.log(i);
         });
