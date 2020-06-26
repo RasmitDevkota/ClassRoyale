@@ -1,7 +1,7 @@
 firebase.initializeApp({
     apiKey: "AIzaSyDz4E7cWDIMedScuc4TvGdEawhWGOLn4SQ",
     authDomain: "class-royale.firebaseapp.com",
-    databaseURL: "https://class-royale.firebaseio.com",
+    databaseURL: "https://coronavirusbot19.firebaseio.com/",
     projectId: "class-royale",
     storageBucket: "class-royale.appspot.com",
     messagingSenderId: "670502096879",
