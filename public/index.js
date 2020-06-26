@@ -188,7 +188,6 @@ function startGame(name) {
                         queue.update({
                             "user2": chosenUser
                         });
-                        
                     });
                 });
             }
