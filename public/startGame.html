@@ -4,7 +4,9 @@
 <script>
     var urlParams = new URLSearchParams(window.location.search);
     var action = urlParams.get('function');
-    var params = urlParams.get('params').toString().split(',')
+    var params = urlParams.get('params').toString().split(',');
+
+    console.log(action, params)
 
     testGame("hello", "hi");
 </script>
