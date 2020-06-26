@@ -179,6 +179,7 @@ function startGame(name) {
                     console.log("Chosen User:", sortedQueueList.keys().next().value, sortedQueueList.entries().next().value);
 
                     queue.child('queue').remove();
+                    
                 });
             }
         });
