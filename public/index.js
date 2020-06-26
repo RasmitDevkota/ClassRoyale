@@ -115,7 +115,7 @@ function addCard() {
 
 function testGame(name1, name2) {
     startGame(name1);
-    joinGame(name2)
+    joinGame(name2);
 
     // emails.doc(name1).get().then(function (doc) {
     //     var uid = doc.data().uid;
