@@ -178,6 +178,8 @@ function startGame(name) {
                     console.log("Final Sorted Queue List:", sortedQueueList);
 
                     console.log("Chosen User:", sortedQueueList.keys().next().value, sortedQueueList.entries().next().value);
+
+                    
                 });
             }
         });
