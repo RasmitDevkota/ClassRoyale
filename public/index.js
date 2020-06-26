@@ -181,7 +181,6 @@ function startGame(name) {
                     queue.child('queue').remove();
 
                     queue.update({
-                        status: "CHECKING"
                         user2: "otherguy"
                     });
                 });
