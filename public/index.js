@@ -172,7 +172,7 @@ function startGame(name) {
                         queueList.set(userName, userTimestamp);
 
                         console.log(queueList);
-                    });
+                    }).then(function());
                 });
             }
         });
