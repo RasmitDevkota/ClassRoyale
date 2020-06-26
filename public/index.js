@@ -175,7 +175,7 @@ function startGame(name) {
                     });
                     function () {
                         console.log("Final Queue List: ", queueList);
-                    });
+                    };
                 });
             }
         });
