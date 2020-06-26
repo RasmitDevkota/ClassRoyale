@@ -200,7 +200,8 @@ function joinGame(name) {
 
                 queues.child(gameKey).once('child_removed', function () {
                     queues.child(gameKey).once('value', function (data) {
-                        return console.log(data.val());
+                        console.log(data.val());
+                        console.log(data.val().get())
                     });
                 });
             });
