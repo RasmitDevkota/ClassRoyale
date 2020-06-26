@@ -167,7 +167,7 @@ function startGame(name) {
                 queue.child('queue').once('value', function (snapshot) {
                     queue.update({
                         status: "CHECKING"
-                    })
+                    });
 
                     var queueList = new Map();
                     snapshot.forEach(function (queueEntry) {
