@@ -172,7 +172,8 @@ function startGame(name) {
                         queueList.set(userName, userTimestamp);
 
                         console.log(queueList);
-                    }).then(function () {
+                    })
+                    function () {
                         console.log("Final Queue List: ", queueList);
                     });
                 });
