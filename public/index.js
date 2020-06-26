@@ -181,7 +181,7 @@ function startGame(name) {
                     queue.child('queue').remove();
 
                     queue.update({
-                        "user2"
+                        user2: ""
                     });
                 });
             }
