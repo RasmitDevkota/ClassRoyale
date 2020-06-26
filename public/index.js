@@ -213,7 +213,7 @@ function joinGame(name) {
                 queues.child(gameKey).on('child_added', function () {
                     if (i != 2) {
                         i++;
-                    }
+                    } else {
                     queues.child(gameKey).once('value', function (data) {
                         console.log(data.val());
                         console.log(data.val()["user2"]);
