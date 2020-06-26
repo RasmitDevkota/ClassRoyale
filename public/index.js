@@ -171,7 +171,7 @@ function startGame(name) {
                         var childData = childSnapshot.val();
                         queueList.set(childKey, childData)
 
-                        console.log(queue);
+                        console.log(queueList);
                     });
                 });
             }
