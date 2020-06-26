@@ -155,7 +155,7 @@ function startGame(name) {
         queue.on('child_added', function (data) {
             if (data.val().)
             alert('User found!');
-            return console.log("startGame", data.key, data.val().status, data.val().userID);
+            return console.log("startGame", data.key);
         });
     });
 }
