@@ -173,7 +173,7 @@ function startGame(name) {
 
                         console.log(queueList);
                     });
-                    function () {
+                    
                         console.log("Final Queue List: ", queueList);
                     };
                 });
