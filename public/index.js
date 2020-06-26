@@ -188,7 +188,7 @@ function startGame(name) {
                         queue.child('queue').remove();
 
                         queue.update({
-                            "user2": chosenUser[]
+                            "user2": chosenUser[0]
                         });
                     });
                 });
