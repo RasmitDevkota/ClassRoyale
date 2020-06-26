@@ -156,6 +156,8 @@ function startGame(name) {
             if (data.val().user1 != name) {
                 alert('User found!');
                 return console.log("startGame", data.key);
+            } else {
+                console.log(data.val().us)
             }
         });
     });
