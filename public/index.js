@@ -160,6 +160,7 @@ function startGame(name) {
             } else {
                 console.log("startGame", data.val());
             }
+            console.log(i);
         });
     });
 }
