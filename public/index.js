@@ -151,6 +151,7 @@ function startGame(name) {
         "status": "PENDING",
         "user1": name
     }).then(function () {
+        c
         queue.on('child_added', function (data) {
             alert('User found!');
             return console.log("startGame", data.key, data.val().text, data.val().author);
