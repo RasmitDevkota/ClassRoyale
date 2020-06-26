@@ -158,7 +158,7 @@ function startGame(name) {
             if (i != 2) {
                 i++;
             } else {
-                console.log(i)
+                console.log()
             }
             console.log(i);
         });
