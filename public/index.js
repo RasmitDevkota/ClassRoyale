@@ -211,7 +211,7 @@ function joinGame(name) {
 
                 var i = 0;
                 queues.child(gameKey).on('child_added', function () {
-                    if (i != 1) {
+                    if (i != 2) {
                         i++;
                     } else {
                         queues.child(gameKey).once('value', function (data) {
