@@ -165,7 +165,9 @@ function startGame(name) {
                 console.log("startGame", "Found a match!", data.val());
 
                 queue.child('queue').once('value', function (snapshot) {
-                    queue.update
+                    queue.update({
+                        status: "CHECKING"
+                    })
 
                     var queueList = new Map();
                     snapshot.forEach(function (queueEntry) {
