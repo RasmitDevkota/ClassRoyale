@@ -114,34 +114,34 @@ function addCard() {
 }
 
 function testGame(name1, name2) {
-    emails.doc(name1).get().then(function (doc) {
-        var uid = doc.data().uid;
+    // emails.doc(name1).get().then(function (doc) {
+    //     var uid = doc.data().uid;
 
-        var gameDoc = games.doc();
-        gameDoc.set({
-            status: "PENDING",
-            "user1": {
-                "uid": uid,
-                "name": name1
-            }
-        }).then(function () {
-            console.log(`User ${name1} with uid ${uid} created game ${gameDoc.id}.`);
-        });
+    //     var gameDoc = games.doc();
+    //     gameDoc.set({
+    //         status: "PENDING",
+    //         "user1": {
+    //             "uid": uid,
+    //             "name": name1
+    //         }
+    //     }).then(function () {
+    //         console.log(`User ${name1} with uid ${uid} created game ${gameDoc.id}.`);
+    //     });
 
-        return gameDoc.id;
-    }).then(function (gameId) {
-        emails.doc(name2).get().then(function (doc) {
-            var uid = doc.data().uid;
+    //     return gameDoc.id;
+    // }).then(function (gameId) {
+    //     emails.doc(name2).get().then(function (doc) {
+    //         var uid = doc.data().uid;
 
-            games.doc(gameId).update({
-                status: "CHECKING",
-                ["queue." + uid]: firebase.firestore.FieldValue.serverTimestamp()
-            }).then(function () {
-                var seconds = firebase.firestore.FieldValue.serverTimestamp().seconds * 1000;
-                console.log(`User ${name2} with uid ${uid} joined queue for game ${gameId} at ${seconds}.`);
-            });
-        });
-    });
+    //         games.doc(gameId).update({
+    //             status: "CHECKING",
+    //             ["queue." + uid]: firebase.firestore.FieldValue.serverTimestamp()
+    //         }).then(function () {
+    //             var seconds = firebase.firestore.FieldValue.serverTimestamp().seconds * 1000;
+    //             console.log(`User ${name2} with uid ${uid} joined queue for game ${gameId} at ${seconds}.`);
+    //         });
+    //     });
+    // });
 }
 
 function startGame(name) {
