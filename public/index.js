@@ -176,7 +176,7 @@ function joinGame(name) {
             update['/queues/' + gameKey + '/queue/' + name] = new Date().getTime();
 
             firebase.database().ref().update(update).then(function () {
-                console.log('Found a game!');
+                console.log("Found a game!');
 
                 queue.once('child_removed', function (data) {
                     return console.log("joinGame", "Game finished");
