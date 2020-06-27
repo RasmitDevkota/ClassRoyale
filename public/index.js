@@ -182,7 +182,9 @@ function startGame(name) {
                             "status": "CHOSEN",
                             "user2": chosenUser
                         });
-                    });
+                    }).then(function () {
+                        console.log
+                    });;
                 });
             }
         });
