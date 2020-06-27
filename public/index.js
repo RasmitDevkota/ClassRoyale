@@ -197,7 +197,6 @@ function joinGame(name) {
     queues.orderByChild("status").equalTo("PENDING").limitToFirst(1).once('value', function (snapshot) {
         var i = 0;
         snapshot.forEach(function (childSnapshot) {
-            
             console.log("mine,false");
 
             var gameKey = childSnapshot.key;
