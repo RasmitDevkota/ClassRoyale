@@ -214,7 +214,6 @@ function joinGame(name) {
                                 console.log("mine,false");
                                 console.log(`joinedUser,${data.val()["user2"]}`);
                             } else {
-
                             }
                         });
                     }
