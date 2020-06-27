@@ -183,7 +183,7 @@ function startGame(name) {
                             "user2": chosenUser
                         });
                         
-                        return chosenUser
+                        return chosenUser;
                     }).then(function () {
                         console.log("1", );
                     });
