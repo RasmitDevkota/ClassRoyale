@@ -184,7 +184,7 @@ function startGame(name) {
                         });
                         
                         return chosenUser;
-                    }).then(function () {
+                    }).then(function (chosenUser) {
                         console.log("1", );
                     });
                 });
