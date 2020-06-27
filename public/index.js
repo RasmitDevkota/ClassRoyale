@@ -209,8 +209,6 @@ function joinGame(name) {
             update['/queues/' + gameKey + '/queue/' + name] = new Date().getTime();
 
             firebase.database().ref().update(update).then(function () {
-                console.log("Found a game!");
-
                 var j = 0;
                 queues.child(gameKey).on('child_added', function () {
                     if (j != 3) {
