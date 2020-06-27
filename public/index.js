@@ -179,6 +179,7 @@ function startGame(name) {
                         queue.child('queue').remove();
 
                         queue.update({
+                            "status": "CHOSEN"
                             "user2": chosenUser
                         });
                     });
