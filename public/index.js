@@ -160,9 +160,6 @@ function startGame(name) {
                 i++;
             } else {
                 i = 0;
-
-                console.log("Found a match!", data.val());
-
                 queue.child('queue').once('value', function (snapshot) {
                     queue.update({
                         status: "CHECKING"
