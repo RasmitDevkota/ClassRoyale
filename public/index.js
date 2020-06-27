@@ -210,7 +210,7 @@ function joinGame(name) {
                     } else {
                         queues.child(gameKey).once('value', function (data) {
                             console.log("userStatus,CHOSEN");
-                            console.log("JoinedUser,"data.val()["user2"]);
+                            console.log("JoinedUser,data.val()["user2"]);
                         });
                     }
                 });
