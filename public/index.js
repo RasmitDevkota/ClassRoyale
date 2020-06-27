@@ -181,9 +181,7 @@ function startGame(name) {
                         queue.update({
                             "status": "CHOSEN",
                             "user2": chosenUser
-                        }).then(function () {
-                            console.log
-                        });
+                        })
                     });
                 });
             }
