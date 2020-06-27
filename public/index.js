@@ -182,6 +182,8 @@ function startGame(name) {
                             "status": "CHOSEN",
                             "user2": chosenUser
                         });
+                        
+                        return chosenUser
                     }).then(function () {
                         console.log("1", );
                     });
