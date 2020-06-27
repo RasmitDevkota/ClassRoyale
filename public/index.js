@@ -182,7 +182,7 @@ function startGame(name) {
                             "status": "CHOSEN",
                             "user2": chosenUser
                         });
-                    }).then(function () {
+                    }).then(function () {}
                         console.log
                     });
                 });
