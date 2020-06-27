@@ -197,8 +197,6 @@ function joinGame(name) {
     queues.orderByChild("status").equalTo("PENDING").limitToFirst(1).once('value', function (snapshot) {
         var i = 0;
         snapshot.forEach(function (childSnapshot) {
-            console.log("mine,false");
-
             var gameKey = childSnapshot.key;
 
             var update = {};
@@ -212,6 +210,7 @@ function joinGame(name) {
                     } else {
                         queues.child(gameKey).once('value', function (data) {
                             console.log("userStatus,CHOSEN");
+                            console.log("mine,false");
                             console.log(`joinedUser,${data.val()["user2"]}`);
                         });
                     }
