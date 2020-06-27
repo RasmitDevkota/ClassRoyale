@@ -209,7 +209,7 @@ function joinGame(name) {
                         j++;
                     } else {
                         queues.child(gameKey).once('value', function (data) {
-                            if (data.val()["user2"])
+                            if (data.val()["user2"] == )
                             console.log("userStatus,CHOSEN");
                             console.log("mine,false");
                             console.log(`joinedUser,${data.val()["user2"]}`);
