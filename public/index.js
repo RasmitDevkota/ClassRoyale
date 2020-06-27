@@ -225,7 +225,7 @@ function joinGame(name) {
         });
 
         if (i == 0) {
-            return startGame(name);
+            return joinGame(name);
         } else if (i == 1) {
             return;
         } else {
