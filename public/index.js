@@ -184,7 +184,7 @@ function startGame(name) {
                         });
                     }).then(function () {
                         console.log
-                    });;
+                    });
                 });
             }
         });
