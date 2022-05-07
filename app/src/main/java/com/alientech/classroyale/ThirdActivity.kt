@@ -5,23 +5,14 @@ package com.alientech.classroyale
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.tasks.Task
-import com.google.ar.sceneform.Node
-import com.google.ar.sceneform.Scene
-import com.google.ar.sceneform.SceneView
-import com.google.ar.sceneform.math.Vector3
-import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -29,7 +20,6 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.functions.FirebaseFunctions
-import kotlinx.android.synthetic.main.activity_third.*
 import kotlin.math.ceil
 import kotlin.math.pow
 
@@ -74,19 +64,14 @@ class ThirdActivity : AppCompatActivity(), View.OnClickListener {
 
     var handler = Handler()
 
-    lateinit var scene: Scene
-
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
 
-        scene = sceneView.scene
-        renderObject(Uri.parse("testModel.sfb"))
-
-        var b = intent.extras
+        val b = intent.extras
         if (b != null) {
-            var whichUser = b.getStringArrayList("gameData")[0]
+            val whichUser = b.getStringArrayList("gameData")[0]
             gameDocRef = b.getStringArrayList("gameData")[1]
             gameLogs = db.collection("game").document(gameDocRef)
 
@@ -97,7 +82,7 @@ class ThirdActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 if (whichUser == "user1") {
-                    var loadData = mapOf(
+                    val loadData = mapOf(
                         "startTime" to FieldValue.serverTimestamp(),
                         "user1" to mapOf(
                             "name" to displayName,
@@ -107,9 +92,10 @@ class ThirdActivity : AppCompatActivity(), View.OnClickListener {
                             "grade" to userGrade
                         )
                     )
+
                     db.collection("games").document(gameDocRef).update(loadData)
                 } else {
-                    var loadData = mapOf(
+                    val loadData = mapOf(
                         "user2" to mapOf(
                             "name" to displayName,
                             "uid" to uid,
@@ -118,50 +104,19 @@ class ThirdActivity : AppCompatActivity(), View.OnClickListener {
                             "grade" to userGrade
                         )
                     )
+
                     db.collection("games").document(gameDocRef).update(loadData)
                 }
             }
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun renderObject(parse: Uri) {
-        ModelRenderable.builder().setSource(this, parse).build()
-            .thenAccept {
-                addNodeToScene(it)
-            }
-            .exceptionally {
-                val builder = AlertDialog.Builder(this)
-                builder.setMessage(it.message).setTitle("error!")
-                val dialog = builder.create()
-                dialog.show()
-                return@exceptionally null
-            }
-    }
-
-    private fun addNodeToScene(model: ModelRenderable?) {
-        model?.let {
-            var testModel = Node().apply {
-                setParent(scene)
-                localPosition = Vector3(0f, 0f, -1f)
-                localScale = Vector3(0.5f, 0.5f, 0.5f)
-                name = "TestModel"
-                renderable = it
-            }
-
-            val scene = findViewById<SceneView>(R.id.sceneView).scene
-            scene.addChild(testModel)
-        }
-    }
-
     override fun onPause() {
         super.onPause()
-        sceneView.pause()
     }
 
     override fun onResume() {
         super.onResume()
-        sceneView.resume()
     }
 
     public override fun onDestroy() {
@@ -241,8 +196,8 @@ class ThirdActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
-        var nonStandardEvents = arrayOf("placeCard", "cardDestroyed")
-        var nonStandardClicks = arrayOf("specialAttackButton")
+        val nonStandardEvents = arrayOf("placeCard", "cardDestroyed")
+        val nonStandardClicks = arrayOf("specialAttackButton")
 
         if (nonStandardClicks.contains(view.id.toString())) {
 
@@ -254,11 +209,11 @@ class ThirdActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun prngGenerator() {
-        var firstSeed = (0..prngList.size + 1).random()
-        var secondSeed = (0..prngList.size + 1).random()
-        var combinedSeed = firstSeed * secondSeed
+        val firstSeed = (0..prngList.size + 1).random()
+        val secondSeed = (0..prngList.size + 1).random()
+        val combinedSeed = firstSeed * secondSeed
 
-        var randSeed = ceil((prngList.size - 1) * (combinedSeed/(prngList.size).toDouble().pow(2))).toInt()
+        val randSeed = ceil((prngList.size - 1) * (combinedSeed/(prngList.size).toDouble().pow(2))).toInt()
         var randResult = prngList[randSeed]
     }
 
@@ -271,7 +226,7 @@ class ThirdActivity : AppCompatActivity(), View.OnClickListener {
 
         var event = events.document(uid + i)
 
-        var cardData = hashMapOf(
+        val cardData = hashMapOf(
             "name" to HP,
             "HP" to HP,
             "attackDamage" to attackDamage,
@@ -305,7 +260,7 @@ class ThirdActivity : AppCompatActivity(), View.OnClickListener {
         )
 
         functions.getHttpsCallable("endGame").call(data).continueWith { task ->
-            var event = events.document(uid + i)
+            val event = events.document(uid + i)
             event.set(
                 "endTime" to FieldValue.serverTimestamp()
             )

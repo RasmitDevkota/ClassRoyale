@@ -215,20 +215,20 @@ class SecondActivity : AppCompatActivity(), OutOfDeckPopup.NoticeDialogListener 
 
                     games.document(doc.id).update(queueData)
 
-                    var attempt = checkListener(doc.id)
+                    val attempt = checkListener(doc.id)
                     if (attempt == "FAILURE") {
                         return@addOnSuccessListener
                     }
                 }
             } else {
-                var gameDoc = games.document()
+                val gameDoc = games.document()
                 gameDoc.set(userData).addOnSuccessListener {
                     setUserStatus("PENDING")
                     currentGame = gameDoc.id
                     mine = true
                     setUserGame(currentGame)
 
-                    var attempt = opponentListener(currentGame)
+                    val attempt = opponentListener(currentGame)
                     if (attempt == "FAILURE") {
                         return@addOnSuccessListener
                     }
@@ -244,14 +244,14 @@ class SecondActivity : AppCompatActivity(), OutOfDeckPopup.NoticeDialogListener 
     }
 
     fun opponentListener(gameDocId: String): Any {
-        var matchListener = games.document(gameDocId).addSnapshotListener { snapshot, e ->
+        val matchListener = games.document(gameDocId).addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w(TAG, "Listen failed.", e)
                 return@addSnapshotListener
             }
 
             if (snapshot != null && snapshot.exists() && !snapshot.metadata.hasPendingWrites()) {
-                var documentStatus = snapshot.data!!["status"]
+                val documentStatus = snapshot.data!!["status"]
 
                 if (documentStatus == "CHECKING") {
                     setUserStatus("CHECKING")
@@ -259,7 +259,7 @@ class SecondActivity : AppCompatActivity(), OutOfDeckPopup.NoticeDialogListener 
                     disconnectButton.setOnClickListener(null)
                     setUserStatus("CHOSEN")
 
-                    var opponentuid = snapshot.data!!["user2.uid"]
+                    val opponentuid = snapshot.data!!["user2.uid"]
 
                     Toast.makeText(this, "Found game with user $opponentuid", Toast.LENGTH_LONG).show()
 
@@ -287,25 +287,25 @@ class SecondActivity : AppCompatActivity(), OutOfDeckPopup.NoticeDialogListener 
     }
 
     fun checkListener(gameDocId: String): String {
-        var matchListener = games.document(gameDocId).addSnapshotListener { snapshot, e ->
+        val matchListener = games.document(gameDocId).addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w(TAG, "Listen failed.", e)
                 return@addSnapshotListener
             }
 
             if (snapshot != null && snapshot.exists() && !snapshot.metadata.hasPendingWrites()) {
-                var documentStatus = snapshot.data!!["status"]
+                val documentStatus = snapshot.data!!["status"]
 
                 if (documentStatus == "CHOSEN") {
                     currentGame = gameDocId
 
-                    var accepteduid = snapshot.data!!["user2.uid"]
+                    val accepteduid = snapshot.data!!["user2.uid"]
                     if (accepteduid == uid) {
                         setUserStatus("CHOSEN")
                         setUserGame(gameDocId)
                         disconnectButton.setOnClickListener(null)
 
-                        var opponentuid = snapshot.data!!["user1.uid"]
+                        val opponentuid = snapshot.data!!["user1.uid"]
                         Toast.makeText(this, "Found game with user $opponentuid", Toast.LENGTH_LONG).show()
 
 //                        val intent = Intent(this, ThirdActivity::class.java)
@@ -337,8 +337,9 @@ class SecondActivity : AppCompatActivity(), OutOfDeckPopup.NoticeDialogListener 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            var docRef = data!!.getStringExtra("docRef")
+            val docRef = data!!.getStringExtra("docRef")
             var gameLogs = games.document(docRef)
         }
     }
